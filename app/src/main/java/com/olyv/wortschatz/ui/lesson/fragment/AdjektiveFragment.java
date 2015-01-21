@@ -16,12 +16,12 @@ import com.olyv.wortschatz.ui.lesson.LessonActivity;
 public class AdjektiveFragment extends Fragment
 {
     //tags for flags
-    public static final String CORRECT_ANSWER_VISIBLE = "isCorrectAnswerVisible";
-    public static final String WRONG_ANSWER_VISIBLE = "isWrongAnswerVisible";
-    public static final String SUBMIT_BUTTON_VISIBLE = "isButtonVisible";
     public static final String IS_ANSWERED = "isItemAnswered";
-    public static final String ANSWER = "answerWithComment";
-    public static final String IS_CORRECT_ANSWER = "isAnswerCorrect";
+    private static final String CORRECT_ANSWER_VISIBLE = "isCorrectAnswerVisible";
+    private static final String WRONG_ANSWER_VISIBLE = "isWrongAnswerVisible";
+    private static final String SUBMIT_BUTTON_VISIBLE = "isButtonVisible";
+    private static final String ANSWER = "answerWithComment";
+    private static final String IS_CORRECT_ANSWER = "isAnswerCorrect";
 
     //UI components
     private TextView adjektiveView;
@@ -31,8 +31,8 @@ public class AdjektiveFragment extends Fragment
     private TextView wrongAnswer;
 
     //flags and saved answer
-    boolean isItemAnswered = false;
-    boolean isCorrectAnswer = false;
+    private boolean isItemAnswered = false;
+    private boolean isCorrectAnswer = false;
     private String comment;
 
     @Override
