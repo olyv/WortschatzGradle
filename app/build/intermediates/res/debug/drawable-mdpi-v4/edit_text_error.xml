@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="rectangle" android:padding="10dp">
+    <solid android:color="#FF0000"/>
+    <corners
+            android:bottomRightRadius="@dimen/answer_area_rounding"
+            android:bottomLeftRadius="@dimen/answer_area_rounding"
+            android:topLeftRadius="@dimen/answer_area_rounding"
+            android:topRightRadius="@dimen/answer_area_rounding"/>
+</shape><!-- From: file:/C:/Users/Oleksandr_Lyvin@epam.com/AndroidstudioProjects/wortschatz/app/src/main/res/drawable-mdpi/edit_text_error.xml -->

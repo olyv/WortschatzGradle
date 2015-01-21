@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.olyv.wortschatz.ui"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:name="com.olyv.wortschatz.ui.StartActivity"
+            android:label="@string/app_name"
+            android:logo="@drawable/ic_launcher"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.olyv.wortschatz.ui.lesson.LessonActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.olyv.wortschatz.ui.manager.LessonItemsManagerActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/manage_lesson_items"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name="com.olyv.wortschatz.ui.editor.LessonItemEditorActivity"
+            android:label="@string/manage_lesson_items"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.olyv.wortschatz.ui.editor.AddNewItemActivity"
+            android:label="@string/add_lesson_item"
+            android:theme="@style/AppTheme" >
+        </activity>
+    </application>
+
+</manifest>

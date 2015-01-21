@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="start_activity_button_width">250dp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="button_padding">5dp</dimen>
+    <dimen name="answer_area_rounding">15dp</dimen>
+    <dimen name="start_activity_button_height">56dp</dimen>
+</resources>

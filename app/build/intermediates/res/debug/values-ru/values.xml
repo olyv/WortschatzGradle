@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/Oleksandr_Lyvin@epam.com/AndroidstudioProjects/wortschatz/app/src/main/res/values-ru/strings.xml -->
+    <eat-comment/>
+    <string name="about">Справка</string>
+    <string name="action_search">Поиск</string>
+    <string name="add_lesson_item">Добавить слово</string>
+    <string name="adjektive_item">Прилагательное</string>
+    <string name="adjektive_task">Введите перевод</string>
+    <string name="app_name">Wortschatz</string>
+    <string name="das">das</string>
+    <string name="der">der</string>
+    <string name="die">die</string>
+    <string name="edit_item">Редактировать запись</string>
+    <string name="enter_adjektive_hint">Прилагательное</string>
+    <string name="enter_noun_hint">Существительное</string>
+    <string name="enter_translation_hint">Перевод</string>
+    <string name="enter_verb_hint">Глагол</string>
+    <string name="hat">hat</string>
+    <string name="ist">ist</string>
+    <string name="item_is_edited">Запись изменена</string>
+    <string name="item_type_spinner_label">Выбор типа:</string>
+    <string name="manage_lesson_items">Редактировать</string>
+    <string name="no_results_found">Нет результатов для \'</string>
+    <string name="noun_item">Существительное</string>
+    <string name="noun_plural_hint">Введите Plural</string>
+    <string name="noun_task">Введите артикль и множественное число для существительного</string>
+    <string name="remove_confirmation">Вы хотите удалить \'</string>
+    <string name="remove_item">Удалить запись</string>
+    <string name="reset_search">Все</string>
+    <string name="save_button_text">Сохранить</string>
+    <string name="search_hint">Поиск</string>
+    <string name="start_lesson">Начать урок</string>
+    <string name="statistics">Статистика</string>
+    <string name="submit">Готово</string>
+    <string name="verb_item">Глагол</string>
+    <string name="verb_partizip_hint">Введите Partizip II</string>
+    <string name="verb_task">Введите Partizip II для глагола</string>
+</resources>

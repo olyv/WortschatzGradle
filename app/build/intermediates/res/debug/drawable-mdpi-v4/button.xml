@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_pressed="true" >
+        <shape android:shape="rectangle"  >
+            <corners android:radius="10dp" />
+            <stroke android:width="1dp" android:color="#0066FF" />
+            <gradient android:angle="-90" android:startColor="#0066FF" android:endColor="#0066FF"  />
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape android:shape="rectangle"  >
+            <corners android:radius="10dp" />
+            <stroke android:width="1dp" android:color="#33B5E5" />
+            <solid android:color="#33B5E5"/>
+        </shape>
+    </item>
+    <item >
+        <shape android:shape="rectangle"  >
+            <corners android:radius="10dp" />
+            <stroke android:width="1dp" android:color="#0099CC" />
+            <gradient android:angle="-90" android:startColor="#0099CC" android:endColor="#0099CC" />
+        </shape>
+    </item>
+</selector><!-- From: file:/C:/Users/Oleksandr_Lyvin@epam.com/AndroidstudioProjects/wortschatz/app/src/main/res/drawable-mdpi/button.xml -->
