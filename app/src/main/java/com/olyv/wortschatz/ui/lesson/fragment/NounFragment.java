@@ -1,9 +1,7 @@
 package com.olyv.wortschatz.ui.lesson.fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +11,72 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import com.olyv.wortschatz.lesson.AnswerChecker;
 import com.olyv.wortschatz.lesson.items.Noun;
-import com.olyv.wortschatz.lesson.items.Verb;
 import com.olyv.wortschatz.ui.R;
 import com.olyv.wortschatz.ui.lesson.LessonActivity;
 
 public class NounFragment extends Fragment
 {
-    private static final String LOG_TAG = "NounFragment";
+    //tags for flags
+    public static final String CORRECT_ANSWER_VISIBLE = "isCorrectAnswerVisible";
+    public static final String WRONG_ANSWER_VISIBLE = "isWrongAnswerVisible";
+    public static final String SUBMIT_BUTTON_VISIBLE = "isButtonVisible";
+    public static final String ARTICLE_VISIBLE = "isArticleRadioGroupVisible";
+    public static final String IS_ANSWERED = "isItemAnswered";
+    public static final String ANSWER = "answerWithComment";
+    public static final String IS_CORRECT_ANSWER = "isAnswerCorrect";
 
-    TextView nounView;
-    TextView translationView;
-    RadioGroup articleRadioGroup;
-    Button submitAnswerButton;
-    EditText pluralText;
+    //UI components
+    private TextView nounView;
+    private TextView translationView;
+    private RadioGroup articleRadioGroup;
+    private Button submitAnswerButton;
+    private EditText pluralText;
+    private TextView correctAnswer;
+    private TextView wrongAnswer;
+
+    //flags and saved answer
+    boolean isItemAnswered = false;
+    boolean isCorrectAnswer = false;
+    private String comment;
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState)
+    {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState != null)
+        {
+            comment = savedInstanceState.getString(ANSWER);
+            isItemAnswered = savedInstanceState.getBoolean(IS_ANSWERED);
+
+            if(isItemAnswered)
+            {
+                isCorrectAnswer = savedInstanceState.getBoolean(IS_CORRECT_ANSWER);
+
+                setVisibleAnswer(isCorrectAnswer, comment);
+            }
+            else
+            {
+                pluralText.setVisibility(View.VISIBLE);
+                submitAnswerButton.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState)    //when rotated
+    {
+        super.onSaveInstanceState(outState);
+
+        outState.putBoolean(CORRECT_ANSWER_VISIBLE, correctAnswer.getVisibility() == View.VISIBLE);
+        outState.putBoolean(WRONG_ANSWER_VISIBLE, wrongAnswer.getVisibility() == View.VISIBLE);
+        outState.putBoolean(SUBMIT_BUTTON_VISIBLE, submitAnswerButton.getVisibility() == View.VISIBLE);
+        outState.putBoolean(SUBMIT_BUTTON_VISIBLE, pluralText.getVisibility() == View.VISIBLE);
+        outState.putBoolean(ARTICLE_VISIBLE, articleRadioGroup.getVisibility() == View.VISIBLE);
+        outState.putBoolean(IS_ANSWERED, isItemAnswered);
+        outState.putString(ANSWER, comment);
+        outState.putBoolean(IS_CORRECT_ANSWER, isCorrectAnswer);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -33,12 +84,17 @@ public class NounFragment extends Fragment
         View rootView = inflater.inflate(R.layout.item_noun, container, false);
 
         final Noun currentLessonItem = getArguments().getParcelable(LessonActivity.NOUN_TAG);
+        isItemAnswered = getArguments().getBoolean(IS_ANSWERED);
 
         nounView = (TextView) rootView.findViewById(R.id.noun);
         translationView = (TextView) rootView.findViewById(R.id.nounTranslation);
         articleRadioGroup = (RadioGroup) rootView.findViewById(R.id.articleSelect);
         submitAnswerButton = (Button) rootView.findViewById(R.id.submitAnswerBtn);
         pluralText = (EditText) rootView.findViewById(R.id.nounPlural);
+        correctAnswer = (TextView) rootView.findViewById(R.id.correctPlural);
+        correctAnswer.setVisibility(View.GONE);
+        wrongAnswer = (TextView) rootView.findViewById(R.id.inCorrectPlural);
+        wrongAnswer.setVisibility(View.GONE);
 
         nounView.setText(((Noun) currentLessonItem).getWord().toString());
         translationView.setText(((Noun) currentLessonItem).getTranslation().toString());
@@ -67,30 +123,31 @@ public class NounFragment extends Fragment
                         .setArticle(articleFromAnswer)
                         .setPlural(pluralText.getText().toString().trim());
 
-                boolean correct = AnswerChecker.isNounCorrect((Noun) currentLessonItem, answerNoun);
-                String comment = AnswerChecker.getNounComment(correct, (Noun) currentLessonItem, answerNoun);
+                isCorrectAnswer = AnswerChecker.isNounCorrect((Noun) currentLessonItem, answerNoun);
+                comment = AnswerChecker.getNounComment(isCorrectAnswer, (Noun) currentLessonItem, answerNoun);
 
-                pluralText.setEnabled(false);
-                pluralText.setSingleLine(false);
+                setVisibleAnswer(isCorrectAnswer, comment);
 
-                if (correct)
-                {
-                    pluralText.setTextColor(Color.WHITE);
-                    pluralText.setBackgroundResource(R.drawable.edit_text_correct);
-                } else
-                {
-                    pluralText.setTextColor(Color.BLACK);
-                    pluralText.setBackgroundResource(R.drawable.edit_text_error);
-                }
-                pluralText.setText(comment);
-
-                submitAnswerButton.setVisibility(View.GONE);
-                articleRadioGroup.setVisibility(View.GONE);
-
-                Log.i(LOG_TAG, "Submit Noun button clicked initialized");
+                isItemAnswered = true;
             }
         });
-
         return rootView;
+    }
+
+    //hides UI components and display answer
+    private void setVisibleAnswer(boolean isCorrect, String answer)
+    {
+        if (isCorrect)
+        {
+            correctAnswer.setVisibility(View.VISIBLE);
+            correctAnswer.setText(answer);
+        } else
+        {
+            wrongAnswer.setVisibility(View.VISIBLE);
+            wrongAnswer.setText(answer);
+        }
+        articleRadioGroup.setVisibility(View.GONE);
+        submitAnswerButton.setVisibility(View.GONE);
+        pluralText.setVisibility(View.GONE);
     }
 }

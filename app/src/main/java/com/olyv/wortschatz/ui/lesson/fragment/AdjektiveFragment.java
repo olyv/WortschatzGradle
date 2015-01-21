@@ -98,7 +98,8 @@ public class AdjektiveFragment extends Fragment
                 @Override
                 public void onClick(View v)
                 {
-                    Adjektive answerAdjektive = new Adjektive().setTranslation(translationText.getText().toString());
+                    Adjektive answerAdjektive = new Adjektive().
+                            setTranslation(translationText.getText().toString().trim());
 
                     isCorrectAnswer = AnswerChecker.isAdjektiveCorrect((Adjektive) currentLessonItem, answerAdjektive);
                     comment = AnswerChecker.getAdjektiveComment(isCorrectAnswer, (Adjektive) currentLessonItem, answerAdjektive);
@@ -109,7 +110,6 @@ public class AdjektiveFragment extends Fragment
                 }
             });
         }
-
         return rootView;
     }
 
@@ -118,7 +118,7 @@ public class AdjektiveFragment extends Fragment
     {
         if (isCorrect)
         {
-            correctAnswer.setText(View.VISIBLE);
+            correctAnswer.setVisibility(View.VISIBLE);
             correctAnswer.setText(answer);
         } else
         {
