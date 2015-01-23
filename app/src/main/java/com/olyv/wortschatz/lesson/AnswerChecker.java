@@ -7,6 +7,10 @@ import com.olyv.wortschatz.lesson.items.Verb;
 
 public class AnswerChecker
 {
+    private static String yourAnswer = "Deine Antwort";
+    private static String correctAnswer = "Richtige Answer ist";
+    private static String assertCorrectAnswer = "Richtige Antwort!";
+
     public static boolean isVerbCorrect(Verb taskVerb, Verb answerVerb)
     {
         boolean result = false;
@@ -31,12 +35,12 @@ public class AnswerChecker
         String comment = "";
         if (correct)
         {
-            comment += answerVerb.getAuxverb() + " " + answerVerb.getPartizip() + "\n\nCorrect answer!";
+            comment += answerVerb.getAuxverb() + " " + answerVerb.getPartizip() + "\n\n" + assertCorrectAnswer;
         }
         else
         {
-            comment += "Your answer '" + answerVerb.getAuxverb() + " " + answerVerb.getPartizip() + "'\n\n" +
-                    "Correct answer is: \n\n" + taskVerb.getAuxverb() + " " + taskVerb.getPartizip();
+            comment += yourAnswer + " '" + answerVerb.getAuxverb() + " " + answerVerb.getPartizip() + "'\n\n" +
+                    correctAnswer + " \n\n" + taskVerb.getAuxverb() + " " + taskVerb.getPartizip();
         }
         return comment;
     }
@@ -65,12 +69,12 @@ public class AnswerChecker
         String comment = "";
         if (correct)
         {
-            comment += answerNoun.getArticle() + " " + answerNoun.getPlural() + "\n\nCorrect answer!";
+            comment += answerNoun.getArticle() + " " + answerNoun.getPlural() + "\n\n" + assertCorrectAnswer;
         }
         else
         {
-            comment += "Your answer '" + answerNoun.getArticle() + " " + answerNoun.getPlural() + "'\n\n" +
-                    "Correct answer is: \n\n" + taskNoun.getArticle() + " " + taskNoun.getPlural();
+            comment += yourAnswer + " '" + answerNoun.getArticle() + " " + answerNoun.getPlural() + "'\n\n" +
+                    correctAnswer + " \n\n" + taskNoun.getArticle() + " " + taskNoun.getPlural();
         }
         return comment;
     }
@@ -95,12 +99,12 @@ public class AnswerChecker
         String comment = "";
         if (correct)
         {
-            comment += answerAdjektive.getTranslation() + "\n\nCorrect answer!";
+            comment += answerAdjektive.getTranslation() + "\n\n" + assertCorrectAnswer;
         }
         else
         {
-            comment += "Your answer '" + answerAdjektive.getTranslation() + "' \n\n" +
-                    "Correct answer is: \n\n" + taskAdjektive.getTranslation();
+            comment += yourAnswer + " '" + answerAdjektive.getTranslation() + "' \n\n" +
+                    correctAnswer + " \n\n" + taskAdjektive.getTranslation();
         }
         return comment;
     }
