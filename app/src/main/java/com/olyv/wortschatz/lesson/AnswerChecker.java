@@ -1,7 +1,6 @@
 package com.olyv.wortschatz.lesson;
 
 import com.olyv.wortschatz.lesson.items.Adjektive;
-import com.olyv.wortschatz.lesson.items.LessonItemI;
 import com.olyv.wortschatz.lesson.items.Noun;
 import com.olyv.wortschatz.lesson.items.Verb;
 
@@ -13,21 +12,7 @@ public class AnswerChecker
 
     public static boolean isVerbCorrect(Verb taskVerb, Verb answerVerb)
     {
-        boolean result = false;
-
-        if (!taskVerb.getPartizip().equals(answerVerb.getPartizip()))
-        {
-            return result;
-        }
-        if (!taskVerb.getAuxverb().equals(answerVerb.getAuxverb()))
-        {
-            return result;
-        }
-        else
-        {
-            result = true;
-        }
-        return result;
+        return taskVerb.getPartizip().equals(answerVerb.getPartizip()) || taskVerb.getAuxverb().equals(answerVerb.getAuxverb());
     }
 
     public static String getVerbComment(boolean correct, Verb taskVerb, Verb answerVerb)
@@ -47,21 +32,7 @@ public class AnswerChecker
 
     public static boolean isNounCorrect(Noun taskNoun, Noun answerNoun)
     {
-        boolean result = false;
-
-        if (!taskNoun.getPlural().equals(answerNoun.getPlural()))
-        {
-            return result;
-        }
-        if (!taskNoun.getArticle().equals(answerNoun.getArticle()))
-        {
-            return result;
-        }
-        else
-        {
-            result = true;
-        }
-        return result;
+        return taskNoun.getPlural().equals(answerNoun.getPlural()) || taskNoun.getArticle().equals(answerNoun.getArticle());
     }
 
     public static String getNounComment(boolean correct, Noun taskNoun, Noun answerNoun)
@@ -81,17 +52,7 @@ public class AnswerChecker
 
     public static boolean isAdjektiveCorrect(Adjektive taskAdjektive, Adjektive answerAdjektive)
     {
-        boolean result = false;
-
-        if (!taskAdjektive.getTranslation().equals(answerAdjektive.getTranslation()))
-        {
-            return result;
-        }
-        else
-        {
-            result = true;
-        }
-        return result;
+        return taskAdjektive.getTranslation().equals(answerAdjektive.getTranslation());
     }
 
     public static String getAdjektiveComment(boolean correct, Adjektive taskAdjektive, Adjektive answerAdjektive)
