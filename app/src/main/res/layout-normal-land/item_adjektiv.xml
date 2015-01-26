@@ -57,7 +57,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="25dp"
                 android:visibility="gone"
-                android:layout_weight="1"/>
+                android:layout_weight="6"/>
 
         <TextView
                 android:id="@+id/inCorrectTranslation"
@@ -72,7 +72,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="25dp"
                 android:visibility="gone"
-                android:layout_weight="1"/>
+                android:layout_weight="6"/>
 
         <Button
                 android:id="@+id/submitAnswerBtn"
