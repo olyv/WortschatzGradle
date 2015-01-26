@@ -7,12 +7,14 @@ import com.olyv.wortschatz.lesson.items.Verb;
 public class AnswerChecker
 {
     private static String yourAnswer = "Deine Antwort";
-    private static String correctAnswer = "Richtige Answer ist";
+    private static String correctAnswer = "Richtige Antwort ist";
     private static String assertCorrectAnswer = "Richtige Antwort!";
 
     public static boolean isVerbCorrect(Verb taskVerb, Verb answerVerb)
     {
-        return taskVerb.getPartizip().equals(answerVerb.getPartizip()) || taskVerb.getAuxverb().equals(answerVerb.getAuxverb());
+        return answerVerb.getPartizip().length() > 0
+                & taskVerb.getPartizip().equals(answerVerb.getPartizip())
+                & taskVerb.getAuxverb().equals(answerVerb.getAuxverb());
     }
 
     public static String getVerbComment(boolean correct, Verb taskVerb, Verb answerVerb)
@@ -32,7 +34,9 @@ public class AnswerChecker
 
     public static boolean isNounCorrect(Noun taskNoun, Noun answerNoun)
     {
-        return taskNoun.getPlural().equals(answerNoun.getPlural()) || taskNoun.getArticle().equals(answerNoun.getArticle());
+        return answerNoun.getPlural().length() > 0
+                & taskNoun.getPlural().equals(answerNoun.getPlural())
+                & taskNoun.getArticle().equals(answerNoun.getArticle());
     }
 
     public static String getNounComment(boolean correct, Noun taskNoun, Noun answerNoun)
