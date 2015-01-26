@@ -9,35 +9,31 @@
         <TextView
                 android:id="@+id/adjektiveTask"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:text="@string/adjektive_task"
                 android:textSize="@dimen/text_size_small"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"/>
-        <TextView
-                android:id="@+id/adjektive"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:textSize="@dimen/text_size_large"
-                android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_weight="1"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        <TextView
+                android:id="@+id/adjektive"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="2"/>
 
         <EditText
                 android:id="@+id/enteredAdjeltiveTranslation"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:hint="@string/enter_translation_hint"
                 android:singleLine="true"
@@ -45,42 +41,38 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="2"/>
+
+        <TextView
+                android:id="@+id/correctTranslation"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:hint="@string/enter_translation_hint"
+                android:textSize="@dimen/text_size_large"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@drawable/edit_text_correct"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="25dp"
+                android:visibility="gone"
                 android:layout_weight="1"/>
 
-    <TextView
-        android:id="@+id/correctTranslation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:hint="@string/enter_translation_hint"
-        android:textSize="@dimen/text_size_large"
-        android:gravity="center_horizontal|center_vertical"
-        android:background="@drawable/edit_text_correct"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="25dp"
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/inCorrectTranslation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:hint="@string/enter_translation_hint"
-        android:textSize="@dimen/text_size_large"
-        android:gravity="center_horizontal|center_vertical"
-        android:background="@drawable/edit_text_error"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="25dp"
-        android:visibility="gone"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        <TextView
+                android:id="@+id/inCorrectTranslation"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:hint="@string/enter_translation_hint"
+                android:textSize="@dimen/text_size_large"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@drawable/edit_text_error"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="25dp"
+                android:visibility="gone"
+                android:layout_weight="1"/>
 
         <Button
                 android:id="@+id/submitAnswerBtn"
@@ -92,6 +84,6 @@
                 android:text="@string/submit"
                 android:layout_height="@dimen/start_activity_button_height"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="30dp"
-                android:layout_weight="1"/>
+                android:layout_marginBottom="30dp"/>
+
 </LinearLayout>
