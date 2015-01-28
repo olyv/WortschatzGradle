@@ -25,20 +25,20 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"/>
 
-    <EditText
-        android:id="@+id/enteredAdjeltiveTranslation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:hint="@string/enter_translation_hint"
-        android:singleLine="true"
-        android:textSize="@dimen/text_size_large"
-        android:gravity="center_horizontal|center_vertical"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_weight="1"/>
+        <EditText
+                android:id="@+id/enteredAdjeltiveTranslation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:hint="@string/enter_translation_hint"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_large"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"/>
 
         <TextView
                 android:id="@+id/correctTranslation"
@@ -54,17 +54,17 @@
                 android:layout_marginBottom="25dp"/>
 
         <TextView
-            android:id="@+id/inCorrectTranslation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:hint="@string/enter_translation_hint"
-            android:textSize="@dimen/text_size_large"
-            android:gravity="center_horizontal|center_vertical"
-            android:background="@drawable/edit_text_error"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="25dp"/>
+                android:id="@+id/inCorrectTranslation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:hint="@string/enter_translation_hint"
+                android:textSize="@dimen/text_size_large"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@drawable/edit_text_error"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="25dp"/>
 
         <Button
                 android:id="@+id/submitAnswerBtn"
