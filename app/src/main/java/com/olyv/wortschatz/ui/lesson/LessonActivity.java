@@ -97,9 +97,11 @@ public class LessonActivity extends FragmentActivity
     {
         if (answeredItemsCounter == arrayOfLessonItems.size())
         {
+            String dialogMessage = String.format("Your result is %d out of %d\nfinish lesson?",
+                    correctAnswersCounter, answeredItemsCounter);
+
             new AlertDialog.Builder(this)
-                    .setMessage("your bloody result is " + correctAnswersCounter + " out of " +
-                            answeredItemsCounter + "\nfinish lesson?")
+                    .setMessage(dialogMessage)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener()
                     {
                         public void onClick(DialogInterface dialog, int which)
