@@ -107,6 +107,9 @@ public class AdjektiveFragment extends Fragment
                     setVisibleAnswer(isCorrectAnswer, comment);
 
                     isItemAnswered = true;
+                    LessonActivity.answeredItemsCounter ++;
+
+                    ((LessonActivity)getActivity()).showResultsDialog();
                 }
             });
         }
@@ -118,6 +121,7 @@ public class AdjektiveFragment extends Fragment
     {
         if (isCorrect)
         {
+            LessonActivity.correctAnswersCounter ++;
             correctAnswer.setVisibility(View.VISIBLE);
             correctAnswer.setText(answer);
         } else

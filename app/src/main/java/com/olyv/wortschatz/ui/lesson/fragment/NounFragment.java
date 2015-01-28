@@ -129,6 +129,9 @@ public class NounFragment extends Fragment
                 setVisibleAnswer(isCorrectAnswer, comment);
 
                 isItemAnswered = true;
+                LessonActivity.answeredItemsCounter ++;
+
+                ((LessonActivity)getActivity()).showResultsDialog();
             }
         });
         return rootView;
@@ -139,6 +142,7 @@ public class NounFragment extends Fragment
     {
         if (isCorrect)
         {
+            LessonActivity.correctAnswersCounter ++;
             correctAnswer.setVisibility(View.VISIBLE);
             correctAnswer.setText(answer);
         } else

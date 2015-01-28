@@ -1,14 +1,19 @@
 package com.olyv.wortschatz.ui.lesson;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+
 import com.olyv.wortschatz.lesson.items.LessonItemI;
 import com.olyv.wortschatz.ui.R;
 import com.olyv.wortschatz.ui.StartActivity;
@@ -20,10 +25,15 @@ public class LessonActivity extends FragmentActivity
     public static final String VERB_TAG = "Verb";
     public static final String NOUN_TAG = "Noun";
     public static final String ADJEKTIVE_TAG = "Adjektive";
+    private static final String LOG_TAG = "LessonActivityLog";
 
-    LessonItemPagerAdapter itemsPagerAdapter;
-    ViewPager viewPager;
-    LinearLayout progressDots;
+    public static int answeredItemsCounter = 0;
+    public static int correctAnswersCounter = 0;
+
+    private ArrayList<LessonItemI> arrayOfLessonItems;
+    private LessonItemPagerAdapter itemsPagerAdapter;
+    private ViewPager viewPager;
+    private LinearLayout progressDots;
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -31,7 +41,7 @@ public class LessonActivity extends FragmentActivity
         setContentView(R.layout.lesson_pager_main);
 
         Bundle bundle = getIntent().getExtras();
-        ArrayList<LessonItemI> arrayOfLessonItems = bundle.getParcelableArrayList(StartActivity.PREPARED_LESSON);
+        arrayOfLessonItems = bundle.getParcelableArrayList(StartActivity.PREPARED_LESSON);
 
         // Create the adapter that will return a fragment for each of the three primary sections of the app.
         itemsPagerAdapter = new LessonItemPagerAdapter(getSupportFragmentManager(), arrayOfLessonItems);
@@ -39,10 +49,7 @@ public class LessonActivity extends FragmentActivity
         // Set up the action bar.
         final ActionBar actionBar = getActionBar();
 
-        // Specify that the Home/Up button should not be enabled, since there is no hierarchica parent.
-        actionBar.setHomeButtonEnabled(false);
-
-        // Specify that we will be displaying tabs in the action bar.
+        // Specify that we will be displaying NO tabs in the action bar.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 
         //MY PAGER INDICATOR
@@ -83,6 +90,33 @@ public class LessonActivity extends FragmentActivity
                 imgDot.setSelected(true);
 
             progressDots.addView(imgDot);
+        }
+    }
+
+    public void showResultsDialog()
+    {
+        if (answeredItemsCounter == arrayOfLessonItems.size())
+        {
+            new AlertDialog.Builder(this)
+                    .setMessage("your bloody result is " + correctAnswersCounter + " out of " +
+                            answeredItemsCounter + "\nfinish lesson?")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener()
+                    {
+                        public void onClick(DialogInterface dialog, int which)
+                        {
+                            Log.i(LOG_TAG, "finished");
+                            finish();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener()
+                    {
+                        public void onClick(DialogInterface dialog, int which)
+                        {
+                            Log.i(LOG_TAG, "canceled");
+                            // User cancelled the dialog
+                        }
+                    })
+                    .show();
         }
     }
 }
