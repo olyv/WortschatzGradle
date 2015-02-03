@@ -6,7 +6,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "Adjektive")
-public class Adjektive implements LessonItemI, Parcelable
+public class Adjektive implements LessonItemI
 {
     public final static String ADJEKTIVE_ID = "id";
     public final static String ADJEKTIVE_WORD = "word";

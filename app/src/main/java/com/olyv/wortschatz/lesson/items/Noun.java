@@ -6,7 +6,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "Noun")
-public class Noun implements LessonItemI, Parcelable
+public class Noun implements LessonItemI
 {
     public final static String NOUN_ID = "id";
     public final static String NOUN_SINGULAR = "singular";

@@ -6,7 +6,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "Verb")
-public class Verb implements LessonItemI, Parcelable
+public class Verb implements LessonItemI
 {
     public final static String VERB_ID = "id";
     public final static String VERB_INFINITIV = "verb";
