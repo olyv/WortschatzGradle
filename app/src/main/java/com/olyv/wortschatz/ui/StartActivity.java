@@ -2,7 +2,6 @@ package com.olyv.wortschatz.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Presentation;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -22,8 +21,6 @@ import com.olyv.wortschatz.ui.manager.LessonItemsManagerActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
-import static android.app.PendingIntent.getActivity;
 
 public class StartActivity extends Activity
 {
@@ -90,6 +87,12 @@ public class StartActivity extends Activity
         super.onDestroy();
         DatabaseHelper.releaseDatabaseHelper(databaseHelper);
         Log.i(LOG_TAG, "released DatabaseHelper");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadingIndicator.setVisibility(View.GONE);
     }
 
     @Override
@@ -162,7 +165,6 @@ public class StartActivity extends Activity
             bundle.putParcelableArrayList(PREPARED_LESSON, items);
             intent.putExtras(bundle);
 
-            loadingIndicator.setVisibility(View.GONE);
             startActivity(intent);
         }
     }
