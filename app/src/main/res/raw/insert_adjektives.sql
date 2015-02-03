@@ -3,4 +3,6 @@ INSERT INTO Adjektive (word, translation) VALUES
 ('blau', 'голубой'),
 ('gut', 'хороший'),
 ('kurz', 'короткий'),
-('bequem', 'удобный, уютный');
+('bequem', 'удобный'),
+('schlecht', 'плохой'),
+('teuer', 'дорогой');
