@@ -5,8 +5,8 @@
     <string name="adjektive_item">Прикметник</string>
     <string name="app_name">Wortschatz</string>
     <string name="start_lesson">Почати урок</string>
-    <string name="add_lesson_item">Добавить слово</string>
-    <string name="manage_lesson_items">Редактировать</string>
+    <string name="add_lesson_item">Додати слово</string>
+    <string name="manage_lesson_items">Редагувати</string>
     <string name="hat">hat</string>
     <string name="ist">ist</string>
     <string name="verb_partizip_hint">Введіть Partizip II</string>
@@ -32,5 +32,9 @@
     <string name="remove_confirmation">Видалити \'</string>
     <string name="item_is_edited">Запис відредаговано</string>
     <string name="no_results_found">Не знайдено записа за зопитом \'</string>
-    <string name="about">Довідка</string>
+    <string name="about">Розробник Alexander Lyvin\n
+        Wortschatz створено, щоб допомгти Вам легше запам'ятовувати нiмецьки слова.\n
+        Почнить додавати слова, якi Ви хочете запам'ятовувати, до списку слiв.\n
+        Урок буде сформовано зi слiв що випадково выбранi iз списка.\n
+        Редагуйте або видаляйте слова слова в меню 'Редагувати'. </string>
 </resources>

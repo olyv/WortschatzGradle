@@ -32,5 +32,9 @@
     <string name="remove_confirmation">Вы хотите удалить \'</string>
     <string name="item_is_edited">Запись изменена</string>
     <string name="no_results_found">Нет результатов для \'</string>
-    <string name="about">Справка</string>
+    <string name="about">Разарботчик Alexander Lyvin\n
+        Wortschatz создан, чтобы помочь Вам запоминать немецкие слова.\n
+        Добавляйте слова, которые вы хотите запомнить, в список.\n
+        Урок будет сформирован из слов выбранных случайным образом из списка доступных.\n
+        Редактируйте или удаляйте слова в меню 'Редактировать'. </string>
 </resources>

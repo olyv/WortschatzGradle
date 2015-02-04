@@ -32,7 +32,9 @@
     <string name="remove_confirmation">Are you sure you want to delete \'</string>
     <string name="item_is_edited">Item is edited</string>
     <string name="no_results_found">No results found for \'</string>
-    <string name="about">Wortschatz helps you to learn new German words. You can learn Partizip II for verbs, articles
-        and plural foms of Nouns and translate the words. Wortschatz has about 30 words to let you get started, you can
-        edit and words by yourself. Only you combine you need to learn. Good luck and funny learning!</string>
+    <string name="about">Created by Alexander Lyvin\n
+        Wortschatz is designed to make memorizing German words easier.\n
+        Start by adding words you want to memorize to the list.\n
+        The lesson will be formed from the randomly selected words in the list.\n
+        Edit or delete a word in the Edit menu. </string>
 </resources>
