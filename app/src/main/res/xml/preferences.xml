@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <PreferenceCategory
+        android:title="@string/preference_number_of_item"
+        android:key="pref_key_storage_settings" >
+
+        <com.olyv.wortschatz.ui.settings.NumberPickerPreference
+            android:key="@string/preference_verbs_per_lesson_key"
+            android:title="@string/preference_verbs_per_lesson_key"/>
+
+        <com.olyv.wortschatz.ui.settings.NumberPickerPreference
+            android:key="@string/preference_nouns_per_lesson_key"
+            android:title="@string/preference_nouns_per_lesson_key"/>
+
+        <com.olyv.wortschatz.ui.settings.NumberPickerPreference
+            android:key="@string/preference_adjektives_per_lesson_key"
+            android:title="@string/preference_adjektives_per_lesson_key"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

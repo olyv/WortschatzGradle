@@ -37,4 +37,27 @@
         Start by adding words you want to memorize to the list.\n
         The lesson will be formed from the randomly selected words in the list.\n
         Edit or delete a word in the Edit menu. </string>
+    <string name="alarm_service_label">Notification</string>
+
+    <string name="preference_notify_key">pref_notify</string>
+    <string name="preference_verbs_per_lesson_key">Verbs per lesson</string>
+    <string name="preference_nouns_per_lesson_key">Nouns per lesson</string>
+    <string name="preference_adjektives_per_lesson_key">Adjektives per lesson</string>
+    <string name="preference_number_of_item">Number of item per lesson</string>
+
+
+    <!--<string-array name="entries">-->
+        <!--<item>one</item>-->
+        <!--<item>two</item>-->
+        <!--<item>three</item>-->
+        <!--<item>four</item>-->
+    <!--</string-array>-->
+    <!--<string-array name="entry_values">-->
+        <!--<item>1</item>-->
+        <!--<item>2</item>-->
+        <!--<item>3</item>-->
+        <!--<item>4</item>-->
+    <!--</string-array>-->
+
+
 </resources>

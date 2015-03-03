@@ -39,5 +39,11 @@
                   android:label="@string/add_lesson_item"
                   android:theme="@style/AppTheme">
         </activity>
+        <activity android:name=".settings.SettingsActivity"
+                android:label="Settings" >
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".StartActivity" />
+        </activity>
     </application>
 </manifest>

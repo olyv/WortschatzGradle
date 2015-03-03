@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +20,8 @@ import com.olyv.wortschatz.lesson.items.LessonItemI;
 import com.olyv.wortschatz.ui.lesson.LessonActivity;
 import com.olyv.wortschatz.ui.editor.AddNewItemActivity;
 import com.olyv.wortschatz.ui.manager.LessonItemsManagerActivity;
+import com.olyv.wortschatz.ui.settings.NumberPickerPreference;
+import com.olyv.wortschatz.ui.settings.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -122,9 +126,9 @@ public class StartActivity extends Activity
                 AlertDialog dialog = builder.create();
                 dialog.show();
                 return true;
-//            case R.id.statistics:
-////                showHelp();
-//                return true;
+            case R.id.settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -150,7 +154,16 @@ public class StartActivity extends Activity
                 databaseHelper = new DatabaseHelper(StartActivity.this);
             }
 
-            items = new LessonItemsHelper().getLessonItems(databaseHelper);
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+            int numberOfVerbs = prefs.getInt(getString(R.string.preference_verbs_per_lesson_key),
+                    NumberPickerPreference.DEFAULT_VALUE);
+            int numberOfNouns = prefs.getInt(getString(R.string.preference_nouns_per_lesson_key),
+                    NumberPickerPreference.DEFAULT_VALUE);
+            int numberOfAdjektives = prefs.getInt(getString(R.string.preference_adjektives_per_lesson_key),
+                    NumberPickerPreference.DEFAULT_VALUE);
+
+            items = new LessonItemsHelper().getLessonItems(databaseHelper, numberOfVerbs, numberOfNouns, numberOfAdjektives);
             Collections.shuffle(items);
             return null;
         }

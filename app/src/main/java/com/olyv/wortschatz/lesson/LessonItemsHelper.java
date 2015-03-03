@@ -16,8 +16,6 @@ public class LessonItemsHelper
 {
     public static final String LOG_TAG = "LessonClassLog";
 
-    private int limit = 3;
-
     private Dao<Verb, Integer> verbDao;
     private Dao<Noun, Integer> nounDao;
     private Dao<Adjektive, Integer> adjektiveDao;
@@ -31,14 +29,14 @@ public class LessonItemsHelper
     private DeleteBuilder<Noun, Integer> nounDeleteBuilder;
     private DeleteBuilder<Adjektive, Integer> adjektiveDeleteBuilder;
 
-    public ArrayList<LessonItemI> getLessonItems(DatabaseHelper databaseHelper)
+    public ArrayList<LessonItemI> getLessonItems(DatabaseHelper databaseHelper, int...numberOfItems)
     {
         ArrayList<LessonItemI> selectedItems = new ArrayList<LessonItemI>();
         try
         {
-            selectedItems.addAll(getVerbs(databaseHelper));
-            selectedItems.addAll(getNouns(databaseHelper));
-            selectedItems.addAll(getAdjektives(databaseHelper));
+            selectedItems.addAll(getVerbs(databaseHelper, numberOfItems[0]));
+            selectedItems.addAll(getNouns(databaseHelper, numberOfItems[1]));
+            selectedItems.addAll(getAdjektives(databaseHelper, numberOfItems[2]));
         }
         catch (java.sql.SQLException e)
         {
@@ -101,11 +99,11 @@ public class LessonItemsHelper
         return adjektiveDao.query(preparedQuery);
     }
 
-    private List<Verb> getVerbs(DatabaseHelper databaseHelper) throws java.sql.SQLException
+    private List<Verb> getVerbs(DatabaseHelper databaseHelper, int verbsNumber) throws java.sql.SQLException
     {
         verbDao = databaseHelper.getVerbDao();
         verbQueryBuilder = verbDao.queryBuilder();
-        verbQueryBuilder.orderByRaw("RANDOM()").limit(limit);
+        verbQueryBuilder.orderByRaw("RANDOM()").limit(verbsNumber);
         PreparedQuery<Verb> preparedQuery = verbQueryBuilder.prepare();
 
         Log.i(LOG_TAG, "selected verbs for lesson");
@@ -113,11 +111,11 @@ public class LessonItemsHelper
         return verbDao.query(preparedQuery);
     }
 
-    private List<Noun> getNouns(DatabaseHelper databaseHelper) throws java.sql.SQLException
+    private List<Noun> getNouns(DatabaseHelper databaseHelper, int nounsNumber) throws java.sql.SQLException
     {
         nounDao = databaseHelper.getNounDao();
         nounQueryBuilder = nounDao.queryBuilder();
-        nounQueryBuilder.orderByRaw("RANDOM()").limit(limit);
+        nounQueryBuilder.orderByRaw("RANDOM()").limit(nounsNumber);
         PreparedQuery<Noun> preparedQuery = nounQueryBuilder.prepare();
 
         Log.i(LOG_TAG, "selected nouns for lesson");
@@ -125,11 +123,11 @@ public class LessonItemsHelper
         return nounDao.query(preparedQuery);
     }
 
-    private List<Adjektive> getAdjektives(DatabaseHelper databaseHelper) throws java.sql.SQLException
+    private List<Adjektive> getAdjektives(DatabaseHelper databaseHelper, int adjektivesNumber) throws java.sql.SQLException
     {
         adjektiveDao = databaseHelper.getAdjektiveDao();
         adjektiveQueryBuilder = adjektiveDao.queryBuilder();
-        adjektiveQueryBuilder.orderByRaw("RANDOM()").limit(limit);
+        adjektiveQueryBuilder.orderByRaw("RANDOM()").limit(adjektivesNumber);
         PreparedQuery<Adjektive> preparedQuery = adjektiveQueryBuilder.prepare();
 
         Log.i(LOG_TAG, "selected adjektives for lesson");

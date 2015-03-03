@@ -6,11 +6,13 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.Toast;
 
 import com.olyv.wortschatz.lesson.items.LessonItemI;
 import com.olyv.wortschatz.ui.R;
@@ -81,12 +83,30 @@ public class LessonActivity extends FragmentActivity
             imgDot.setTag(i);
             imgDot.setImageResource(R.drawable.dot_selector);
             imgDot.setBackgroundResource(0);
-            imgDot.setPadding(5, 5, 5, 5);
-            LayoutParams params = new LayoutParams(20, 20);
+            LayoutParams params = null;
+            switch (getResources().getDisplayMetrics().densityDpi)
+            {
+                case DisplayMetrics.DENSITY_LOW:
+                    imgDot.setPadding(3, 3, 3, 3);
+                    params = new LayoutParams(14, 14);
+                    break;
+                case DisplayMetrics.DENSITY_MEDIUM:  // mdpi or hdpi
+                case DisplayMetrics.DENSITY_HIGH:
+                    imgDot.setPadding(5, 5, 5, 5);
+                    params = new LayoutParams(20, 20);
+                    break;
+                case DisplayMetrics.DENSITY_XHIGH:
+                case DisplayMetrics.DENSITY_XXHIGH:
+                case DisplayMetrics.DENSITY_TV:
+                    imgDot.setPadding(8, 8, 8, 8);
+                    params = new LayoutParams(25, 25);
+                    break;
+            }
             imgDot.setLayoutParams(params);
             if (i == 0)
+            {
                 imgDot.setSelected(true);
-
+            }
             progressDots.addView(imgDot);
         }
     }
