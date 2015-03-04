@@ -4,8 +4,9 @@
     android:layout_height="match_parent">
 
     <PreferenceCategory
-        android:title="@string/preference_number_of_item"
-        android:key="pref_key_storage_settings" >
+        android:title="@string/preference_number_of_items"
+        android:key="pref_key_storage_settings"
+        android:summary="@string/preference_number_of_items_summary" >
 
         <com.olyv.wortschatz.ui.settings.NumberPickerPreference
             android:key="@string/preference_verbs_per_lesson_key"
@@ -18,6 +19,25 @@
         <com.olyv.wortschatz.ui.settings.NumberPickerPreference
             android:key="@string/preference_adjektives_per_lesson_key"
             android:title="@string/preference_adjektives_per_lesson_key"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Notify me to complete exercise"
+        android:key="pref_key_send_notifications" >
+
+        <CheckBoxPreference
+            android:key="@string/preference_notify_me_key"
+            android:title="Activate notifications"
+            android:defaultValue="false"/>
+
+        <com.olyv.wortschatz.ui.settings.TimePickerDialog
+            android:key="@string/preference_notification_time_key"
+            android:title="Select notification time"
+            android:defaultValue="08:00"
+            android:showDefault="true"
+            android:dependency="@string/preference_notify_me_key"
+            android:summary="Send notification at specific time" /> />
 
     </PreferenceCategory>
 

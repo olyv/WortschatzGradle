@@ -36,14 +36,17 @@
         Wortschatz is designed to make memorizing German words easier.\n
         Start by adding words you want to memorize to the list.\n
         The lesson will be formed from the randomly selected words in the list.\n
-        Edit or delete a word in the Edit menu. </string>
+        Edit or delete a word in the Edit menu.</string>
     <string name="alarm_service_label">Notification</string>
 
-    <string name="preference_notify_key">pref_notify</string>
-    <string name="preference_verbs_per_lesson_key">Verbs per lesson</string>
-    <string name="preference_nouns_per_lesson_key">Nouns per lesson</string>
-    <string name="preference_adjektives_per_lesson_key">Adjektives per lesson</string>
-    <string name="preference_number_of_item">Number of item per lesson</string>
+    <string name="preference_notify_key">prefNotifyKey</string>
+    <string name="preference_verbs_per_lesson_key">prefVerbsPerLessonKey</string>
+    <string name="preference_nouns_per_lesson_key">prefNounsPerLessonKey</string>
+    <string name="preference_adjektives_per_lesson_key">prefAdjektivesPerLessonKey</string>
+    <string name="preference_number_of_items">Number of different items per lesson</string>
+    <string name="preference_number_of_items_summary">Set number of each item type per one lesson</string>
+    <string name="preference_notify_me_key">prefNotifyMeKey</string>
+    <string name="preference_notification_time_key">prefNotifyMeTimeKey</string>
 
 
     <!--<string-array name="entries">-->
