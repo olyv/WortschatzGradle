@@ -14,7 +14,6 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
@@ -31,6 +30,7 @@ import com.olyv.wortschatz.ui.lesson.LessonActivity;
 import com.olyv.wortschatz.ui.manager.LessonItemsManagerActivity;
 import com.olyv.wortschatz.ui.settings.NumberPickerPreference;
 import com.olyv.wortschatz.ui.settings.SettingsActivity;
+import com.olyv.wortschatz.ui.settings.TimePickerDialog;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,7 +53,6 @@ public class StartActivity extends Activity
     private AlarmManager alarmManager;
     private Intent notificationReceiverIntent;
     private PendingIntent notificationReceiverPendingIntent;
-    private static boolean running;     //flag to identify if app is running and ignore sent notification
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -98,8 +97,6 @@ public class StartActivity extends Activity
             }
         });
         Log.i(LOG_TAG, "initialized layout and UI elements");
-
-        running = true;
     }
 
     public static class AlarmReceiver extends BroadcastReceiver
@@ -107,36 +104,33 @@ public class StartActivity extends Activity
         @Override
         public void onReceive(Context context, Intent intent)
         {
-            if (!running)
-            {
-                // The Intent to be used when the user clicks on the Notification View
-                Intent notificationIntent = new Intent(context, StartActivity.class);
+            // The Intent to be used when the user clicks on the Notification View
+            Intent notificationIntent = new Intent(context, StartActivity.class);
 
-                // The PendingIntent that wraps the underlying Intent
-                PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, Intent.FLAG_ACTIVITY_NEW_TASK);
+            // The PendingIntent that wraps the underlying Intent
+            PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                long[] mVibratePattern = { 0, 200, 200, 300 };
-                String uriPath = "android.resource://com.olyv.wortschatz.ui/" + R.raw.notification;
+            long[] mVibratePattern = { 0, 200, 200, 300 };
+            String uriPath = "android.resource://com.olyv.wortschatz.ui/" + R.raw.notification;
 
-                Uri soundURI = Uri.parse(uriPath);
+            Uri soundURI = Uri.parse(uriPath);
 
-                // Build the Notification
-                Notification.Builder notificationBuilder = new Notification.Builder(
-                        context).setTicker("I am Wortschatz")
-                        .setSmallIcon(android.R.drawable.stat_sys_warning)
-                        .setAutoCancel(true).setContentTitle("contentTitle")
-                        .setContentText("contentText").setContentIntent(contentIntent)
-                        .setSound(soundURI).setVibrate(mVibratePattern);
+            // Build the Notification
+            Notification.Builder notificationBuilder = new Notification.Builder(
+                    context).setTicker("I am Wortschatz")
+                    .setSmallIcon(android.R.drawable.stat_sys_warning)
+                    .setAutoCancel(true).setContentTitle("Wortschatz")
+                    .setContentText("Notification to complete lesson").setContentIntent(contentIntent)
+                    .setSound(soundURI).setVibrate(mVibratePattern);
 
-                // Get the NotificationManager
-                NotificationManager notificationManager = (NotificationManager) context
-                        .getSystemService(Context.NOTIFICATION_SERVICE);
+            // Get the NotificationManager
+            NotificationManager notificationManager = (NotificationManager) context
+                    .getSystemService(Context.NOTIFICATION_SERVICE);
 
-                // Pass the Notification to the NotificationManager:
-                notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build());
+            // Pass the Notification to the NotificationManager:
+            notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build());
 
-                Log.e(LOG_TAG, "========================= notification received");
-            }
+            Log.e(LOG_TAG, "========================= notification received");
         }
     }
 
@@ -150,16 +144,18 @@ public class StartActivity extends Activity
         //sending notifications logic
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-        boolean notificationsEnabled = prefs.getBoolean(getString(R.string.preference_notify_me_key),false);
+        boolean notificationsEnabled = prefs.getBoolean(getString(R.string.preference_notify_me_key), false);
         if (notificationsEnabled)
         {
+            String notifyTimePreference = prefs.getString(getString(R.string.preference_notification_time_key), "");
+
             alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
             notificationReceiverIntent = new Intent(getApplicationContext(), AlarmReceiver.class);
             notificationReceiverPendingIntent = PendingIntent.getBroadcast(StartActivity.this, 0, notificationReceiverIntent, 0);
             alarmManager.setInexactRepeating(
-                    AlarmManager.ELAPSED_REALTIME,
-                    SystemClock.elapsedRealtime() + 15 * 100L,
-                    20000,
+                    AlarmManager.RTC_WAKEUP,
+                    TimePickerDialog.timeToIntervalInMillis(notifyTimePreference),
+                    AlarmManager.INTERVAL_DAY * 2,
                     notificationReceiverPendingIntent);
         }
     }

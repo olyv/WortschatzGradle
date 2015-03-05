@@ -10,15 +10,15 @@
 
         <com.olyv.wortschatz.ui.settings.NumberPickerPreference
             android:key="@string/preference_verbs_per_lesson_key"
-            android:title="@string/preference_verbs_per_lesson_key"/>
+            android:title="@string/preference_verbs_per_lesson_title"/>
 
         <com.olyv.wortschatz.ui.settings.NumberPickerPreference
             android:key="@string/preference_nouns_per_lesson_key"
-            android:title="@string/preference_nouns_per_lesson_key"/>
+            android:title="@string/preference_nouns_per_lesson_title"/>
 
         <com.olyv.wortschatz.ui.settings.NumberPickerPreference
             android:key="@string/preference_adjektives_per_lesson_key"
-            android:title="@string/preference_adjektives_per_lesson_key"/>
+            android:title="@string/preference_adjektives_per_lesson_title"/>
 
     </PreferenceCategory>
 

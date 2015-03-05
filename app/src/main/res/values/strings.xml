@@ -47,6 +47,9 @@
     <string name="preference_number_of_items_summary">Set number of each item type per one lesson</string>
     <string name="preference_notify_me_key">prefNotifyMeKey</string>
     <string name="preference_notification_time_key">prefNotifyMeTimeKey</string>
+    <string name="preference_verbs_per_lesson_title">Number of verbs per lesson</string>
+    <string name="preference_nouns_per_lesson_title">Number of Nouns per lesson</string>
+    <string name="preference_adjektives_per_lesson_title">Number of Adjektives per Lesson</string>
 
 
     <!--<string-array name="entries">-->

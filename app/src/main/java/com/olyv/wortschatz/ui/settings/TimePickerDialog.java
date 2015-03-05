@@ -7,25 +7,40 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TimePicker;
 
+import java.util.Calendar;
+
 public class TimePickerDialog extends DialogPreference
 {
-    private int lastHour=0;
-    private int lastMinute=0;
-    private TimePicker picker=null;
+    private int lastHour = 0;
+    private int lastMinute = 0;
+    private TimePicker picker = null;
 
-    public static int getHour(String time) {
+    public static long timeToIntervalInMillis(String timeInHourAndMinutes)
+    {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, getHour(timeInHourAndMinutes));
+        calendar.set(Calendar.MINUTE, getMinute(timeInHourAndMinutes));
+
+        return calendar.getTimeInMillis();
+    }
+
+    private static int getHour(String time)
+    {
         String[] pieces=time.split(":");
 
         return(Integer.parseInt(pieces[0]));
     }
 
-    public static int getMinute(String time) {
+    private static int getMinute(String time)
+    {
         String[] pieces=time.split(":");
 
         return(Integer.parseInt(pieces[1]));
     }
 
-    public TimePickerDialog(Context ctxt, AttributeSet attrs) {
+    public TimePickerDialog(Context ctxt, AttributeSet attrs)
+    {
         super(ctxt, attrs);
 
         setPositiveButtonText("Set");
@@ -33,22 +48,25 @@ public class TimePickerDialog extends DialogPreference
     }
 
     @Override
-    protected View onCreateDialogView() {
-        picker=new TimePicker(getContext());
+    protected View onCreateDialogView()
+    {
+        picker = new TimePicker(getContext());
 
         return(picker);
     }
 
     @Override
-    protected void onBindDialogView(View v) {
+    protected void onBindDialogView(View v)
+    {
         super.onBindDialogView(v);
-
+        picker.setIs24HourView(true);
         picker.setCurrentHour(lastHour);
         picker.setCurrentMinute(lastMinute);
     }
 
     @Override
-    protected void onDialogClosed(boolean positiveResult) {
+    protected void onDialogClosed(boolean positiveResult)
+    {
         super.onDialogClosed(positiveResult);
 
         if (positiveResult) {
@@ -64,28 +82,32 @@ public class TimePickerDialog extends DialogPreference
     }
 
     @Override
-    protected Object onGetDefaultValue(TypedArray a, int index) {
+    protected Object onGetDefaultValue(TypedArray a, int index)
+    {
         return(a.getString(index));
     }
 
     @Override
-    protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
-        String time=null;
+    protected void onSetInitialValue(boolean restoreValue, Object defaultValue)
+    {
+        String time = null;
 
         if (restoreValue) {
-            if (defaultValue==null) {
-                time=getPersistedString("00:00");
+            if (defaultValue == null)
+            {
+                time = getPersistedString("00:00");
             }
-            else {
-                time=getPersistedString(defaultValue.toString());
+            else
+            {
+                time = getPersistedString(defaultValue.toString());
             }
         }
-        else {
-            time=defaultValue.toString();
+        else
+        {
+            time = defaultValue.toString();
         }
 
-        lastHour=getHour(time);
-        lastMinute=getMinute(time);
+        lastHour = getHour(time);
+        lastMinute = getMinute(time);
     }
-
 }
