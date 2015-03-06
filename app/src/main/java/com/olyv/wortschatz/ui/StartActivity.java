@@ -22,6 +22,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.olyv.wortschatz.lesson.DatabaseHelper;
 import com.olyv.wortschatz.lesson.LessonItemsHelper;
 import com.olyv.wortschatz.lesson.items.LessonItemI;
@@ -97,6 +99,10 @@ public class StartActivity extends Activity
             }
         });
         Log.i(LOG_TAG, "initialized layout and UI elements");
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     public static class AlarmReceiver extends BroadcastReceiver

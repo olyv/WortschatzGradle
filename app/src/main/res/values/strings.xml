@@ -39,6 +39,8 @@
         Edit or delete a word in the Edit menu.</string>
     <string name="alarm_service_label">Notification</string>
 
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
     <string name="preference_notify_key">prefNotifyKey</string>
     <string name="preference_verbs_per_lesson_key">prefVerbsPerLessonKey</string>
     <string name="preference_nouns_per_lesson_key">prefNounsPerLessonKey</string>
