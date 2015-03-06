@@ -120,7 +120,19 @@ public class VerbFragment extends Fragment
                         .setPartizip(partizipText.getText().toString().trim());
 
                 isCorrectAnswer = AnswerChecker.isVerbCorrect((Verb) currentLessonItem, answerVerb);
-                comment = AnswerChecker.getVerbComment(isCorrectAnswer, (Verb) currentLessonItem, answerVerb);
+
+                String correctAnswer = currentLessonItem.getAuxverb() + " " + currentLessonItem.getPartizip();
+                if (isCorrectAnswer)
+                {
+                    comment = String.format(getString(R.string.correct_answer_assertion), correctAnswer);
+                }
+                else
+                {
+                    String enteredAnswer = answerVerb.getAuxverb() + " " + answerVerb.getPartizip();
+
+                    comment = String.format(getString(R.string.your_answer), enteredAnswer)
+                            + String.format(getString(R.string.correct_answer), correctAnswer);
+                }
 
                 setVisibleAnswer(isCorrectAnswer, comment);
 

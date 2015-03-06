@@ -1,5 +1,7 @@
 package com.olyv.wortschatz.lesson;
 
+import android.app.Activity;
+
 import com.olyv.wortschatz.lesson.items.Adjektive;
 import com.olyv.wortschatz.lesson.items.Noun;
 import com.olyv.wortschatz.lesson.items.Verb;

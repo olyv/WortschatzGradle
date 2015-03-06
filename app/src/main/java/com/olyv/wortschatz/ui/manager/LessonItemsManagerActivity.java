@@ -189,7 +189,9 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
                     if (foundLessonItems.size() == 0)
                     {
                         adapter.clear();
-                        Toast.makeText(LessonItemsManagerActivity.this, R.string.no_results_found + keyword +"'", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LessonItemsManagerActivity.this,
+                                String.format(getString(R.string.no_results_found), keyword),
+                                Toast.LENGTH_LONG).show();
                     }
                 }
                 return true;

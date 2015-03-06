@@ -102,7 +102,19 @@ public class AdjektiveFragment extends Fragment
                             setTranslation(translationText.getText().toString().trim());
 
                     isCorrectAnswer = AnswerChecker.isAdjektiveCorrect((Adjektive) currentLessonItem, answerAdjektive);
-                    comment = AnswerChecker.getAdjektiveComment(isCorrectAnswer, (Adjektive) currentLessonItem, answerAdjektive);
+
+                    String correctAnswer = currentLessonItem.getTranslation();
+                    if (isCorrectAnswer)
+                    {
+                        comment = String.format(getString(R.string.correct_answer_assertion), correctAnswer);
+                    }
+                    else
+                    {
+                        String enteredAnswer = answerAdjektive.getTranslation();
+
+                        comment = String.format(getString(R.string.your_answer), enteredAnswer)
+                                + String.format(getString(R.string.correct_answer), correctAnswer);
+                    }
 
                     setVisibleAnswer(isCorrectAnswer, comment);
 

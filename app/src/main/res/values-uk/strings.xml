@@ -31,10 +31,18 @@
     <string name="edit_item">Редагувати запис</string>
     <string name="remove_confirmation">Видалити \'</string>
     <string name="item_is_edited">Запис відредаговано</string>
-    <string name="no_results_found">Не знайдено записа за зопитом \'</string>
+    <string name="no_results_found">Не знайдено записа за зопитом \'%s\'</string>
     <string name="about">Розробник Alexander Lyvin\n
         Wortschatz створено, щоб допомгти Вам легше запам\'ятовувати нiмецьки слова.\n
         Почнить додавати слова, якi Ви хочете запам\'ятовувати, до списку слiв.\n
         Урок буде сформовано зi слiв що випадково выбранi iз списка.\n
         Редагуйте або видаляйте слова слова в меню \'Редагувати\'. </string>
+    <string name="preference_nouns_per_lesson_title">Кількість іменників в уроці</string>
+    <string name="preference_number_of_items">Кількість різних завдань в уроці</string>
+    <string name="preference_number_of_items_summary"> Встановити кількість завдань кожного типу в уроці</string>
+    <string name="preference_verbs_per_lesson_title">Кількість дієслів у уроці</string>
+    <string name="preference_adjektives_per_lesson_title">Кількість прикметників в уроці</string>
+    <string name="correct_answer">Вірна відповідь\n\n%s</string>
+    <string name="correct_answer_assertion">%s\n\nВірна відповідь!</string>
+    <string name="your_answer">Ваша відповідь \'%s\'\n\n</string>
 </resources>

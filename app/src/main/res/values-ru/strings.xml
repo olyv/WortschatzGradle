@@ -31,10 +31,18 @@
     <string name="edit_item">Редактировать запись</string>
     <string name="remove_confirmation">Вы хотите удалить \'</string>
     <string name="item_is_edited">Запись изменена</string>
-    <string name="no_results_found">Нет результатов для \'</string>
+    <string name="no_results_found">Нет результатов для \'%s\'</string>
     <string name="about">Разарботчик Alexander Lyvin\n
         Wortschatz создан, чтобы помочь Вам запоминать немецкие слова.\n
         Добавляйте слова, которые вы хотите запомнить, в список.\n
         Урок будет сформирован из слов выбранных случайным образом из списка доступных.\n
         Редактируйте или удаляйте слова в меню \'Редактировать\'. </string>
+    <string name="preference_nouns_per_lesson_title">Количество существительных в уроке</string>
+    <string name="preference_number_of_items">Количество различных заданий в уроке</string>
+    <string name="preference_number_of_items_summary">Установить количество заданий каждого типа в уроке</string>
+    <string name="preference_verbs_per_lesson_title">Количество глаголов в уроке</string>
+    <string name="preference_adjektives_per_lesson_title">Количество прилагательных в уроке</string>
+    <string name="correct_answer">Верный ответ\n\n%s</string>
+    <string name="correct_answer_assertion">%s\n\nВерный ответ!</string>
+    <string name="your_answer">Ваш ответ \'%s\'\n\n</string>
 </resources>

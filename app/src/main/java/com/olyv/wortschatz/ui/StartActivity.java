@@ -124,7 +124,7 @@ public class StartActivity extends Activity
             // Build the Notification
             Notification.Builder notificationBuilder = new Notification.Builder(
                     context).setTicker("I am Wortschatz")
-                    .setSmallIcon(android.R.drawable.stat_sys_warning)
+                    .setSmallIcon(R.drawable.ic_stat_action_class)
                     .setAutoCancel(true).setContentTitle("Wortschatz")
                     .setContentText("Notification to complete lesson").setContentIntent(contentIntent)
                     .setSound(soundURI).setVibrate(mVibratePattern);

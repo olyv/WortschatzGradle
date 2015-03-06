@@ -31,41 +31,29 @@
     <string name="edit_item">Edit this record</string>
     <string name="remove_confirmation">Are you sure you want to delete \'</string>
     <string name="item_is_edited">Item is edited</string>
-    <string name="no_results_found">No results found for \'</string>
+    <string name="no_results_found">No results found for \'%s\'</string>
     <string name="about">Created by Alexander Lyvin\n
         Wortschatz is designed to make memorizing German words easier.\n
         Start by adding words you want to memorize to the list.\n
         The lesson will be formed from the randomly selected words in the list.\n
         Edit or delete a word in the Edit menu.</string>
-    <string name="alarm_service_label">Notification</string>
 
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="correct_answer_assertion">%s\n\nCorrect answer!</string>
+    <string name="your_answer">Your answer \'%s\'\n\n</string>
+    <string name="correct_answer">Correct answer\n\n%s</string>
 
-    <string name="preference_notify_key">prefNotifyKey</string>
-    <string name="preference_verbs_per_lesson_key">prefVerbsPerLessonKey</string>
-    <string name="preference_nouns_per_lesson_key">prefNounsPerLessonKey</string>
-    <string name="preference_adjektives_per_lesson_key">prefAdjektivesPerLessonKey</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="preference_notify_key" translatable="false">prefNotifyKey</string>
+    <string name="preference_verbs_per_lesson_key" translatable="false">prefVerbsPerLessonKey</string>
+    <string name="preference_nouns_per_lesson_key" translatable="false">prefNounsPerLessonKey</string>
+    <string name="preference_adjektives_per_lesson_key" translatable="false">prefAdjektivesPerLessonKey</string>
     <string name="preference_number_of_items">Number of different items per lesson</string>
     <string name="preference_number_of_items_summary">Set number of each item type per one lesson</string>
-    <string name="preference_notify_me_key">prefNotifyMeKey</string>
-    <string name="preference_notification_time_key">prefNotifyMeTimeKey</string>
-    <string name="preference_verbs_per_lesson_title">Number of verbs per lesson</string>
+    <string name="preference_notify_me_key" translatable="false">prefNotifyMeKey</string>
+    <string name="preference_notification_time_key" translatable="false">prefNotifyMeTimeKey</string>
+    <string name="preference_verbs_per_lesson_title">Number of Verbs per lesson</string>
     <string name="preference_nouns_per_lesson_title">Number of Nouns per lesson</string>
-    <string name="preference_adjektives_per_lesson_title">Number of Adjektives per Lesson</string>
-
-
-    <!--<string-array name="entries">-->
-        <!--<item>one</item>-->
-        <!--<item>two</item>-->
-        <!--<item>three</item>-->
-        <!--<item>four</item>-->
-    <!--</string-array>-->
-    <!--<string-array name="entry_values">-->
-        <!--<item>1</item>-->
-        <!--<item>2</item>-->
-        <!--<item>3</item>-->
-        <!--<item>4</item>-->
-    <!--</string-array>-->
-
+    <string name="preference_adjektives_per_lesson_title">Number of Adjektives per lesson</string>
 
 </resources>

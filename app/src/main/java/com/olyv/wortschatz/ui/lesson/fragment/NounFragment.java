@@ -124,7 +124,19 @@ public class NounFragment extends Fragment
                         .setPlural(pluralText.getText().toString().trim());
 
                 isCorrectAnswer = AnswerChecker.isNounCorrect((Noun) currentLessonItem, answerNoun);
-                comment = AnswerChecker.getNounComment(isCorrectAnswer, (Noun) currentLessonItem, answerNoun);
+
+                String correctAnswer = currentLessonItem.getArticle() + " " + currentLessonItem.getPlural();
+                if (isCorrectAnswer)
+                {
+                    comment = String.format(getString(R.string.correct_answer_assertion), correctAnswer);
+                }
+                else
+                {
+                    String enteredAnswer = answerNoun.getArticle() + " " + answerNoun.getPlural();
+
+                    comment = String.format(getString(R.string.your_answer), enteredAnswer)
+                            + String.format(getString(R.string.correct_answer), correctAnswer);
+                }
 
                 setVisibleAnswer(isCorrectAnswer, comment);
 
