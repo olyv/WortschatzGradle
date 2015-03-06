@@ -125,14 +125,14 @@ public class NounFragment extends Fragment
 
                 isCorrectAnswer = AnswerChecker.isNounCorrect((Noun) currentLessonItem, answerNoun);
 
-                String correctAnswer = currentLessonItem.getArticle() + " " + currentLessonItem.getPlural();
+                String correctAnswer = AnswerChecker.getStringAnswerFromNoun(currentLessonItem);
                 if (isCorrectAnswer)
                 {
                     comment = String.format(getString(R.string.correct_answer_assertion), correctAnswer);
                 }
                 else
                 {
-                    String enteredAnswer = answerNoun.getArticle() + " " + answerNoun.getPlural();
+                    String enteredAnswer = AnswerChecker.getStringAnswerFromNoun(answerNoun);
 
                     comment = String.format(getString(R.string.your_answer), enteredAnswer)
                             + String.format(getString(R.string.correct_answer), correctAnswer);

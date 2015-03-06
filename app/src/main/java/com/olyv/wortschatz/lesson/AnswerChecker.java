@@ -1,17 +1,11 @@
 package com.olyv.wortschatz.lesson;
 
-import android.app.Activity;
-
 import com.olyv.wortschatz.lesson.items.Adjektive;
 import com.olyv.wortschatz.lesson.items.Noun;
 import com.olyv.wortschatz.lesson.items.Verb;
 
 public class AnswerChecker
 {
-    private static String yourAnswer = "Deine Antwort";
-    private static String correctAnswer = "Richtige Antwort ist";
-    private static String assertCorrectAnswer = "Richtige Antwort!";
-
     public static boolean isVerbCorrect(Verb taskVerb, Verb answerVerb)
     {
         return answerVerb.getPartizip().length() > 0
@@ -19,19 +13,9 @@ public class AnswerChecker
                 & taskVerb.getAuxverb().equals(answerVerb.getAuxverb());
     }
 
-    public static String getVerbComment(boolean correct, Verb taskVerb, Verb answerVerb)
+    public static String getStringAnswerFromVerb(Verb verb)
     {
-        String comment = "";
-        if (correct)
-        {
-            comment += answerVerb.getAuxverb() + " " + answerVerb.getPartizip() + "\n\n" + assertCorrectAnswer;
-        }
-        else
-        {
-            comment += yourAnswer + " '" + answerVerb.getAuxverb() + " " + answerVerb.getPartizip() + "'\n\n" +
-                    correctAnswer + " \n\n" + taskVerb.getAuxverb() + " " + taskVerb.getPartizip();
-        }
-        return comment;
+        return verb.getAuxverb() + " " + verb.getPartizip();
     }
 
     public static boolean isNounCorrect(Noun taskNoun, Noun answerNoun)
@@ -41,19 +25,9 @@ public class AnswerChecker
                 & taskNoun.getArticle().equals(answerNoun.getArticle());
     }
 
-    public static String getNounComment(boolean correct, Noun taskNoun, Noun answerNoun)
+    public static String getStringAnswerFromNoun(Noun noun)
     {
-        String comment = "";
-        if (correct)
-        {
-            comment += answerNoun.getArticle() + " " + answerNoun.getPlural() + "\n\n" + assertCorrectAnswer;
-        }
-        else
-        {
-            comment += yourAnswer + " '" + answerNoun.getArticle() + " " + answerNoun.getPlural() + "'\n\n" +
-                    correctAnswer + " \n\n" + taskNoun.getArticle() + " " + taskNoun.getPlural();
-        }
-        return comment;
+        return noun.getArticle() + " " + noun.getPlural();
     }
 
     public static boolean isAdjektiveCorrect(Adjektive taskAdjektive, Adjektive answerAdjektive)
@@ -61,18 +35,8 @@ public class AnswerChecker
         return taskAdjektive.getTranslation().equals(answerAdjektive.getTranslation());
     }
 
-    public static String getAdjektiveComment(boolean correct, Adjektive taskAdjektive, Adjektive answerAdjektive)
+    public static String getStringAnswerFromAdjektive(Adjektive adjektive)
     {
-        String comment = "";
-        if (correct)
-        {
-            comment += answerAdjektive.getTranslation() + "\n\n" + assertCorrectAnswer;
-        }
-        else
-        {
-            comment += yourAnswer + " '" + answerAdjektive.getTranslation() + "' \n\n" +
-                    correctAnswer + " \n\n" + taskAdjektive.getTranslation();
-        }
-        return comment;
+        return adjektive.getTranslation();
     }
 }

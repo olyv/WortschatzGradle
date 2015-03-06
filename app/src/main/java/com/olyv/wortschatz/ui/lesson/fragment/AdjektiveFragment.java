@@ -103,14 +103,14 @@ public class AdjektiveFragment extends Fragment
 
                     isCorrectAnswer = AnswerChecker.isAdjektiveCorrect((Adjektive) currentLessonItem, answerAdjektive);
 
-                    String correctAnswer = currentLessonItem.getTranslation();
+                    String correctAnswer = AnswerChecker.getStringAnswerFromAdjektive(currentLessonItem);
                     if (isCorrectAnswer)
                     {
                         comment = String.format(getString(R.string.correct_answer_assertion), correctAnswer);
                     }
                     else
                     {
-                        String enteredAnswer = answerAdjektive.getTranslation();
+                        String enteredAnswer = AnswerChecker.getStringAnswerFromAdjektive(answerAdjektive);
 
                         comment = String.format(getString(R.string.your_answer), enteredAnswer)
                                 + String.format(getString(R.string.correct_answer), correctAnswer);

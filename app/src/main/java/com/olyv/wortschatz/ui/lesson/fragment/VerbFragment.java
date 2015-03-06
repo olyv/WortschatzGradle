@@ -121,14 +121,14 @@ public class VerbFragment extends Fragment
 
                 isCorrectAnswer = AnswerChecker.isVerbCorrect((Verb) currentLessonItem, answerVerb);
 
-                String correctAnswer = currentLessonItem.getAuxverb() + " " + currentLessonItem.getPartizip();
+                String correctAnswer = AnswerChecker.getStringAnswerFromVerb(currentLessonItem);
                 if (isCorrectAnswer)
                 {
                     comment = String.format(getString(R.string.correct_answer_assertion), correctAnswer);
                 }
                 else
                 {
-                    String enteredAnswer = answerVerb.getAuxverb() + " " + answerVerb.getPartizip();
+                    String enteredAnswer = AnswerChecker.getStringAnswerFromVerb(answerVerb);
 
                     comment = String.format(getString(R.string.your_answer), enteredAnswer)
                             + String.format(getString(R.string.correct_answer), correctAnswer);
