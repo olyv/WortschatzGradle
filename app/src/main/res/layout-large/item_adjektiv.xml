@@ -40,7 +40,7 @@
         <TextView
             android:id="@+id/correctTranslation"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
             android:hint="@string/enter_translation_hint"
             android:textSize="@dimen/text_size_large"
@@ -49,13 +49,12 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="25dp"
-            android:layout_weight="2"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/inCorrectTranslation"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
             android:hint="@string/enter_translation_hint"
             android:textSize="@dimen/text_size_large"
@@ -64,7 +63,6 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="25dp"
-            android:layout_weight="2"
             android:visibility="gone"/>
 
         <Button

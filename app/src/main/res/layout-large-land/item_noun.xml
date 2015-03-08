@@ -22,7 +22,7 @@
 
                 <TextView
                         android:id="@+id/noun"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|center_horizontal"
                         android:textSize="@dimen/text_size_large"
@@ -32,10 +32,10 @@
                         android:layout_weight="1"/>
                 <TextView
                         android:id="@+id/nounTranslation"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|center_horizontal"
-                        android:textSize="@dimen/text_size_medium"
+                        android:textSize="@dimen/text_size_large"
                         android:layout_margin="20dp"
                         android:gravity="center_horizontal|center_vertical"
                         android:layout_weight="1"/>
@@ -56,7 +56,8 @@
                         android:layout_gravity="center_horizontal|center_vertical"
                         android:orientation="horizontal"
                         android:layout_marginLeft="10dp"
-                        android:layout_weight="1.25">
+                        android:layout_weight="1">
+
                         <RadioButton
                                 android:id="@+id/articleDer"
                                 android:layout_width="wrap_content"
@@ -83,7 +84,7 @@
 
                 <EditText
                         android:id="@+id/nounPlural"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal|center_vertical"
                         android:hint="@string/noun_plural_hint"

@@ -23,7 +23,7 @@
 
                 <EditText
                         android:id="@+id/verb"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|center_horizontal"
                         android:textSize="@dimen/text_size_large"
@@ -35,7 +35,7 @@
 
                 <EditText
                         android:id="@+id/verbTranslation"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|center_horizontal"
                         android:textSize="@dimen/text_size_large"
@@ -55,7 +55,7 @@
 
                 <RadioGroup
                         android:id="@+id/auxverbSelect"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal"
@@ -84,7 +84,7 @@
 
                 <EditText
                         android:id="@+id/verbPartizip"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal|center_vertical"
                         android:hint="@string/verb_partizip_hint"

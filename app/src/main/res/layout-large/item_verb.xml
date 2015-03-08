@@ -70,7 +70,7 @@
                 android:hint="@string/verb_partizip_hint"
                 android:singleLine="true"
                 android:textSize="@dimen/text_size_large"
-                android:gravity="center_horizontal|center_vertical"
+                android:gravity="center_horizontal|bottom"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="25dp"
@@ -87,7 +87,8 @@
             android:background="@drawable/edit_text_correct"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="25dp"/>
+            android:layout_marginBottom="25dp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/inCorrectPartizip"
@@ -100,7 +101,8 @@
             android:background="@drawable/edit_text_error"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="25dp"/>
+            android:layout_marginBottom="25dp"
+            android:visibility="gone"/>
 
         <View
             android:layout_width="match_parent"

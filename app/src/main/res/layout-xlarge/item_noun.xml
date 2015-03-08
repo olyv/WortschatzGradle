@@ -78,7 +78,7 @@
             android:hint="@string/noun_plural_hint"
             android:singleLine="true"
             android:textSize="@dimen/text_size_large"
-            android:gravity="center_horizontal|center_vertical"
+            android:gravity="center_horizontal|bottom"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="25dp"
