@@ -52,9 +52,7 @@ public class StartActivity extends Activity
     private Button addNewItemButton;
 
     private LinearLayout loadingIndicator;
-    private AlarmManager alarmManager;
-    private Intent notificationReceiverIntent;
-    private PendingIntent notificationReceiverPendingIntent;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -103,6 +101,7 @@ public class StartActivity extends Activity
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
     }
 
     public static class AlarmReceiver extends BroadcastReceiver
@@ -123,7 +122,7 @@ public class StartActivity extends Activity
 
             // Build the Notification
             Notification.Builder notificationBuilder = new Notification.Builder(
-                    context).setTicker("I am Wortschatz")
+                    context).setTicker("Wortschatz reminder")
                     .setSmallIcon(R.drawable.ic_stat_action_class)
                     .setAutoCancel(true).setContentTitle("Wortschatz")
                     .setContentText("Notification to complete lesson").setContentIntent(contentIntent)
@@ -146,24 +145,6 @@ public class StartActivity extends Activity
         super.onStop();
         DatabaseHelper.releaseDatabaseHelper(databaseHelper);
         Log.i(LOG_TAG, "released DatabaseHelper");
-
-        //sending notifications logic
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
-        boolean notificationsEnabled = prefs.getBoolean(getString(R.string.preference_notify_me_key), false);
-        if (notificationsEnabled)
-        {
-            String notifyTimePreference = prefs.getString(getString(R.string.preference_notification_time_key), "");
-
-            alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-            notificationReceiverIntent = new Intent(getApplicationContext(), AlarmReceiver.class);
-            notificationReceiverPendingIntent = PendingIntent.getBroadcast(StartActivity.this, 0, notificationReceiverIntent, 0);
-            alarmManager.setInexactRepeating(
-                    AlarmManager.RTC_WAKEUP,
-                    TimePickerDialog.timeToIntervalInMillis(notifyTimePreference),
-                    AlarmManager.INTERVAL_DAY * 2,
-                    notificationReceiverPendingIntent);
-        }
     }
 
     @Override

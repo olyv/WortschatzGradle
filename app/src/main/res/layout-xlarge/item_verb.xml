@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+                android:id="@+id/verbTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/verb_task"
+                android:textSize="@dimen/text_size_small"
+                android:layout_margin="16dp"/>
+
+        <TextView
+                android:id="@+id/verb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+        <TextView
+                android:id="@+id/verbTranslation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/text_size_medium"
+                android:layout_weight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+        <RadioGroup
+                android:id="@+id/auxverbSelect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:orientation="vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1">
+
+                <RadioButton
+                        android:id="@+id/auxverbHat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/hat"
+                        android:textSize="@dimen/text_size_medium"
+                        android:layout_weight="0.5" />
+
+                <RadioButton
+                        android:id="@+id/auxverbIst"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ist"
+                        android:textSize="@dimen/text_size_medium"
+                        android:layout_weight="0.5" />
+        </RadioGroup>
+
+        <EditText
+                android:id="@+id/enteredVerbPartizip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:hint="@string/verb_partizip_hint"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_large"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="25dp"
+                android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/correctPartizip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:hint="@string/enter_translation_hint"
+            android:textSize="@dimen/text_size_large"
+            android:gravity="center_horizontal|center_vertical"
+            android:background="@drawable/edit_text_correct"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="25dp"/>
+
+        <TextView
+            android:id="@+id/inCorrectPartizip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:hint="@string/enter_translation_hint"
+            android:textSize="@dimen/text_size_large"
+            android:gravity="center_horizontal|center_vertical"
+            android:background="@drawable/edit_text_error"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="25dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
+
+        <Button
+                android:id="@+id/submitAnswerBtn"
+                android:layout_width="@dimen/start_activity_button_width"
+                android:background="@drawable/button"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/text_size_large"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/submit"
+                android:layout_height="@dimen/start_activity_button_height"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="50dp"/>
+
+</LinearLayout>
