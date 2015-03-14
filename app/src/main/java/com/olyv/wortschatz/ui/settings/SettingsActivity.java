@@ -31,12 +31,11 @@ public class SettingsActivity extends PreferenceActivity
         enableNotification = (CheckBoxPreference) findPreference(getString(R.string.preference_notify_me_key));
         timePicker = (TimePickerDialog) findPreference(getString(R.string.preference_notification_time_key));
 
-        enableNotification.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+        timePicker.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
         {
             @Override
-            public boolean onPreferenceClick(Preference preference)
+            public boolean onPreferenceChange(Preference preference, Object newValue)
             {
-                enableNotification.setChecked(enableNotification.isChecked());
                 if (enableNotification.isChecked())
                 {
                     //sending notifications logic
@@ -47,7 +46,7 @@ public class SettingsActivity extends PreferenceActivity
                     alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                     notificationReceiverIntent = new Intent(getApplicationContext(), StartActivity.AlarmReceiver.class);
                     notificationReceiverPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notificationReceiverIntent, 0);
-                    alarmManager.setInexactRepeating(
+                    alarmManager.setRepeating(
                             AlarmManager.RTC_WAKEUP,
                             TimePickerDialog.timeToIntervalInMillis(notifyTimePreference),
                             AlarmManager.INTERVAL_DAY,
@@ -57,11 +56,44 @@ public class SettingsActivity extends PreferenceActivity
 //                    TimePickerDialog.timeToIntervalInMillis(notifyTimePreference),
 //                    notificationReceiverPendingIntent);
 
-                    enableNotification.setChecked(true);
+//                    enableNotification.setChecked(true);
                 }
-                return false;
+                return true;
             }
         });
+
+
+//        enableNotification.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+//        {
+//            @Override
+//            public boolean onPreferenceClick(Preference preference)
+//            {
+//                enableNotification.setChecked(enableNotification.isChecked());
+//                if (enableNotification.isChecked())
+//                {
+//                    //sending notifications logic
+//                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+//
+//                    String notifyTimePreference = prefs.getString(getString(R.string.preference_notification_time_key), "");
+//
+//                    alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//                    notificationReceiverIntent = new Intent(getApplicationContext(), StartActivity.AlarmReceiver.class);
+//                    notificationReceiverPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notificationReceiverIntent, 0);
+//                    alarmManager.setInexactRepeating(
+//                            AlarmManager.RTC_WAKEUP,
+//                            TimePickerDialog.timeToIntervalInMillis(notifyTimePreference),
+//                            AlarmManager.INTERVAL_DAY,
+//                            notificationReceiverPendingIntent);
+//
+////            alarmManager.set(AlarmManager.RTC_WAKEUP,
+////                    TimePickerDialog.timeToIntervalInMillis(notifyTimePreference),
+////                    notificationReceiverPendingIntent);
+//
+//                    enableNotification.setChecked(true);
+//                }
+//                return false;
+//            }
+//        });
 
     }
 }
