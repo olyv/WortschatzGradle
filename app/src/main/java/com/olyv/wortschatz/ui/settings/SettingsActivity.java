@@ -9,6 +9,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.olyv.wortschatz.ui.R;
 import com.olyv.wortschatz.ui.StartActivity;
@@ -17,9 +18,9 @@ public class SettingsActivity extends PreferenceActivity
 {
     private CheckBoxPreference enableNotification;
 
-    private AlarmManager alarmManager;
+    private static AlarmManager alarmManager;
     private Intent notificationReceiverIntent;
-    private PendingIntent notificationReceiverPendingIntent;
+    private static PendingIntent notificationReceiverPendingIntent;
     private TimePickerDialog timePicker;
 
     @Override
@@ -38,62 +39,49 @@ public class SettingsActivity extends PreferenceActivity
             {
                 if (enableNotification.isChecked())
                 {
-                    //sending notifications logic
-                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
-                    String notifyTimePreference = prefs.getString(getString(R.string.preference_notification_time_key), "");
-
-                    alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                    notificationReceiverIntent = new Intent(getApplicationContext(), StartActivity.AlarmReceiver.class);
-                    notificationReceiverPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notificationReceiverIntent, 0);
-                    alarmManager.setRepeating(
-                            AlarmManager.RTC_WAKEUP,
-                            TimePickerDialog.timeToIntervalInMillis(notifyTimePreference),
-                            AlarmManager.INTERVAL_DAY,
-                            notificationReceiverPendingIntent);
-
-//            alarmManager.set(AlarmManager.RTC_WAKEUP,
-//                    TimePickerDialog.timeToIntervalInMillis(notifyTimePreference),
-//                    notificationReceiverPendingIntent);
-
-//                    enableNotification.setChecked(true);
+                    setAlarm();
                 }
-                return true;
+                return false;
             }
         });
 
 
-//        enableNotification.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
-//        {
-//            @Override
-//            public boolean onPreferenceClick(Preference preference)
-//            {
-//                enableNotification.setChecked(enableNotification.isChecked());
-//                if (enableNotification.isChecked())
-//                {
-//                    //sending notifications logic
-//                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//
-//                    String notifyTimePreference = prefs.getString(getString(R.string.preference_notification_time_key), "");
-//
-//                    alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-//                    notificationReceiverIntent = new Intent(getApplicationContext(), StartActivity.AlarmReceiver.class);
-//                    notificationReceiverPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notificationReceiverIntent, 0);
-//                    alarmManager.setInexactRepeating(
-//                            AlarmManager.RTC_WAKEUP,
-//                            TimePickerDialog.timeToIntervalInMillis(notifyTimePreference),
-//                            AlarmManager.INTERVAL_DAY,
-//                            notificationReceiverPendingIntent);
-//
-////            alarmManager.set(AlarmManager.RTC_WAKEUP,
-////                    TimePickerDialog.timeToIntervalInMillis(notifyTimePreference),
-////                    notificationReceiverPendingIntent);
-//
-//                    enableNotification.setChecked(true);
-//                }
-//                return false;
-//            }
-//        });
+        enableNotification.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+        {
+            @Override
+            public boolean onPreferenceClick(Preference preference)
+            {
+                enableNotification.setChecked(enableNotification.isChecked());
+                if (enableNotification.isChecked())
+                {
+                    setAlarm();
+                    Log.e("time from picker   ", TimePickerDialog.timeToIntervalInMillis(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString(getString(R.string.preference_notification_time_key), "")) + "");
+                }
+                else
+                {
+                    if (alarmManager != null)
+                    {
+                        alarmManager.cancel(notificationReceiverPendingIntent);
+                    }
+                }
+                return false;
+            }
+        });
+    }
 
+    private void setAlarm()
+    {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        String notifyTimePreference = prefs.getString(getString(R.string.preference_notification_time_key), "");
+
+        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        notificationReceiverIntent = new Intent(getApplicationContext(), StartActivity.AlarmReceiver.class);
+        notificationReceiverPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notificationReceiverIntent, 0);
+        alarmManager.setInexactRepeating(
+                AlarmManager.RTC_WAKEUP,
+                TimePickerDialog.timeToIntervalInMillis(notifyTimePreference),
+                AlarmManager.INTERVAL_DAY,
+                notificationReceiverPendingIntent);
     }
 }

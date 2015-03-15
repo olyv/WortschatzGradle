@@ -22,6 +22,10 @@ public class TimePickerDialog extends DialogPreference
         calendar.set(Calendar.HOUR_OF_DAY, getHour(timeInHourAndMinutes));
         calendar.set(Calendar.MINUTE, getMinute(timeInHourAndMinutes));
 
+        if(Calendar.getInstance().after(calendar)){
+            calendar.add(Calendar.DATE, 1);
+        }
+
         return calendar.getTimeInMillis();
     }
 
