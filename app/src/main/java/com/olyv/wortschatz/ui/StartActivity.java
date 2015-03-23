@@ -122,10 +122,10 @@ public class StartActivity extends Activity
 
             // Build the Notification
             Notification.Builder notificationBuilder = new Notification.Builder(
-                    context).setTicker("Wortschatz reminder")
+                    context).setTicker(context.getString(R.string.wortschatz_reminder))
                     .setSmallIcon(R.drawable.ic_stat_action_class)
-                    .setAutoCancel(true).setContentTitle("Wortschatz")
-                    .setContentText("Notification to complete lesson").setContentIntent(contentIntent)
+                    .setAutoCancel(true).setContentTitle(context.getString(R.string.app_name))
+                    .setContentText(context.getString(R.string.notification_to_complete_lesson)).setContentIntent(contentIntent)
                     .setSound(soundURI).setVibrate(mVibratePattern);
 
             // Get the NotificationManager

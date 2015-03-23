@@ -45,4 +45,5 @@
     <string name="correct_answer">Верный ответ\n\n%s</string>
     <string name="correct_answer_assertion">%s\n\nВерный ответ!</string>
     <string name="your_answer">Ваш ответ \'%s\'\n\n</string>
+    <string name="notification_to_complete_lesson">Пройдите урок в Wortschatz</string>
 </resources>

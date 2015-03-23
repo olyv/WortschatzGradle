@@ -45,4 +45,5 @@
     <string name="correct_answer">Вірна відповідь\n\n%s</string>
     <string name="correct_answer_assertion">%s\n\nВірна відповідь!</string>
     <string name="your_answer">Ваша відповідь \'%s\'\n\n</string>
+    <string name="notification_to_complete_lesson">Виконйте завдання у Wortschatz</string>
 </resources>
