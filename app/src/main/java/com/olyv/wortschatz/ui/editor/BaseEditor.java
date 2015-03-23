@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
+
 import com.olyv.wortschatz.lesson.DatabaseHelper;
 import com.olyv.wortschatz.lesson.items.Adjektive;
 import com.olyv.wortschatz.lesson.items.Noun;
@@ -33,6 +37,9 @@ public class BaseEditor extends Activity
     // common UI elements
     protected Button save;
     protected EditText translation;
+    protected EditText wordForTranslation;
+    protected Button translateButton;
+    protected TextView translatedWord;
 
     protected String selectedArticle;
 
@@ -65,6 +72,13 @@ public class BaseEditor extends Activity
         adjektive = (EditText) findViewById(R.id.adjektive);
         translation = (EditText) findViewById(R.id.adjektiveTranslation);
         save = (Button) findViewById(R.id.saveBtn);
+    }
+
+    protected void initializeTranslator()
+    {
+        wordForTranslation = (EditText) findViewById(R.id.enteredWord);
+        translateButton = (Button) findViewById(R.id.translateButton);
+        translatedWord = (TextView) findViewById(R.id.translatedWord);
     }
 
     private String getSelectedAuxVerb()
@@ -190,7 +204,7 @@ public class BaseEditor extends Activity
         return adjektiveItem;
     }
 
-    private boolean isEmptyField(EditText field)
+    protected boolean isEmptyField(EditText field)
     {
         return field.getText().toString().trim().matches("");
     }

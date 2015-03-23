@@ -11,9 +11,12 @@ import com.olyv.wortschatz.lesson.items.Adjektive;
 import com.olyv.wortschatz.lesson.items.LessonItemI;
 import com.olyv.wortschatz.lesson.items.Noun;
 import com.olyv.wortschatz.lesson.items.Verb;
+import com.olyv.wortschatz.translator.Client;
 import com.olyv.wortschatz.ui.R;
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 public class AddNewItemActivity extends BaseEditor
 {
@@ -44,12 +47,12 @@ public class AddNewItemActivity extends BaseEditor
         adjektiveEditor = (LinearLayout) findViewById(R.id.editorAdjektive);
         selectType = (Spinner) findViewById(R.id.selectTypeSpinner);
 
-        ArrayList<String> spinnerArray = new ArrayList<String>();
-        spinnerArray.add(verbType);
-        spinnerArray.add(nounType);
-        spinnerArray.add(adjektiveType);
+        ArrayList<String> wordTypeSpinnerArray = new ArrayList<String>();
+        wordTypeSpinnerArray.add(verbType);
+        wordTypeSpinnerArray.add(nounType);
+        wordTypeSpinnerArray.add(adjektiveType);
 
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, spinnerArray);
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, wordTypeSpinnerArray);
         selectType.setAdapter(spinnerArrayAdapter);
 
         selectType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
@@ -140,6 +143,40 @@ public class AddNewItemActivity extends BaseEditor
             public void onNothingSelected(AdapterView<?> parent)
             {
                 // TODO Auto-generated method stub
+            }
+        });
+
+        initializeTranslator();
+
+        translateButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                String result;
+                try
+                {
+                    String targetLanguage = Locale.getDefault().getLanguage();
+                    if ( !targetLanguage.equals("ru") || !targetLanguage.equals("ua"))
+                    {
+                        targetLanguage = "en";
+                    }
+
+                    Log.e("local", Locale.getDefault().getLanguage());
+                    if ( !isEmptyField(wordForTranslation) )
+                    {
+                        String wordToTranslate = wordForTranslation.getText().toString();
+                        result = new Client().execute("de", targetLanguage, wordToTranslate).get();
+                        translatedWord.setText(result);
+                    }
+                }
+                catch (InterruptedException e)
+                {
+                    e.printStackTrace();
+                } catch (ExecutionException e)
+                {
+                    e.printStackTrace();
+                }
             }
         });
     }
