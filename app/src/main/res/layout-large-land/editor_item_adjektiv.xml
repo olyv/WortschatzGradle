@@ -4,14 +4,16 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent">
 
-        <LinearLayout android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="25dp"/>
+        <LinearLayout android:orientation="vertical"
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1">
 
             <EditText
                 android:id="@+id/adjektive"
@@ -21,7 +23,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:textSize="@dimen/text_size_large"
                 android:singleLine="true"
-                android:layout_margin="25dp"
+                android:layout_margin="20dp"
                 android:hint="@string/enter_adjektive_hint"/>
 
 
@@ -49,4 +51,15 @@
                 android:layout_margin="25dp"/>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/editorVerb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <include layout="@layout/translator"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
 </ScrollView>

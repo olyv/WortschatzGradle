@@ -4,19 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<Spinner-->
-        <!--android:id="@+id/selectTranslateDirection"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:layout_marginLeft="16dp"-->
-        <!--android:layout_marginRight="16dp"-->
-        <!--android:textSize="@dimen/text_size_medium"/>-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp">
 
@@ -26,10 +18,10 @@
             android:layout_height="wrap_content"
             android:hint="Enter word to translate"
             android:singleLine="true"
-            android:textSize="@dimen/text_size_medium"
+            android:textSize="@dimen/text_size_large"
             android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_weight="5" />
+            android:layout_weight="6" />
 
         <Button
             android:id="@+id/translateButton"

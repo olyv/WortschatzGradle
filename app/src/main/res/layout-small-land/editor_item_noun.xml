@@ -109,5 +109,12 @@
                         android:layout_height="@dimen/start_activity_button_height"
                         android:layout_margin="25dp"/>
 
+            <LinearLayout
+                android:id="@+id/editorVerb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <include layout="@layout/translator"/>
+            </LinearLayout>
+
         </LinearLayout>
 </ScrollView>
