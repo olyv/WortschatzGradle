@@ -32,6 +32,17 @@
 
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/loadingIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:indeterminateOnly="true"
+        android:visibility="gone"
+        android:indeterminateDrawable="@xml/progress"
+        style="@android:style/Widget.ProgressBar.Small.Inverse"/>
+
     <TextView
         android:id="@+id/translatedWord"
         android:layout_width="match_parent"

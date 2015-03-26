@@ -57,5 +57,7 @@
     <string name="preference_adjektives_per_lesson_title">Number of Adjektives per lesson</string>
     <string name="notification_to_complete_lesson">Complete your lesson in Wortschatz</string>
     <string name="wortschatz_reminder" translatable="false">Wortschatz reminder</string>
+    <string name="no_results_from_search">No results, please check spelling</string>
+    <string name="check_connection_message">Check your internet connection</string>
 
 </resources>

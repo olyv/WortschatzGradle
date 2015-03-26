@@ -1,5 +1,8 @@
 package com.olyv.wortschatz.ui.editor;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +32,7 @@ public class AddNewItemActivity extends BaseEditor
     private String nounType;
     private String adjektiveType;
 
-    public static final String LOG_TAG = "AddNewItemActivityLog";
+    private static final String LOG_TAG = "AddNewItemActivityLog";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -153,29 +156,51 @@ public class AddNewItemActivity extends BaseEditor
             @Override
             public void onClick(View v)
             {
+                //check if user has internet connection
+                ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                if ((cm.getActiveNetworkInfo() == null))
+                {
+                    translatedWord.setText(getString(R.string.check_connection_message));
+                    return;
+                }
+
+                loadingIndicator.setVisibility(View.VISIBLE);
                 String result;
                 try
                 {
                     String targetLanguage = Locale.getDefault().getLanguage();
-                    if ( !targetLanguage.equals("ru") || !targetLanguage.equals("ua"))
+
+                    Log.e(LOG_TAG, "language is " + targetLanguage);
+
+                    if (!targetLanguage.equals("ru") && !targetLanguage.equals("ua"))
                     {
                         targetLanguage = "en";
                     }
 
-                    Log.e("local", Locale.getDefault().getLanguage());
                     if ( !isEmptyField(wordForTranslation) )
                     {
-                        String wordToTranslate = wordForTranslation.getText().toString();
+                        String wordToTranslate = wordForTranslation.getText().toString().trim();
                         result = new Client().execute("de", targetLanguage, wordToTranslate).get();
+
+                        if (result == null)
+                        {
+                            result = getApplicationContext().getString(R.string.no_results_from_search);
+                        }
+
                         translatedWord.setText(result);
                     }
                 }
                 catch (InterruptedException e)
                 {
-                    e.printStackTrace();
-                } catch (ExecutionException e)
+                    Log.e(LOG_TAG, "InterruptedException while executing AsyncTask");
+                }
+                catch (ExecutionException e)
                 {
-                    e.printStackTrace();
+                    Log.e(LOG_TAG, "ExecutionException while executing AsyncTask");
+                }
+                finally
+                {
+                    loadingIndicator.setVisibility(View.GONE);
                 }
             }
         });

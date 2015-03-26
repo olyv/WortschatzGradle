@@ -46,4 +46,6 @@
     <string name="correct_answer_assertion">%s\n\nВерный ответ!</string>
     <string name="your_answer">Ваш ответ \'%s\'\n\n</string>
     <string name="notification_to_complete_lesson">Пройдите урок в Wortschatz</string>
+    <string name="check_connection_message">Проверьте подключение к интернет</string>
+    <string name="no_results_from_search">Ничего не найдено, пожалуйста, проверьте написание</string>
 </resources>

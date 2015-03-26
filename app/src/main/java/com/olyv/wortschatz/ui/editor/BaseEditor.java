@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -40,6 +41,7 @@ public class BaseEditor extends Activity
     protected EditText wordForTranslation;
     protected Button translateButton;
     protected TextView translatedWord;
+    protected ProgressBar loadingIndicator;
 
     protected String selectedArticle;
 
@@ -79,6 +81,7 @@ public class BaseEditor extends Activity
         wordForTranslation = (EditText) findViewById(R.id.enteredWord);
         translateButton = (Button) findViewById(R.id.translateButton);
         translatedWord = (TextView) findViewById(R.id.translatedWord);
+        loadingIndicator = (ProgressBar) findViewById(R.id.loadingIndicator);
     }
 
     private String getSelectedAuxVerb()

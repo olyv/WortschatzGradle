@@ -1,11 +1,11 @@
 package com.olyv.wortschatz.translator;
 
+import android.content.res.Resources;
 import android.net.Uri;
-import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.squareup.okhttp.MediaType;
+import com.olyv.wortschatz.ui.R;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -16,9 +16,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-
 public class Client extends AsyncTask<String, Void, String>
 {
+    private static final String LOG_TAG = "TranslateWordTask";
+
     private String getTranslation(String json) throws JSONException {
       //translate("de", "ru", "Hund", "json");
         JSONObject object = new JSONObject(json);
@@ -26,7 +27,8 @@ public class Client extends AsyncTask<String, Void, String>
 
         if (array.length() == 0)
         {
-            return "No results found, please check spelling";
+            Log.i(LOG_TAG, "No results found for search by " + json);
+            return null;
         }
 
         String result = "";
@@ -38,10 +40,11 @@ public class Client extends AsyncTask<String, Void, String>
             {
                 phrase = currentTuc.getJSONObject("phrase");
                 result += phrase.getString("text") + "\n";
+
             }
             catch (JSONException e)
             {
-                e.printStackTrace();
+                Log.e(LOG_TAG, "org.json.JSONException: No value for phrase " + phrase);
             }
         }
         return result;
@@ -82,10 +85,11 @@ public class Client extends AsyncTask<String, Void, String>
         }
         catch (IOException e)
         {
-            e.printStackTrace();
-        } catch (JSONException e)
+            Log.e(LOG_TAG, "IOException while performing HTTP request");
+        }
+        catch (JSONException e)
         {
-            e.printStackTrace();
+            Log.e(LOG_TAG, "org.json.JSONException while performing HTTP request");
         }
 
         return null;
