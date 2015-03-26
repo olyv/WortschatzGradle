@@ -88,34 +88,34 @@
         android:id="@+id/correctPlural"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:hint="@string/enter_translation_hint"
+        android:layout_gravity="center"
         android:textSize="@dimen/text_size_large"
-        android:gravity="center_horizontal|center_vertical"
+        android:gravity="center"
         android:background="@drawable/edit_text_correct"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="25dp"
+        android:padding="16dp"
         android:visibility="gone"/>
 
     <TextView
         android:id="@+id/inCorrectPlural"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:hint="@string/enter_translation_hint"
+        android:layout_gravity="center"
         android:textSize="@dimen/text_size_large"
-        android:gravity="center_horizontal|center_vertical"
+        android:gravity="center"
         android:background="@drawable/edit_text_error"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="25dp"
+        android:padding="16dp"
         android:visibility="gone"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"/>
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/submitAnswerBtn"

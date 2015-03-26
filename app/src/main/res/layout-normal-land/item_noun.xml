@@ -30,10 +30,10 @@
             android:id="@+id/noun"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_gravity="center"
             android:textSize="@dimen/text_size_large"
             android:textStyle="bold"
-            android:gravity="center_horizontal|center_vertical"
+            android:gravity="center"
             android:layout_margin="5dp"
             android:layout_weight="1"/>
 
@@ -41,10 +41,10 @@
             android:id="@+id/nounTranslation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_gravity="center"
             android:textSize="@dimen/text_size_medium"
             android:layout_margin="5dp"
-            android:gravity="center_horizontal|center_vertical"
+            android:gravity="center"
             android:layout_weight="1"/>
 
     </LinearLayout>
@@ -96,20 +96,20 @@
             android:id="@+id/nounPlural"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_gravity="center"
             android:hint="@string/noun_plural_hint"
             android:singleLine="true"
             android:textSize="@dimen/text_size_large"
-            android:gravity="center_horizontal|center_vertical"
+            android:gravity="center"
             android:layout_weight="1.5"/>
 
         <TextView
             android:id="@+id/correctPlural"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_gravity="center"
             android:textSize="@dimen/text_size_large"
-            android:gravity="center_horizontal|center_vertical"
+            android:gravity="center"
             android:background="@drawable/edit_text_correct"
             android:visibility="gone"/>
 
@@ -117,9 +117,9 @@
             android:id="@+id/inCorrectPlural"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_gravity="center"
             android:textSize="@dimen/text_size_large"
-            android:gravity="center_horizontal|center_vertical"
+            android:gravity="center"
             android:background="@drawable/edit_text_error"
             android:visibility="gone"/>
 
