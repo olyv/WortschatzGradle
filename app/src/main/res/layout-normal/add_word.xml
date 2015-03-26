@@ -55,4 +55,11 @@
             <include layout="@layout/editor_item_adjektiv"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/translateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/translator"/>
+    </LinearLayout>
+
 </LinearLayout>

@@ -91,14 +91,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/editorVerb"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <include layout="@layout/translator"/>
-        </LinearLayout>
-
     </LinearLayout>
 
 </ScrollView>

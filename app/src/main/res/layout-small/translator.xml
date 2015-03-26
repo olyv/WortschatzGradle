@@ -13,7 +13,7 @@
 
         <EditText
             android:id="@+id/enteredWord"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter word to translate"
             android:singleLine="true"
@@ -24,7 +24,7 @@
 
         <Button
             android:id="@+id/translateButton"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_navigate"
             android:gravity="center"
@@ -41,8 +41,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="25dp"
-        android:layout_gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:layout_gravity="center" />
 
 </LinearLayout>
