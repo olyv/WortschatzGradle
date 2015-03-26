@@ -24,7 +24,8 @@
                 android:layout_gravity="center"
                 android:textSize="@dimen/text_size_large"
                 android:gravity="center"
-                android:layout_margin="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:hint="@string/enter_verb_hint"
                 android:singleLine="true"/>
 
@@ -34,7 +35,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="@dimen/text_size_large"
-                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:hint="@string/enter_translation_hint"
                 android:singleLine="true"/>
@@ -45,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:layout_margin="10dp">
+                        android:layout_marginBottom="10dp">
 
                         <RadioButton
                                 android:id="@+id/auxverbHat"
@@ -89,6 +91,14 @@
             android:layout_height="@dimen/start_activity_button_height"
             android:layout_margin="25dp"/>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/translateLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <include layout="@layout/translator"/>
         </LinearLayout>
 
     </LinearLayout>
