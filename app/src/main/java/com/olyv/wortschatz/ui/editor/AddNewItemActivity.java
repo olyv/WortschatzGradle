@@ -1,8 +1,8 @@
 package com.olyv.wortschatz.ui.editor;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,9 +14,16 @@ import com.olyv.wortschatz.lesson.items.Adjektive;
 import com.olyv.wortschatz.lesson.items.LessonItemI;
 import com.olyv.wortschatz.lesson.items.Noun;
 import com.olyv.wortschatz.lesson.items.Verb;
-import com.olyv.wortschatz.translator.Client;
 import com.olyv.wortschatz.ui.R;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
@@ -164,7 +171,6 @@ public class AddNewItemActivity extends BaseEditor
                     return;
                 }
 
-                loadingIndicator.setVisibility(View.VISIBLE);
                 String result;
                 try
                 {
@@ -180,7 +186,7 @@ public class AddNewItemActivity extends BaseEditor
                     if ( !isEmptyField(wordForTranslation) )
                     {
                         String wordToTranslate = wordForTranslation.getText().toString().trim();
-                        result = new Client().execute("de", targetLanguage, wordToTranslate).get();
+                        result = new TranslatorTask().execute("de", targetLanguage, wordToTranslate).get();
 
                         if (result == null)
                         {
@@ -198,23 +204,107 @@ public class AddNewItemActivity extends BaseEditor
                 {
                     Log.e(LOG_TAG, "ExecutionException while executing AsyncTask");
                 }
-                finally
-                {
-                    loadingIndicator.setVisibility(View.GONE);
-                }
             }
         });
     }
 
-    private class InsertItemTask extends AsyncTask<LessonItemI, Integer, Void>
+    private class TranslatorTask extends AsyncTask<String, Void, String>
     {
-        private LessonItemsHelper lessonHelper;
+        private static final String LOG_TAG = "TranslateWordTask";
+
+        private String getTranslation(String json) throws JSONException {
+            //translate("de", "ru", "Hund", "json");
+            JSONObject object = new JSONObject(json);
+            JSONArray array = object.getJSONArray("tuc");
+
+            if (array.length() == 0)
+            {
+                Log.i(LOG_TAG, "No results found for search by " + json);
+                return null;
+            }
+
+            String result = "";
+            for (int i = 0; i < array.length(); i++)
+            {
+                JSONObject currentTuc = (JSONObject) array.get(i);
+                JSONObject phrase = null;
+                try
+                {
+                    phrase = currentTuc.getJSONObject("phrase");
+                    result += phrase.getString("text") + "\n";
+
+                }
+                catch (JSONException e)
+                {
+                    Log.e(LOG_TAG, "org.json.JSONException: No value for phrase " + phrase);
+                }
+            }
+            return result;
+        }
+
+        OkHttpClient client = new OkHttpClient();
+
+        private String getURL(String fromLanguage, String destLanguage, String phrase)
+        {
+            Uri.Builder builder = new Uri.Builder();
+            builder.scheme("https")
+                    .authority("glosbe.com")
+                    .appendPath("gapi")
+                    .appendPath("translate")
+                    .appendQueryParameter("from", fromLanguage)
+                    .appendQueryParameter("dest", destLanguage)
+                    .appendQueryParameter("phrase", phrase)
+                    .appendQueryParameter("format", "json");
+            return builder.build().toString();
+        }
+
+        String doGetRequest(String url) throws IOException
+        {
+            Request request = new Request.Builder().url(url).build();
+            Response response = client.newCall(request).execute();
+            return response.body().string();
+        }
 
         @Override
         protected void onPreExecute()
         {
             super.onPreExecute();
+            loadingIndicator.setVisibility(View.VISIBLE);
         }
+
+        @Override
+        protected String doInBackground(String... params)
+        {
+            String path = getURL(params[0], params[1], params[2]);//"de", "ru", "Hund");
+
+            try
+            {
+                String response = doGetRequest(path);
+                return getTranslation(response);
+            }
+            catch (IOException e)
+            {
+                Log.e(LOG_TAG, "IOException while performing HTTP request");
+            }
+            catch (JSONException e)
+            {
+                Log.e(LOG_TAG, "org.json.JSONException while performing HTTP request");
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s)
+        {
+            super.onPostExecute(s);
+            loadingIndicator.setVisibility(View.GONE);
+        }
+    }
+
+    private class InsertItemTask extends AsyncTask<LessonItemI, Integer, Void>
+    {
+        private LessonItemsHelper lessonHelper;
 
         @Override
         protected Void doInBackground(LessonItemI... params)
@@ -239,12 +329,6 @@ public class AddNewItemActivity extends BaseEditor
                 lessonHelper.insertNewAdjektive(databaseHelper, (Adjektive) item);
             }
             return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result)
-        {
-            super.onPostExecute(result);
         }
     }
 }
