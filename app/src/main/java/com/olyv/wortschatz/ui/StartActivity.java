@@ -1,7 +1,6 @@
 package com.olyv.wortschatz.ui;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -21,19 +20,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.olyv.wortschatz.lesson.DatabaseHelper;
 import com.olyv.wortschatz.lesson.LessonItemsHelper;
 import com.olyv.wortschatz.lesson.items.LessonItemI;
-import com.olyv.wortschatz.ui.editor.AddNewItemActivity;
+import com.olyv.wortschatz.ui.editor.AddNewItem;
 import com.olyv.wortschatz.ui.lesson.LessonActivity;
 import com.olyv.wortschatz.ui.manager.LessonItemsManagerActivity;
 import com.olyv.wortschatz.ui.settings.NumberPickerPreference;
 import com.olyv.wortschatz.ui.settings.SettingsActivity;
-import com.olyv.wortschatz.ui.settings.TimePickerDialog;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -93,7 +90,8 @@ public class StartActivity extends Activity
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(getApplicationContext(), AddNewItemActivity.class);
+//                Intent intent = new Intent(getApplicationContext(), AddNewItemActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AddNewItem.class);
                 startActivity(intent);
             }
         });

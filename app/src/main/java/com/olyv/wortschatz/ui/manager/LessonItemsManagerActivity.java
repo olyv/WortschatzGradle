@@ -19,7 +19,8 @@ import com.olyv.wortschatz.lesson.items.Noun;
 import com.olyv.wortschatz.lesson.items.Verb;
 import com.olyv.wortschatz.ui.R;
 import com.olyv.wortschatz.ui.StartActivity;
-import com.olyv.wortschatz.ui.editor.LessonItemEditorActivity;
+import com.olyv.wortschatz.ui.editor.AddNewItem;
+import com.olyv.wortschatz.ui.editor.Editor;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -135,7 +136,8 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
                     .show();
                 return true;
             case R.id.menu_edit:
-                Intent intent = new Intent(getApplicationContext(), LessonItemEditorActivity.class);
+//                Intent intent = new Intent(getApplicationContext(), LessonItemEditorActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Editor.class);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(EDITED_ITEM, targetItem);
                 intent.putExtras(bundle);
