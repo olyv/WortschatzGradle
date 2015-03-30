@@ -1,11 +1,6 @@
-package com.olyv.wortschatz.ui.editor;
+package com.olyv.wortschatz.ui.editor.fragment;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.os.Parcelable;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +27,14 @@ public class VerbEditorFragment extends BaseFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        verbToEdit = getArguments().getParcelable(LessonItemsManagerActivity.EDITED_ITEM);
+        try
+        {
+            verbToEdit = getArguments().getParcelable(LessonItemsManagerActivity.EDITED_ITEM);
+        }
+        catch (NullPointerException e)
+        {
+            Log.i(LOG_TAG, "fragment is in Add New Item Mode");
+        }
 
         return inflater.inflate(R.layout.verb_editor_fragment, container, false);
     }
@@ -68,13 +70,23 @@ public class VerbEditorFragment extends BaseFragment
             @Override
             public void onClick(View v)
             {
-                Verb newVerb = getEnteredVerb(new Verb());
+                Verb newVerb = (verbToEdit != null)? getEnteredVerb(new Verb()) : getEnteredVerb((Verb) verbToEdit);
 
                 if (newVerb != null)
                 {
-                    Log.i(LOG_TAG, "inserting new verb " + verb.getText());
-                    InsertItemTask task = new InsertItemTask();
-                    task.execute(newVerb);
+                    if (verbToEdit != null)
+                    {
+                        UpdateItemTask task = new UpdateItemTask();
+                        task.execute(newVerb);
+                        getActivity().setResult(getActivity().RESULT_OK);
+                        Log.i(LOG_TAG, "updating verb " + newVerb.getWord());
+                    }
+                    else
+                    {
+                        InsertItemTask task = new InsertItemTask();
+                        task.execute(newVerb);
+                        Log.i(LOG_TAG, "inserting new verb " + newVerb.getWord());
+                    }
                     getActivity().finish();
                 }
             }

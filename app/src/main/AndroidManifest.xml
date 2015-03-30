@@ -60,15 +60,13 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".editor.LessonItemEditorActivity"
-            android:label="@string/manage_lesson_items"
-            android:theme="@style/AppTheme" >
-        </activity>
+            android:name=".editor.AddNewItem"
+            android:label="@string/title_activity_editor"
+            android:theme="@style/AppTheme" />
         <activity
-            android:name=".editor.AddNewItemActivity"
-            android:label="@string/add_lesson_item"
-            android:theme="@style/AppTheme" >
-        </activity>
+            android:name=".editor.Editor"
+            android:label="@string/title_activity_editor"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".settings.SettingsActivity"
             android:label="Settings" >
@@ -83,18 +81,6 @@
             android:theme="@android:style/Theme.Translucent" />
 
         <receiver android:name=".StartActivity$AlarmReceiver" />
-
-        <activity
-            android:name=".editor.AddNewItem"
-            android:label="@string/title_activity_editor"
-            android:theme="@style/AppTheme" >
-        </activity>
-
-        <activity
-            android:name=".editor.Editor"
-            android:label="@string/title_activity_editor"
-            android:theme="@style/AppTheme" >
-        </activity>
 
     </application>
 

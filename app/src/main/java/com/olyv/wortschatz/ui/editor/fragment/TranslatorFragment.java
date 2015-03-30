@@ -1,6 +1,5 @@
-package com.olyv.wortschatz.ui.editor;
+package com.olyv.wortschatz.ui.editor.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Uri;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.olyv.wortschatz.ui.R;

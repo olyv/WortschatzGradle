@@ -115,7 +115,7 @@ public class LessonActivity extends FragmentActivity
     {
         if (answeredItemsCounter == arrayOfLessonItems.size())
         {
-            String dialogMessage = String.format("Your result is %d out of %d\nfinish lesson?",
+            String dialogMessage = String.format(getString(R.string.result_message),
                     correctAnswersCounter, answeredItemsCounter);
 
             new AlertDialog.Builder(this)

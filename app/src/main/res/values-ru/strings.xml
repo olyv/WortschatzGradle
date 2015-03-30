@@ -48,4 +48,6 @@
     <string name="notification_to_complete_lesson">Пройдите урок в Wortschatz</string>
     <string name="check_connection_message">Проверьте подключение к интернет</string>
     <string name="no_results_from_search">Ничего не найдено, пожалуйста, проверьте написание</string>
+    <string name="title_activity_editor">Редактор</string>
+    <string name="result_message">Ваш результат: %d из of %d\nзакончить урок?</string>
 </resources>

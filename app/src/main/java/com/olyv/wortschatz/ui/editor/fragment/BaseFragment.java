@@ -1,4 +1,4 @@
-package com.olyv.wortschatz.ui.editor;
+package com.olyv.wortschatz.ui.editor.fragment;
 
 import android.app.Fragment;
 import android.os.AsyncTask;
@@ -54,6 +54,48 @@ public class BaseFragment extends Fragment
                 lessonHelper.insertNewAdjektive(databaseHelper, (Adjektive) item);
             }
             return null;
+        }
+    }
+
+    protected class UpdateItemTask extends AsyncTask<LessonItemI, Integer, Void>
+    {
+        private LessonItemsHelper lessonHelper;
+
+        @Override
+        protected void onPreExecute()
+        {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(LessonItemI... params)
+        {
+            if (databaseHelper == null)
+            {
+                databaseHelper = new DatabaseHelper(getActivity().getApplicationContext());
+            }
+
+            LessonItemI item = params[0];    //http://stackoverflow.com/questions/17549042/android-asynctask-passing-a-single-string
+            lessonHelper = new LessonItemsHelper();
+            if (item instanceof Verb)
+            {
+                lessonHelper.updateVerb(databaseHelper, (Verb) item);
+            }
+            if (item instanceof Noun)
+            {
+                lessonHelper.updateNoun(databaseHelper, (Noun) item);
+            }
+            if (item instanceof Adjektive)
+            {
+                lessonHelper.updateAdjektive(databaseHelper, (Adjektive) item);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result)
+        {
+            super.onPostExecute(result);
         }
     }
 }

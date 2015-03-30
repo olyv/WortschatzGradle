@@ -113,7 +113,7 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
             case R.id.menu_delete:
                 new AlertDialog.Builder(this)
                     .setTitle(R.string.remove_item)
-                    .setMessage(R.string.remove_confirmation + targetItem.getWord() + "'?")
+                    .setMessage(String.format(getString(R.string.remove_confirmation), targetItem.getWord()))
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener()
                     {
                         public void onClick(DialogInterface dialog, int which)
@@ -159,6 +159,7 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
                 performSearchTask(keyword);
                 Toast toast = Toast.makeText(getApplicationContext(), R.string.item_is_edited, Toast.LENGTH_SHORT);
                 toast.show();
+                performSearchTask("");
             }
         }
     }

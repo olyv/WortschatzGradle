@@ -1,6 +1,5 @@
-package com.olyv.wortschatz.ui.editor;
+package com.olyv.wortschatz.ui.editor.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,8 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import com.olyv.wortschatz.lesson.items.LessonItemI;
 import com.olyv.wortschatz.lesson.items.Noun;
+import com.olyv.wortschatz.lesson.items.Verb;
 import com.olyv.wortschatz.ui.R;
+import com.olyv.wortschatz.ui.manager.LessonItemsManagerActivity;
 
 public class NounEditorFragment extends BaseFragment
 {
@@ -21,10 +23,21 @@ public class NounEditorFragment extends BaseFragment
     private EditText plural;
     private RadioGroup article;
     private EditText translation;
+    private LessonItemI nounToEdit;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+
+        try
+        {
+            nounToEdit = getArguments().getParcelable(LessonItemsManagerActivity.EDITED_ITEM);
+        }
+        catch (NullPointerException e)
+        {
+            Log.i(LOG_TAG, "fragment is in Add New Item Mode");
+        }
+
         return inflater.inflate(R.layout.noun_editor_fragment, container, false);
     }
 
@@ -39,18 +52,47 @@ public class NounEditorFragment extends BaseFragment
         translation = (EditText) getActivity().findViewById(R.id.nounTranslation);
         save = (Button) getActivity().findViewById(R.id.saveBtn);
 
+        if (nounToEdit != null)
+        {
+            noun.setText(nounToEdit.getWord());
+            plural.setText(((Noun) nounToEdit).getPlural());
+            translation.setText(nounToEdit.getTranslation());
+            if (((Noun) nounToEdit).getArticle().equals(Noun.ARTICLE_DAS))
+            {
+                article.check(R.id.articleDas);
+            }
+            else if (((Noun) nounToEdit).getArticle().equals(Noun.ARTICLE_DER))
+            {
+                article.check(R.id.articleDer);
+            }
+            else if (((Noun) nounToEdit).getArticle().equals(Noun.ARTICLE_DIE))
+            {
+                article.check(R.id.articleDie);
+            }
+        }
+
         save.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Noun newNoun = getEnteredNoun(new Noun());
+                Noun newNoun = (nounToEdit != null)? getEnteredNoun(new Noun()) : getEnteredNoun((Noun) nounToEdit);
 
                 if (newNoun != null)
                 {
-                    Log.i(LOG_TAG, "inserting new noun " + noun.getText());
-                    InsertItemTask task = new InsertItemTask();
-                    task.execute(newNoun);
+                    if (nounToEdit != null)
+                    {
+                        UpdateItemTask task = new UpdateItemTask();
+                        task.execute(newNoun);
+                        getActivity().setResult(getActivity().RESULT_OK);
+                        Log.i(LOG_TAG, "updating noun " + newNoun.getWord());
+                    }
+                    else
+                    {
+                        InsertItemTask task = new InsertItemTask();
+                        task.execute(newNoun);
+                        Log.i(LOG_TAG, "inserting new noun " + newNoun.getWord());
+                    }
                     getActivity().finish();
                 }
             }

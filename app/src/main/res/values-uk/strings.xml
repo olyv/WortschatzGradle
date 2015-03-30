@@ -24,14 +24,14 @@
     <string name="item_type_spinner_label">Тип:</string>
     <string name="verb_task">Введіть Partizip II дієслова</string>
     <string name="noun_task">Введіть артікль та множину іменника</string>
-    <string name="adjektive_task">Введіть перевод</string>
+    <string name="adjektive_task">Введіть переклад</string>
     <string name="action_search">Пошук</string>
     <string name="reset_search">Всі</string>
     <string name="remove_item">Видалити запис</string>
     <string name="edit_item">Редагувати запис</string>
     <string name="remove_confirmation">Видалити \'</string>
     <string name="item_is_edited">Запис відредаговано</string>
-    <string name="no_results_found">Не знайдено записа за зопитом \'%s\'</string>
+    <string name="no_results_found">Не знайдено записа за запитом \'%s\'</string>
     <string name="about">Розробник Alexander Lyvin\n
         Wortschatz створено, щоб допомгти Вам легше запам\'ятовувати нiмецьки слова.\n
         Почнить додавати слова, якi Ви хочете запам\'ятовувати, до списку слiв.\n
@@ -48,4 +48,6 @@
     <string name="notification_to_complete_lesson">Виконйте завдання у Wortschatz</string>
     <string name="check_connection_message">Перевірте підключення до інтернет</string>
     <string name="no_results_from_search">Нічого не знайдено, будь ласка, перевірте написання</string>
+    <string name="title_activity_editor">Редактор</string>
+    <string name="result_message">Ваш результат: %d из of %d\nзакінчити урок?</string>
 </resources>

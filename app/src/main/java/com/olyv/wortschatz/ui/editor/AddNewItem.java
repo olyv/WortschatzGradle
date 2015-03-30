@@ -10,6 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.olyv.wortschatz.ui.R;
+import com.olyv.wortschatz.ui.editor.fragment.AdjektiveEditorFragment;
+import com.olyv.wortschatz.ui.editor.fragment.NounEditorFragment;
+import com.olyv.wortschatz.ui.editor.fragment.TranslatorFragment;
+import com.olyv.wortschatz.ui.editor.fragment.VerbEditorFragment;
 
 import java.util.ArrayList;
 
@@ -26,9 +30,6 @@ public class AddNewItem extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
-//        Bundle extras = getIntent().getExtras();
-//        final LessonItemI item = extras.getParcelable(LessonItemsManagerActivity.EDITED_ITEM);
 
         setContentView(R.layout.add_item_activity);
 
@@ -66,7 +67,6 @@ public class AddNewItem extends Activity
                     fragmentTransaction = fragmentManager.beginTransaction();
 
                     fragmentTransaction.replace(R.id.item_frame, new VerbEditorFragment());
-//                    fragmentTransaction.add(R.id.item_editor_frame, new VerbEditorFragment());
 
                     fragmentTransaction.commit();
                 }
@@ -75,7 +75,6 @@ public class AddNewItem extends Activity
                     fragmentTransaction = fragmentManager.beginTransaction();
 
                     fragmentTransaction.replace(R.id.item_frame, new NounEditorFragment());
-//                    fragmentTransaction.add(R.id.item_editor_frame, new VerbEditorFragment());
 
                     fragmentTransaction.commit();
                 }
@@ -84,7 +83,6 @@ public class AddNewItem extends Activity
                     fragmentTransaction = fragmentManager.beginTransaction();
 
                     fragmentTransaction.replace(R.id.item_frame, new AdjektiveEditorFragment());
-//                    fragmentTransaction.add(R.id.item_editor_frame, new VerbEditorFragment());
 
                     fragmentTransaction.commit();
                 }
