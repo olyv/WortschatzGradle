@@ -29,7 +29,7 @@
     <string name="reset_search">Все</string>
     <string name="remove_item">Удалить запись</string>
     <string name="edit_item">Редактировать запись</string>
-    <string name="remove_confirmation">Вы хотите удалить \'</string>
+    <string name="remove_confirmation">Вы хотите удалить \'%s\'?</string>
     <string name="item_is_edited">Запись изменена</string>
     <string name="no_results_found">Нет результатов для \'%s\'</string>
     <string name="about">Разарботчик Alexander Lyvin\n

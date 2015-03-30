@@ -52,6 +52,8 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="25dp"
         android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:visibility="gone" />
 
     <TextView
@@ -65,6 +67,8 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="25dp"
         android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:visibility="gone"/>
 
     <Button
