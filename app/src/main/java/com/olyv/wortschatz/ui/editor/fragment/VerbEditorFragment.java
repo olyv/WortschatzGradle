@@ -70,7 +70,7 @@ public class VerbEditorFragment extends BaseFragment
             @Override
             public void onClick(View v)
             {
-                Verb newVerb = (verbToEdit != null)? getEnteredVerb(new Verb()) : getEnteredVerb((Verb) verbToEdit);
+                Verb newVerb = (verbToEdit == null)? getEnteredVerb(new Verb()) : getEnteredVerb((Verb) verbToEdit);
 
                 if (newVerb != null)
                 {

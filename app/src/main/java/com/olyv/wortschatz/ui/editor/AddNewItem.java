@@ -62,30 +62,20 @@ public class AddNewItem extends Activity
             {
                 String selectedType = selectType.getSelectedItem().toString();
 
+                fragmentTransaction = fragmentManager.beginTransaction();
                 if (selectedType.equals(verbType))
                 {
-                    fragmentTransaction = fragmentManager.beginTransaction();
-
                     fragmentTransaction.replace(R.id.item_frame, new VerbEditorFragment());
-
-                    fragmentTransaction.commit();
                 }
                 else if (selectedType.equals(nounType))
                 {
-                    fragmentTransaction = fragmentManager.beginTransaction();
-
                     fragmentTransaction.replace(R.id.item_frame, new NounEditorFragment());
-
-                    fragmentTransaction.commit();
                 }
                 else if (selectedType.equals(adjektiveType))
                 {
-                    fragmentTransaction = fragmentManager.beginTransaction();
-
                     fragmentTransaction.replace(R.id.item_frame, new AdjektiveEditorFragment());
-
-                    fragmentTransaction.commit();
                 }
+                fragmentTransaction.commit();
             }
 
             @Override

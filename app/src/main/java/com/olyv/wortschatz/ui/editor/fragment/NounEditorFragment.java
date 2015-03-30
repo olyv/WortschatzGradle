@@ -28,7 +28,6 @@ public class NounEditorFragment extends BaseFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-
         try
         {
             nounToEdit = getArguments().getParcelable(LessonItemsManagerActivity.EDITED_ITEM);
@@ -76,7 +75,7 @@ public class NounEditorFragment extends BaseFragment
             @Override
             public void onClick(View v)
             {
-                Noun newNoun = (nounToEdit != null)? getEnteredNoun(new Noun()) : getEnteredNoun((Noun) nounToEdit);
+                Noun newNoun = (nounToEdit == null)? getEnteredNoun(new Noun()) : getEnteredNoun((Noun) nounToEdit);
 
                 if (newNoun != null)
                 {

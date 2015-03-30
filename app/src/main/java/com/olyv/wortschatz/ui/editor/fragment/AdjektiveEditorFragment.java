@@ -57,7 +57,7 @@ public class AdjektiveEditorFragment extends BaseFragment
             @Override
             public void onClick(View v)
             {
-                Adjektive newAdjektive = (adjektiveToEdit != null)?
+                Adjektive newAdjektive = (adjektiveToEdit == null)?
                         getEnteredAdjektive(new Adjektive()) : getEnteredAdjektive((Adjektive) adjektiveToEdit);
 
                 if (newAdjektive != null)

@@ -11,6 +11,7 @@ import com.olyv.wortschatz.lesson.items.Noun;
 import com.olyv.wortschatz.lesson.items.Verb;
 import com.olyv.wortschatz.ui.R;
 import com.olyv.wortschatz.ui.editor.fragment.AdjektiveEditorFragment;
+import com.olyv.wortschatz.ui.editor.fragment.BaseFragment;
 import com.olyv.wortschatz.ui.editor.fragment.NounEditorFragment;
 import com.olyv.wortschatz.ui.editor.fragment.VerbEditorFragment;
 import com.olyv.wortschatz.ui.manager.LessonItemsManagerActivity;
@@ -38,23 +39,22 @@ public class Editor extends Activity
 
             fragmentTransaction = fragmentManager.beginTransaction();
 
+            BaseFragment fragment = null;
             if (item instanceof Verb)
             {
-                VerbEditorFragment fragment = new VerbEditorFragment();
-                fragment.setArguments(bundle);
-                fragmentTransaction.add(R.id.editor_frame, fragment);
-                fragmentTransaction.commit();
+                fragment = new VerbEditorFragment();
             }
             if (item instanceof Noun)
             {
-                fragmentTransaction.add(R.id.editor_frame, new NounEditorFragment());
-                fragmentTransaction.commit();
+                fragment = new NounEditorFragment();
             }
             if (item instanceof Adjektive)
             {
-                fragmentTransaction.add(R.id.editor_frame, new AdjektiveEditorFragment());
-                fragmentTransaction.commit();
+                fragment = new AdjektiveEditorFragment();
             }
+            fragment.setArguments(bundle);
+            fragmentTransaction.add(R.id.editor_frame, fragment);
+            fragmentTransaction.commit();
         }
     }
 }
