@@ -12,7 +12,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.Toast;
 
 import com.olyv.wortschatz.lesson.items.LessonItemI;
 import com.olyv.wortschatz.ui.R;
@@ -115,8 +114,8 @@ public class LessonActivity extends FragmentActivity
     {
         if (answeredItemsCounter == arrayOfLessonItems.size())
         {
-            String dialogMessage = String.format(getString(R.string.result_message),
-                    correctAnswersCounter, answeredItemsCounter);
+            int percent = (correctAnswersCounter * 100) /answeredItemsCounter;
+            String dialogMessage = String.format(getString(R.string.result_message), percent);
 
             new AlertDialog.Builder(this)
                     .setMessage(dialogMessage)

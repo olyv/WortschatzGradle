@@ -49,5 +49,5 @@
     <string name="check_connection_message">Перевірте підключення до інтернет</string>
     <string name="no_results_from_search">Нічого не знайдено, будь ласка, перевірте написання</string>
     <string name="title_activity_editor">Редактор</string>
-    <string name="result_message">Ваш результат: %d из of %d\nзакінчити урок?</string>
+    <string name="result_message">Ваш результат: %d %% \nзакінчити урок?</string>
 </resources>
