@@ -50,4 +50,5 @@
     <string name="no_results_from_search">Нічого не знайдено, будь ласка, перевірте написання</string>
     <string name="title_activity_editor">Редактор</string>
     <string name="result_message">Ваш результат: %d %% \nзакінчити урок?</string>
+    <string name="translator_caption">Перекласти слово</string>
 </resources>

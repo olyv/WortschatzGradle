@@ -2,20 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp">
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/enteredWord"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter word to translate"
             android:singleLine="true"
             android:textSize="@dimen/text_size_large"
             android:gravity="center"
@@ -48,8 +47,6 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_medium"
         android:gravity="center_horizontal|center_vertical"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="25dp"
         android:layout_gravity="center" />
 

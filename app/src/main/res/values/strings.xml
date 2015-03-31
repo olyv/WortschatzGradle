@@ -62,5 +62,6 @@
 
     <string name="title_activity_editor">Editor</string>
     <string name="result_message">Your result is %d %% \nfinish lesson?</string>
+    <string name="translator_caption">Enter word to translate</string>
 
 </resources>
