@@ -11,13 +11,16 @@ import android.widget.RadioGroup;
 
 import com.olyv.wortschatz.lesson.items.LessonItemI;
 import com.olyv.wortschatz.lesson.items.Noun;
-import com.olyv.wortschatz.lesson.items.Verb;
 import com.olyv.wortschatz.ui.R;
 import com.olyv.wortschatz.ui.manager.LessonItemsManagerActivity;
 
 public class NounEditorFragment extends BaseFragment
 {
     private static final String LOG_TAG = "NounEditorFragment";
+    private static final String ENTERED_NOUN = "EnteredNoun";
+    private static final String ENTERED_TRANSLATION = "EnteredTranslation";
+    private static final String ENTERED_PLURAL = "EnterdPartizip";
+    private static final String ENTERED_ARTICLE = "SelectedAuxverb";
     private EditText noun;
     private Button save;
     private EditText plural;
@@ -37,19 +40,13 @@ public class NounEditorFragment extends BaseFragment
             Log.i(LOG_TAG, "fragment is in Add New Item Mode");
         }
 
-        return inflater.inflate(R.layout.noun_editor_fragment, container, false);
-    }
+        View view = inflater.inflate(R.layout.noun_editor_fragment, container, false);
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState)
-    {
-        super.onActivityCreated(savedInstanceState);
-
-        noun = (EditText) getActivity().findViewById(R.id.noun);
-        plural = (EditText) getActivity().findViewById(R.id.nounPlural);
-        article = (RadioGroup) getActivity().findViewById(R.id.articleSelect);
-        translation = (EditText) getActivity().findViewById(R.id.nounTranslation);
-        save = (Button) getActivity().findViewById(R.id.saveBtn);
+        noun = (EditText) view.findViewById(R.id.noun);
+        plural = (EditText) view.findViewById(R.id.nounPlural);
+        article = (RadioGroup) view.findViewById(R.id.articleSelect);
+        translation = (EditText) view.findViewById(R.id.nounTranslation);
+        save = (Button) view.findViewById(R.id.saveBtn);
 
         if (nounToEdit != null)
         {
@@ -96,6 +93,32 @@ public class NounEditorFragment extends BaseFragment
                 }
             }
         });
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState)
+    {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState != null)
+        {
+            noun.setText(savedInstanceState.getString(ENTERED_NOUN));
+            translation.setText(savedInstanceState.getString(ENTERED_TRANSLATION));
+            plural.setText(savedInstanceState.getString(ENTERED_PLURAL));
+            article.check(savedInstanceState.getInt(ENTERED_ARTICLE));
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(ENTERED_NOUN, noun.getText().toString());
+        outState.putString(ENTERED_TRANSLATION, translation.getText().toString());
+        outState.putString(ENTERED_PLURAL, plural.getText().toString());
+        outState.putInt(ENTERED_ARTICLE, article.getCheckedRadioButtonId());
     }
 
     private Noun getEnteredNoun(Noun nounItem)

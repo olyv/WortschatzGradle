@@ -10,13 +10,14 @@ import android.widget.EditText;
 
 import com.olyv.wortschatz.lesson.items.Adjektive;
 import com.olyv.wortschatz.lesson.items.LessonItemI;
-import com.olyv.wortschatz.lesson.items.Verb;
 import com.olyv.wortschatz.ui.R;
 import com.olyv.wortschatz.ui.manager.LessonItemsManagerActivity;
 
 public class AdjektiveEditorFragment extends BaseFragment
 {
     private static final String LOG_TAG = "AdjektiveEditorFragment";
+    private static final String ENTERED_ADJEKTIVE = "EnteredNoun";
+    private static final String ENTERED_TRANSLATION = "EnteredTranslation";
     private EditText adjektive;
     private EditText translation;
     private Button save;
@@ -34,13 +35,7 @@ public class AdjektiveEditorFragment extends BaseFragment
             Log.i(LOG_TAG, "fragment is in Add New Item Mode");
         }
 
-        return inflater.inflate(R.layout.adjektive_editor_fragment, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState)
-    {
-        super.onActivityCreated(savedInstanceState);
+        View view = inflater.inflate(R.layout.adjektive_editor_fragment, container, false);
 
         adjektive = (EditText) getActivity().findViewById(R.id.adjektive);
         translation = (EditText) getActivity().findViewById(R.id.adjektiveTranslation);
@@ -79,6 +74,28 @@ public class AdjektiveEditorFragment extends BaseFragment
                 }
             }
         });
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState)
+    {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState != null)
+        {
+            adjektive.setText(savedInstanceState.getString(ENTERED_ADJEKTIVE));
+            translation.setText(savedInstanceState.getString(ENTERED_TRANSLATION));
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(ENTERED_ADJEKTIVE, adjektive.getText().toString());
+        outState.putString(ENTERED_TRANSLATION, translation.getText().toString());
     }
 
     private Adjektive getEnteredAdjektive(Adjektive adjektiveItem)

@@ -17,6 +17,10 @@ import com.olyv.wortschatz.ui.manager.LessonItemsManagerActivity;
 public class VerbEditorFragment extends BaseFragment
 {
     private static final String LOG_TAG = "VerbEditorFragment";
+    private static final String ENTERED_VERB = "EnterdVerb";
+    private static final String ENTERED_TRANSLATION = "EnteredTranslation";
+    private static final String ENTERED_PARTIZIP = "EnterdPartizip";
+    private static final String ENTERED_AUXVERB = "SelectedAuxverb";
     private EditText verb;
     private EditText partizip;
     private RadioGroup auxverb;
@@ -36,19 +40,13 @@ public class VerbEditorFragment extends BaseFragment
             Log.i(LOG_TAG, "fragment is in Add New Item Mode");
         }
 
-        return inflater.inflate(R.layout.verb_editor_fragment, container, false);
-    }
+        View view = inflater.inflate(R.layout.verb_editor_fragment, container, false);
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState)
-    {
-        super.onActivityCreated(savedInstanceState);
-
-        verb = (EditText) getActivity().findViewById(R.id.verb);
-        partizip = (EditText) getActivity().findViewById(R.id.verbPartizip);
-        auxverb = (RadioGroup) getActivity().findViewById(R.id.auxverbSelect);
-        translation = (EditText) getActivity().findViewById(R.id.verbTranslation);
-        save = (Button) getActivity().findViewById(R.id.saveBtn);
+        verb = (EditText) view.findViewById(R.id.verb);
+        partizip = (EditText) view.findViewById(R.id.verbPartizip);
+        auxverb = (RadioGroup) view.findViewById(R.id.auxverbSelect);
+        translation = (EditText) view.findViewById(R.id.verbTranslation);
+        save = (Button) view.findViewById(R.id.saveBtn);
 
         if (verbToEdit != null)
         {
@@ -91,6 +89,32 @@ public class VerbEditorFragment extends BaseFragment
                 }
             }
         });
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState)
+    {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState != null)
+        {
+            verb.setText(savedInstanceState.getString(ENTERED_VERB));
+            translation.setText(savedInstanceState.getString(ENTERED_TRANSLATION));
+            partizip.setText(savedInstanceState.getString(ENTERED_PARTIZIP));
+            auxverb.check(savedInstanceState.getInt(ENTERED_AUXVERB));
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(ENTERED_VERB, verb.getText().toString());
+        outState.putString(ENTERED_TRANSLATION, translation.getText().toString());
+        outState.putString(ENTERED_PARTIZIP, partizip.getText().toString());
+        outState.putInt(ENTERED_AUXVERB, auxverb.getCheckedRadioButtonId());
     }
 
     private Verb getEnteredVerb(Verb verbItem)

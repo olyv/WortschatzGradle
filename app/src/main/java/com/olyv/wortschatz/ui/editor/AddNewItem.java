@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,11 +15,15 @@ import com.olyv.wortschatz.ui.editor.fragment.AdjektiveEditorFragment;
 import com.olyv.wortschatz.ui.editor.fragment.NounEditorFragment;
 import com.olyv.wortschatz.ui.editor.fragment.TranslatorFragment;
 import com.olyv.wortschatz.ui.editor.fragment.VerbEditorFragment;
+import com.olyv.wortschatz.ui.lesson.fragment.VerbFragment;
 
 import java.util.ArrayList;
 
 public class AddNewItem extends Activity
 {
+    private static final String VERB_FRAGMENT_TAG = "VerbFragmentTag";
+    private static final String NOUN_FRAGMENT_TAG = "NounFragmentTag";
+    private static final String ADJEKTIVE_FRAGMENT_TAG = "AdjektiveFragmentTag";
     private FragmentManager fragmentManager;
     private Spinner selectType;
     private String verbType;
@@ -27,25 +32,27 @@ public class AddNewItem extends Activity
     private FragmentTransaction fragmentTransaction;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
+    protected void onCreate(final Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.add_item_activity);
 
+        selectType = (Spinner) findViewById(R.id.selectTypeSpinner);
+
         fragmentManager = getFragmentManager();
 
-        selectType = (Spinner) findViewById(R.id.selectTypeSpinner);
+        //to retain state of translator fragment ypon orientation change
+        if (savedInstanceState == null)
+        {
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.translator_frame, new TranslatorFragment());
+            fragmentTransaction.commit();
+        }
 
         verbType = getString(R.string.verb_item);
         nounType = getString(R.string.noun_item);
         adjektiveType = getString(R.string.adjektive_item);
-
-        fragmentTransaction = fragmentManager.beginTransaction();
-
-        fragmentTransaction.add(R.id.translator_frame, new TranslatorFragment());
-
-        fragmentTransaction.commit();
 
         ArrayList<String> wordTypeSpinnerArray = new ArrayList<String>();
         wordTypeSpinnerArray.add(verbType);
@@ -62,18 +69,28 @@ public class AddNewItem extends Activity
             {
                 String selectedType = selectType.getSelectedItem().toString();
 
+                //check if fragment exists, if yes -- don't recreate it to be able to retain fragment state
                 fragmentTransaction = fragmentManager.beginTransaction();
-                if (selectedType.equals(verbType))
+                if (selectedType.equals(verbType) )
                 {
-                    fragmentTransaction.replace(R.id.item_frame, new VerbEditorFragment());
+                    if (fragmentManager.findFragmentByTag(VERB_FRAGMENT_TAG) == null)
+                    {
+                        fragmentTransaction.replace(R.id.item_frame, new VerbEditorFragment(), VERB_FRAGMENT_TAG);
+                    }
                 }
-                else if (selectedType.equals(nounType))
+                else if (selectedType.equals(nounType) )
                 {
-                    fragmentTransaction.replace(R.id.item_frame, new NounEditorFragment());
+                    if (fragmentManager.findFragmentByTag(NOUN_FRAGMENT_TAG) == null)
+                    {
+                        fragmentTransaction.replace(R.id.item_frame, new NounEditorFragment(), NOUN_FRAGMENT_TAG);
+                    }
                 }
                 else if (selectedType.equals(adjektiveType))
                 {
-                    fragmentTransaction.replace(R.id.item_frame, new AdjektiveEditorFragment());
+                    if (fragmentManager.findFragmentByTag(ADJEKTIVE_FRAGMENT_TAG) == null)
+                    {
+                        fragmentTransaction.replace(R.id.item_frame, new AdjektiveEditorFragment(), ADJEKTIVE_FRAGMENT_TAG);
+                    }
                 }
                 fragmentTransaction.commit();
             }

@@ -30,6 +30,8 @@ import java.util.concurrent.ExecutionException;
 public class TranslatorFragment extends BaseFragment
 {
     private static final String LOG_TAG = "TranslatorFragment";
+    private static final String GOTTEN_TRANSLATION = "TranslatedWordText";
+    private static final String WORD_TO_TRANSLATE = "WordToTranslateTExt";
     private ProgressBar loadingIndicator;
     private TextView translatedWord;
     private Button translateButton;
@@ -38,18 +40,12 @@ public class TranslatorFragment extends BaseFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.translator_fragment, container, false);
-    }
+        View view = inflater.inflate(R.layout.translator_fragment, container, false);
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState)
-    {
-        super.onActivityCreated(savedInstanceState);
-
-        wordForTranslation = (EditText) getActivity().findViewById(R.id.enteredWord);
-        translateButton = (Button) getActivity().findViewById(R.id.translateButton);
-        translatedWord = (TextView) getActivity().findViewById(R.id.translatedWord);
-        loadingIndicator = (ProgressBar) getActivity().findViewById(R.id.loadingIndicator);
+        wordForTranslation = (EditText) view.findViewById(R.id.enteredWord);
+        translateButton = (Button) view.findViewById(R.id.translateButton);
+        translatedWord = (TextView) view.findViewById(R.id.translatedWord);
+        loadingIndicator = (ProgressBar) view.findViewById(R.id.loadingIndicator);
 
         translateButton.setOnClickListener(new View.OnClickListener()
         {
@@ -99,6 +95,28 @@ public class TranslatorFragment extends BaseFragment
                 }
             }
         });
+
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState)
+    {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState != null)
+        {
+            wordForTranslation.setText(savedInstanceState.getString(WORD_TO_TRANSLATE));
+            translatedWord.setText(savedInstanceState.getString(GOTTEN_TRANSLATION));
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        outState.putString(WORD_TO_TRANSLATE, wordForTranslation.getText().toString());
+        outState.putString(GOTTEN_TRANSLATION, translatedWord.getText().toString());
     }
 
     private class TranslatorTask extends AsyncTask<String, Void, String>
@@ -135,8 +153,6 @@ public class TranslatorFragment extends BaseFragment
             return result;
         }
 
-        OkHttpClient client = new OkHttpClient();
-
         private String getURL(String fromLanguage, String destLanguage, String phrase)
         {
             Uri.Builder builder = new Uri.Builder();
@@ -153,6 +169,7 @@ public class TranslatorFragment extends BaseFragment
 
         String doGetRequest(String url) throws IOException
         {
+            OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder().url(url).build();
             Response response = client.newCall(request).execute();
             return response.body().string();
@@ -183,7 +200,6 @@ public class TranslatorFragment extends BaseFragment
             {
                 Log.e(LOG_TAG, "org.json.JSONException while performing HTTP request");
             }
-
             return null;
         }
 
