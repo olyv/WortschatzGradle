@@ -114,7 +114,8 @@ public class LessonActivity extends FragmentActivity
     {
         if (answeredItemsCounter == arrayOfLessonItems.size())
         {
-            int percent = (correctAnswersCounter * 100) /answeredItemsCounter;
+            int percent = (correctAnswersCounter * 100) / answeredItemsCounter;
+
             String dialogMessage = String.format(getString(R.string.result_message), percent);
 
             new AlertDialog.Builder(this)
