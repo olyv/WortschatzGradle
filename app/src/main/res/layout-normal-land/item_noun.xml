@@ -103,27 +103,37 @@
             android:gravity="center"
             android:layout_weight="1.5"/>
 
-        <TextView
-            android:id="@+id/correctPlural"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="@dimen/text_size_large"
-            android:gravity="center"
-            android:background="@drawable/edit_text_correct"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/inCorrectPlural"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="@dimen/text_size_large"
-            android:gravity="center"
-            android:background="@drawable/edit_text_error"
-            android:visibility="gone"/>
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/correctPlural"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_large"
+        android:gravity="center"
+        android:background="@drawable/edit_text_correct"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/inCorrectPlural"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_large"
+        android:gravity="center"
+        android:background="@drawable/edit_text_error"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/submitAnswerBtn"

@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:text="@string/adjektive_task"
         android:textSize="@dimen/text_size_small"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp" />
 
@@ -24,7 +24,7 @@
         android:layout_gravity="top"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         android:layout_below="@id/adjektiveTask" />
 
     <EditText

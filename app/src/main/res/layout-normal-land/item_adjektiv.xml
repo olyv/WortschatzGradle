@@ -45,30 +45,30 @@
         android:id="@+id/correctTranslation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:textSize="@dimen/text_size_large"
         android:gravity="center"
         android:background="@drawable/edit_text_correct"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:visibility="gone" />
 
     <TextView
         android:id="@+id/inCorrectTranslation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:textSize="@dimen/text_size_large"
         android:gravity="center"
         android:background="@drawable/edit_text_error"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:visibility="gone"/>
 
     <Button

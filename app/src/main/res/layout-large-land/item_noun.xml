@@ -63,8 +63,8 @@
             android:id="@+id/articleSelect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center|left"
-            android:layout_gravity="left|center_vertical"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
             android:orientation="horizontal"
             android:layout_weight="1">
 
@@ -73,6 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:padding="10dp"
                 android:text="@string/der"
                 android:textSize="@dimen/text_size_large"
                 android:checked="true"/>
@@ -81,6 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:padding="10dp"
                 android:text="@string/die"
                 android:textSize="@dimen/text_size_large"/>
             <RadioButton
@@ -88,6 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:padding="10dp"
                 android:text="@string/das"
                 android:textSize="@dimen/text_size_large"/>
         </RadioGroup>
@@ -103,31 +106,35 @@
             android:gravity="center"
             android:layout_weight="1.5"/>
 
-        <TextView
-            android:id="@+id/correctPlural"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="@dimen/text_size_large"
-            android:gravity="center"
-            android:background="@drawable/edit_text_correct"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/inCorrectPlural"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="@dimen/text_size_large"
-            android:gravity="center"
-            android:background="@drawable/edit_text_error"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:visibility="gone"/>
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/correctPlural"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/text_size_large"
+        android:gravity="center"
+        android:background="@drawable/edit_text_correct"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/inCorrectPlural"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/text_size_large"
+        android:gravity="center"
+        android:background="@drawable/edit_text_error"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/submitAnswerBtn"

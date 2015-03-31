@@ -96,8 +96,10 @@
         android:background="@drawable/edit_text_correct"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="35dp"
         android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:visibility="gone" />
 
     <TextView
@@ -109,8 +111,10 @@
         android:background="@drawable/edit_text_error"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="35dp"
         android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:visibility="gone"/>
 
     <Button
