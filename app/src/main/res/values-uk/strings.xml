@@ -16,10 +16,10 @@
     <string name="das">das</string>
     <string name="search_hint">Пошук</string>
     <string name="save_button_text">Зберегти</string>
-    <string name="enter_verb_hint">Дієслово</string>
+    <string name="enter_verb_hint">Введіть дієслово</string>
     <string name="enter_translation_hint">Переклад</string>
-    <string name="enter_noun_hint">Iменник</string>
-    <string name="enter_adjektive_hint">Переклад</string>
+    <string name="enter_noun_hint">Введіть іменник</string>
+    <string name="enter_adjektive_hint">Введіть слово</string>
     <string name="item_type_spinner_label">Тип:</string>
     <string name="verb_task">Введіть Partizip II дієслова</string>
     <string name="noun_task">Введіть артікль та множину іменника</string>

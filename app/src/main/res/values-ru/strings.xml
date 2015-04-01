@@ -16,10 +16,10 @@
     <string name="das">das</string>
     <string name="search_hint">Поиск</string>
     <string name="save_button_text">Сохранить</string>
-    <string name="enter_verb_hint">Глагол</string>
+    <string name="enter_verb_hint">Введите глагол</string>
     <string name="enter_translation_hint">Перевод</string>
-    <string name="enter_noun_hint">Существительное</string>
-    <string name="enter_adjektive_hint">Перевод</string>
+    <string name="enter_noun_hint">Введите существительное</string>
+    <string name="enter_adjektive_hint">Введите слово</string>
     <string name="item_type_spinner_label">Тип:</string>
     <string name="verb_task">Введите Partizip II для глагола</string>
     <string name="noun_task">Введите артикль и множественное число для существительного</string>
