@@ -11,6 +11,8 @@ import java.util.Calendar;
 
 public class TimePickerDialog extends DialogPreference
 {
+    public static final String DEFAULT_VALUE = "08:00";
+
     private int lastHour = 0;
     private int lastMinute = 0;
     private TimePicker picker = null;
@@ -22,7 +24,8 @@ public class TimePickerDialog extends DialogPreference
         calendar.set(Calendar.HOUR_OF_DAY, getHour(timeInHourAndMinutes));
         calendar.set(Calendar.MINUTE, getMinute(timeInHourAndMinutes));
 
-        if(Calendar.getInstance().after(calendar)){
+        if(Calendar.getInstance().after(calendar))
+        {
             calendar.add(Calendar.DATE, 1);
         }
 
@@ -31,7 +34,7 @@ public class TimePickerDialog extends DialogPreference
 
     private static int getHour(String time)
     {
-        String[] pieces=time.split(":");
+        String[] pieces = time.split(":");
 
         return(Integer.parseInt(pieces[0]));
     }
@@ -74,10 +77,10 @@ public class TimePickerDialog extends DialogPreference
         super.onDialogClosed(positiveResult);
 
         if (positiveResult) {
-            lastHour=picker.getCurrentHour();
-            lastMinute=picker.getCurrentMinute();
+            lastHour = picker.getCurrentHour();
+            lastMinute = picker.getCurrentMinute();
 
-            String time=String.valueOf(lastHour)+":"+String.valueOf(lastMinute);
+            String time = String.valueOf(lastHour) + ":" + String.valueOf(lastMinute);
 
             if (callChangeListener(time)) {
                 persistString(time);
@@ -96,7 +99,8 @@ public class TimePickerDialog extends DialogPreference
     {
         String time = null;
 
-        if (restoreValue) {
+        if (restoreValue)
+        {
             if (defaultValue == null)
             {
                 time = getPersistedString("00:00");

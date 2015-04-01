@@ -54,8 +54,13 @@ public class SettingsActivity extends PreferenceActivity
                 enableNotification.setChecked(enableNotification.isChecked());
                 if (enableNotification.isChecked())
                 {
+                    String pickerString = getString(R.string.preference_notification_time_key);
+                    long time = TimePickerDialog
+                                    .timeToIntervalInMillis(PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+                                    .getString(pickerString, TimePickerDialog.DEFAULT_VALUE));
+
+                    Log.i("time from picker ", time + "");
                     setAlarm();
-                    Log.e("time from picker   ", TimePickerDialog.timeToIntervalInMillis(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString(getString(R.string.preference_notification_time_key), "")) + "");
                 }
                 else
                 {
@@ -73,11 +78,12 @@ public class SettingsActivity extends PreferenceActivity
     {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-        String notifyTimePreference = prefs.getString(getString(R.string.preference_notification_time_key), "");
+        String notifyTimePreference = prefs.getString(getString(R.string.preference_notification_time_key), TimePickerDialog.DEFAULT_VALUE);
 
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         notificationReceiverIntent = new Intent(getApplicationContext(), StartActivity.AlarmReceiver.class);
         notificationReceiverPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, notificationReceiverIntent, 0);
+
         alarmManager.setInexactRepeating(
                 AlarmManager.RTC_WAKEUP,
                 TimePickerDialog.timeToIntervalInMillis(notifyTimePreference),
