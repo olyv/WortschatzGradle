@@ -65,7 +65,7 @@
             android:gravity="center|left"
             android:layout_gravity="left|center_vertical"
             android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1.05">
 
             <RadioButton
                 android:id="@+id/articleDer"
@@ -100,7 +100,7 @@
             android:singleLine="true"
             android:textSize="@dimen/text_size_large"
             android:gravity="center_horizontal|center_vertical"
-            android:layout_weight="1.1"/>
+            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/correctPlural"
