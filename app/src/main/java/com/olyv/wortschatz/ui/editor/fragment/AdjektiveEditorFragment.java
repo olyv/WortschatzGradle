@@ -37,9 +37,9 @@ public class AdjektiveEditorFragment extends BaseFragment
 
         View view = inflater.inflate(R.layout.adjektive_editor_fragment, container, false);
 
-        adjektive = (EditText) getActivity().findViewById(R.id.adjektive);
-        translation = (EditText) getActivity().findViewById(R.id.adjektiveTranslation);
-        save = (Button) getActivity().findViewById(R.id.saveBtn);
+        adjektive = (EditText) view.findViewById(R.id.adjektive);
+        translation = (EditText) view.findViewById(R.id.adjektiveTranslation);
+        save = (Button) view.findViewById(R.id.saveBtn);
 
         if (adjektiveToEdit != null)
         {
