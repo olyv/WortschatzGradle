@@ -9,17 +9,28 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.*;
-import android.widget.*;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.SearchView;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.olyv.wortschatz.lesson.DatabaseHelper;
 import com.olyv.wortschatz.lesson.LessonItemsHelper;
-import com.olyv.wortschatz.lesson.items.Adjektive;
+import com.olyv.wortschatz.lesson.items.Adjektive;                                                                                                                                                                                                                                                      
 import com.olyv.wortschatz.lesson.items.LessonItemI;
 import com.olyv.wortschatz.lesson.items.Noun;
 import com.olyv.wortschatz.lesson.items.Verb;
 import com.olyv.wortschatz.ui.R;
 import com.olyv.wortschatz.ui.StartActivity;
-import com.olyv.wortschatz.ui.editor.AddNewItem;
 import com.olyv.wortschatz.ui.editor.Editor;
 
 import java.util.ArrayList;
@@ -54,6 +65,17 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
             return;
         }
         listView = getListView();
+
+        //add commercial to the footer
+        AdView mAdView = new AdView(this);
+        mAdView.setAdUnitId(getString(R.string.banner_ad_unit_id));
+        mAdView.setAdSize(AdSize.SMART_BANNER);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+//        listView.setFooterDividersEnabled(true);
+        listView.addFooterView(mAdView);
+
         setListAdapter(adapter);
 
         String caller = getIntent().getStringExtra(StartActivity.OPEN_MANAGER);
