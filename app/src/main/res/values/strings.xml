@@ -43,6 +43,7 @@
     <string name="correct_answer">Correct answer\n\n%s</string>
 
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3591898587645439/4975194907</string>
+    <string name="footer_ad_unit_id" translatable="false">ca-app-pub-3591898587645439/1825508108</string>
 
     <string name="preference_notify_key" translatable="false">prefNotifyKey</string>
     <string name="preference_verbs_per_lesson_key" translatable="false">prefVerbsPerLessonKey</string>

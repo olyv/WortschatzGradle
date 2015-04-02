@@ -68,12 +68,11 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
 
         //add commercial to the footer
         AdView mAdView = new AdView(this);
-        mAdView.setAdUnitId(getString(R.string.banner_ad_unit_id));
+        mAdView.setAdUnitId(getString(R.string.footer_ad_unit_id));
         mAdView.setAdSize(AdSize.SMART_BANNER);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-//        listView.setFooterDividersEnabled(true);
         listView.addFooterView(mAdView);
 
         setListAdapter(adapter);
