@@ -26,7 +26,7 @@
             android:id="@+id/translateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_navigate"
+            android:background="@drawable/translator_button"
             android:gravity="center"
             android:layout_weight="1"/>
 

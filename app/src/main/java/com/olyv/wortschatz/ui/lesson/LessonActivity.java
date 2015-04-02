@@ -98,7 +98,7 @@ public class LessonActivity extends FragmentActivity
                 case DisplayMetrics.DENSITY_XXHIGH:
                 case DisplayMetrics.DENSITY_TV:
                     imgDot.setPadding(8, 8, 8, 8);
-                    params = new LayoutParams(25, 25);
+                    params = new LayoutParams(35, 35);
                     break;
             }
             imgDot.setLayoutParams(params);
