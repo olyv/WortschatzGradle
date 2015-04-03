@@ -51,7 +51,6 @@ public class StartActivity extends Activity
 
     private LinearLayout loadingIndicator;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -100,7 +99,6 @@ public class StartActivity extends Activity
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
     }
 
     public static class AlarmReceiver extends BroadcastReceiver
