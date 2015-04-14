@@ -23,12 +23,12 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="Notify me to complete exercise"
+        android:title="@string/notify_me_setting_title"
         android:key="pref_key_send_notifications" >
 
         <CheckBoxPreference
             android:key="@string/preference_notify_me_key"
-            android:title="Activate notifications"
+            android:title="@string/activate_notifications"
             android:defaultValue="false"/>
 
         <com.olyv.wortschatz.ui.settings.TimePickerDialog
@@ -37,7 +37,7 @@
             android:defaultValue="08:00"
             android:showDefault="true"
             android:dependency="@string/preference_notify_me_key"
-            android:summary="Send notification at specific time" /> />
+            android:summary="@string/send_notification_at_time" /> />
 
     </PreferenceCategory>
 
