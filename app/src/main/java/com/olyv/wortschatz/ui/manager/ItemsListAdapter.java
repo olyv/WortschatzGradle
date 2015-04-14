@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import com.olyv.wortschatz.lesson.items.LessonItemI;
 import com.olyv.wortschatz.ui.R;
 
@@ -15,8 +16,8 @@ import java.util.List;
 
 public class ItemsListAdapter extends BaseAdapter
 {
-    private List<LessonItemI> mItems = new ArrayList<LessonItemI>();
-    private final Context mContext;
+    private List<LessonItemI> listOfItems = new ArrayList<LessonItemI>();
+    private final Context context;
     private LayoutInflater inflater;
 
     private static final String LOG_TAG = "ItemsListAdapterLog";
@@ -29,22 +30,22 @@ public class ItemsListAdapter extends BaseAdapter
 
     public ItemsListAdapter(Context context, ArrayList<LessonItemI> items)
     {
-        this.mItems = items;
-        this.mContext = context;
+        this.listOfItems = items;
+        this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     // Add aItem to the adapter, notify observers that the data set has changed
     public void add(LessonItemI item)
     {
-        mItems.add(item);
+        listOfItems.add(item);
         notifyDataSetChanged();
     }
 
     // Clears the list adapter of all items.
     public void clear()
     {
-        mItems.clear();
+        listOfItems.clear();
         notifyDataSetChanged();
         Log.i(LOG_TAG, "list adapter is cleared from all items");
     }
@@ -52,36 +53,38 @@ public class ItemsListAdapter extends BaseAdapter
     //remove single item
     public void removeItem(int pos)
     {
-        mItems.remove(pos);
+        listOfItems.remove(pos);
         notifyDataSetChanged();
         Log.i(LOG_TAG, "item with position " + pos + " removed from list adapter");
     }
 
-    // Returns the number of ToDoItems
+    public void update(ArrayList<LessonItemI> newListOfItems)
+    {
+        listOfItems = newListOfItems;
+        notifyDataSetChanged();
+    }
+
+    // Returns the number of Items
     @Override
     public int getCount()
     {
-        return mItems.size();
+        return listOfItems.size();
     }
 
-    // Retrieve the number of ToDoItems
+    // Retrieve the number of Items
     @Override
     public LessonItemI getItem(int pos)
     {
-        return mItems.get(pos);
+        return listOfItems.get(pos);
     }
 
     @Override
     public long getItemId(int pos)
     {
-        return mItems.get(pos).getId();
+        return listOfItems.get(pos).getId();
     }
 
-    // Create a View for the ToDoItem at specified position
-    // Remember to check whether convertView holds an already allocated View
-    // before created a new View.
-    // Consider using the ViewHolder pattern to make scrolling more efficient
-    // See: http://developer.android.com/training/improving-layouts/smooth-scrolling.html
+    // Reason to use ViewHolder: http://developer.android.com/training/improving-layouts/smooth-scrolling.html
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent)

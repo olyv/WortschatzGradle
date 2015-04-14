@@ -2,12 +2,15 @@ package com.olyv.wortschatz.ui.manager;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.app.LoaderManager;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -18,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -36,7 +40,7 @@ import com.olyv.wortschatz.ui.editor.Editor;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class LessonItemsManagerActivity extends ListActivity implements View.OnCreateContextMenuListener
+public class LessonItemsManagerActivity extends ListActivity implements View.OnCreateContextMenuListener//, SearchView.OnQueryTextListener
 {
     private static final String LOG_TAG = "LessonItemsManagerLog";
     private static final int EDIT_ITEM_REQUEST = 0;
@@ -49,6 +53,8 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
 
     private ArrayList<LessonItemI> foundLessonItems = new ArrayList<LessonItemI>();     //result od search
     private static String keyword;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -65,6 +71,7 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
             return;
         }
         listView = getListView();
+//        listView.setTextFilterEnabled(false);
 
         //add commercial to the footer
         AdView mAdView = new AdView(this);
@@ -195,13 +202,17 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
+
         SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
         {
             @Override
             public boolean onQueryTextChange(String newText)
             {
+                 performSearchTask(newText);
+
                 return true;
             }
+
             @Override
             public boolean onQueryTextSubmit(String query)
             {
@@ -244,14 +255,8 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
         try
         {
             foundLessonItems = task.execute(keyword).get();
-            if (foundLessonItems.size() > 0)
-            {
-                adapter.clear();
-                for (LessonItemI item : foundLessonItems)
-                {
-                    adapter.add(item);
-                }
-            }
+
+            adapter.update(foundLessonItems);
         }
         catch (InterruptedException e)
         {
