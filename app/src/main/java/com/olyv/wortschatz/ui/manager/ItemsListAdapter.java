@@ -108,8 +108,6 @@ public class ItemsListAdapter extends BaseAdapter
         holder.foundItemTextView.setText(item.getWord());
         holder.foundItemTranslationTextView.setText(item.getTranslation());
 
-        Log.i(LOG_TAG, "getItemId() returns convertView");
-
         return convertView;
     }
 }

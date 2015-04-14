@@ -2,15 +2,12 @@ package com.olyv.wortschatz.ui.manager;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.app.LoaderManager;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -21,7 +18,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -29,7 +25,7 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.olyv.wortschatz.lesson.DatabaseHelper;
 import com.olyv.wortschatz.lesson.LessonItemsHelper;
-import com.olyv.wortschatz.lesson.items.Adjektive;                                                                                                                                                                                                                                                      
+import com.olyv.wortschatz.lesson.items.Adjektive;
 import com.olyv.wortschatz.lesson.items.LessonItemI;
 import com.olyv.wortschatz.lesson.items.Noun;
 import com.olyv.wortschatz.lesson.items.Verb;
@@ -148,9 +144,8 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
                         {
                             DeleteWord task = new DeleteWord();
                             task.execute(targetItem);
+                            Log.i(LOG_TAG, "removing " + targetItem.getWord());
                             adapter.removeItem(info.position);
-                            LessonItemI removedItem = foundLessonItems.remove(info.position);
-                            Log.i(LOG_TAG, "removed " + removedItem.getWord());
                         }
                     })
                     .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener()
@@ -160,11 +155,10 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
                             // do nothing, get back to the list of items
                         }
                     })
-                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setIconAttribute(android.R.attr.alertDialogIcon)
                     .show();
                 return true;
             case R.id.menu_edit:
-//                Intent intent = new Intent(getApplicationContext(), LessonItemEditorActivity.class);
                 Intent intent = new Intent(getApplicationContext(), Editor.class);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(EDITED_ITEM, targetItem);
@@ -234,17 +228,17 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
         };
         searchView.setOnQueryTextListener(queryTextListener);
 
-        MenuItem resetSearch = menu.findItem(R.id.reset_search);
-        resetSearch.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
-        {
-            @Override
-            public boolean onMenuItemClick(MenuItem item)
-            {
-                performSearchTask("");
-                Log.i(LOG_TAG, "list filled with all existent items");
-                return false;
-            }
-        });
+//        MenuItem resetSearch = menu.findItem(R.id.reset_search);
+//        resetSearch.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
+//        {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item)
+//            {
+//                performSearchTask("");
+//                Log.i(LOG_TAG, "list filled with all existent items");
+//                return false;
+//            }
+//        });
 
         return super.onCreateOptionsMenu(menu);
     }
