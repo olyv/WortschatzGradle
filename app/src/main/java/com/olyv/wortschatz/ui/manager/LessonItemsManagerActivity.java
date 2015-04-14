@@ -228,18 +228,6 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
         };
         searchView.setOnQueryTextListener(queryTextListener);
 
-//        MenuItem resetSearch = menu.findItem(R.id.reset_search);
-//        resetSearch.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
-//        {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item)
-//            {
-//                performSearchTask("");
-//                Log.i(LOG_TAG, "list filled with all existent items");
-//                return false;
-//            }
-//        });
-
         return super.onCreateOptionsMenu(menu);
     }
 
