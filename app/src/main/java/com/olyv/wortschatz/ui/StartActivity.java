@@ -113,7 +113,8 @@ public class StartActivity extends Activity
             PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, Intent.FLAG_ACTIVITY_NEW_TASK);
 
             long[] mVibratePattern = { 0, 200, 200, 300 };
-            String uriPath = "android.resource://com.olyv.wortschatz.ui/" + R.raw.notification;
+
+            String uriPath = "android.resource://" + getClass().getPackage() + "/" + R.raw.notification;
 
             Uri soundURI = Uri.parse(uriPath);
 

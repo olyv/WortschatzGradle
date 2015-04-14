@@ -100,6 +100,9 @@ public class LessonActivity extends FragmentActivity
                     imgDot.setPadding(8, 8, 8, 8);
                     params = new LayoutParams(35, 35);
                     break;
+                default:
+                    imgDot.setPadding(8, 8, 8, 8);
+                    params = new LayoutParams(35, 35);
             }
             imgDot.setLayoutParams(params);
             if (i == 0)
