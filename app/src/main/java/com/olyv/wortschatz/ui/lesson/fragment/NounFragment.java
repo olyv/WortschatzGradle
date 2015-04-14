@@ -18,10 +18,6 @@ public class NounFragment extends Fragment
 {
     //tags for flags
     public static final String IS_ANSWERED = "isItemAnswered";
-    private static final String CORRECT_ANSWER_VISIBLE = "isCorrectAnswerVisible";
-    private static final String WRONG_ANSWER_VISIBLE = "isWrongAnswerVisible";
-    private static final String SUBMIT_BUTTON_VISIBLE = "isButtonVisible";
-    private static final String ARTICLE_VISIBLE = "isArticleRadioGroupVisible";
     private static final String ANSWER = "answerWithComment";
     private static final String IS_CORRECT_ANSWER = "isAnswerCorrect";
 
@@ -31,6 +27,7 @@ public class NounFragment extends Fragment
     private RadioGroup articleRadioGroup;
     private Button submitAnswerButton;
     private EditText pluralText;
+    private TextView nounTask;
     private TextView correctAnswer;
     private TextView wrongAnswer;
 
@@ -68,11 +65,6 @@ public class NounFragment extends Fragment
     {
         super.onSaveInstanceState(outState);
 
-        outState.putBoolean(CORRECT_ANSWER_VISIBLE, correctAnswer.getVisibility() == View.VISIBLE);
-        outState.putBoolean(WRONG_ANSWER_VISIBLE, wrongAnswer.getVisibility() == View.VISIBLE);
-        outState.putBoolean(SUBMIT_BUTTON_VISIBLE, submitAnswerButton.getVisibility() == View.VISIBLE);
-        outState.putBoolean(SUBMIT_BUTTON_VISIBLE, pluralText.getVisibility() == View.VISIBLE);
-        outState.putBoolean(ARTICLE_VISIBLE, articleRadioGroup.getVisibility() == View.VISIBLE);
         outState.putBoolean(IS_ANSWERED, isItemAnswered);
         outState.putString(ANSWER, comment);
         outState.putBoolean(IS_CORRECT_ANSWER, isCorrectAnswer);
@@ -91,6 +83,7 @@ public class NounFragment extends Fragment
         articleRadioGroup = (RadioGroup) rootView.findViewById(R.id.articleSelect);
         submitAnswerButton = (Button) rootView.findViewById(R.id.submitAnswerBtn);
         pluralText = (EditText) rootView.findViewById(R.id.nounPlural);
+        nounTask = (TextView) rootView.findViewById(R.id.nounTask);
         correctAnswer = (TextView) rootView.findViewById(R.id.correctPlural);
         correctAnswer.setVisibility(View.GONE);
         wrongAnswer = (TextView) rootView.findViewById(R.id.inCorrectPlural);
@@ -165,5 +158,6 @@ public class NounFragment extends Fragment
         articleRadioGroup.setVisibility(View.GONE);
         submitAnswerButton.setVisibility(View.GONE);
         pluralText.setVisibility(View.GONE);
+        nounTask.setVisibility(View.GONE);
     }
 }

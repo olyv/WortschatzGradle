@@ -4,27 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/verbTask"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/verb_task"
-        android:textSize="@dimen/text_size_small"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" />
-
     <LinearLayout
         android:id="@+id/dataFromTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_below="@id/verbTask" >
+        android:layout_margin="16dp" >
 
         <TextView
             android:id="@+id/verb"
@@ -41,10 +27,21 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="@dimen/text_size_medium"
+            android:textSize="@dimen/text_size_large"
             android:gravity="center"
             android:layout_weight="1"/>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/taskDescripton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/verb_task"
+        android:textSize="@dimen/text_size_small"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@id/dataFromTask"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,13 +51,13 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_below="@id/dataFromTask">
+        android:layout_below="@id/taskDescripton">
 
         <RadioGroup
             android:id="@+id/auxverbSelect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="left|center"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal"
             android:layout_weight="1">
@@ -72,6 +69,7 @@
                 android:checked="true"
                 android:gravity="center"
                 android:padding="10dp"
+                android:layout_marginRight="5dp"
                 android:text="@string/hat"
                 android:textSize="@dimen/text_size_large"/>
 
@@ -81,6 +79,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="10dp"
+                android:layout_marginRight="5dp"
                 android:text="@string/ist"
                 android:textSize="@dimen/text_size_large"/>
 

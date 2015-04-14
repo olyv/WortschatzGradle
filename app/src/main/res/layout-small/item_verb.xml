@@ -5,17 +5,6 @@
     android:layout_width="match_parent" >
 
     <TextView
-        android:id="@+id/verbTask"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/verb_task"
-        android:textSize="@dimen/text_size_small"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" />
-
-    <TextView
         android:id="@+id/verb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,8 +13,8 @@
         android:layout_gravity="top"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@id/verbTask" />
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/verbTranslation"
@@ -37,6 +26,17 @@
         android:layout_marginBottom="10dp"
         android:layout_below="@id/verb"/>
 
+    <TextView
+        android:id="@+id/taskDescripton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/verb_task"
+        android:textSize="@dimen/text_size_small"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@id/verbTranslation"/>
+
     <RadioGroup
         android:id="@+id/auxverbSelect"
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="10dp"
-        android:layout_below="@+id/verbTranslation">
+        android:layout_below="@+id/taskDescripton">
 
         <RadioButton
             android:id="@+id/auxverbHat"

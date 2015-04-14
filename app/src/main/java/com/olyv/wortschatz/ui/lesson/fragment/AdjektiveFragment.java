@@ -17,9 +17,6 @@ public class AdjektiveFragment extends Fragment
 {
     //tags for flags
     public static final String IS_ANSWERED = "isItemAnswered";
-    private static final String CORRECT_ANSWER_VISIBLE = "isCorrectAnswerVisible";
-    private static final String WRONG_ANSWER_VISIBLE = "isWrongAnswerVisible";
-    private static final String SUBMIT_BUTTON_VISIBLE = "isButtonVisible";
     private static final String ANSWER = "answerWithComment";
     private static final String IS_CORRECT_ANSWER = "isAnswerCorrect";
 
@@ -64,10 +61,6 @@ public class AdjektiveFragment extends Fragment
     {
         super.onSaveInstanceState(outState);
 
-        outState.putBoolean(CORRECT_ANSWER_VISIBLE, correctAnswer.getVisibility() == View.VISIBLE);
-        outState.putBoolean(WRONG_ANSWER_VISIBLE, wrongAnswer.getVisibility() == View.VISIBLE);
-        outState.putBoolean(SUBMIT_BUTTON_VISIBLE, submitAnswerButton.getVisibility() == View.VISIBLE);
-        outState.putBoolean(SUBMIT_BUTTON_VISIBLE, translationText.getVisibility() == View.VISIBLE);
         outState.putBoolean(IS_ANSWERED, isItemAnswered);
         outState.putString(ANSWER, comment);
         outState.putBoolean(IS_CORRECT_ANSWER, isCorrectAnswer);

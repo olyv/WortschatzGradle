@@ -5,18 +5,7 @@
     android:layout_width="match_parent" >
 
     <TextView
-        android:id="@+id/verbTask"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/verb_task"
-        android:textSize="@dimen/text_size_small"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" />
-
-    <TextView
-        android:id="@+id/verb"
+        android:id="@+id/noun"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_large"
@@ -24,56 +13,75 @@
         android:layout_gravity="top"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="15dp"
-        android:layout_below="@id/verbTask" />
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp" />
 
     <TextView
-        android:id="@+id/verbTranslation"
+        android:id="@+id/nounTranslation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_medium"
+        android:textSize="@dimen/text_size_large"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="15dp"
-        android:layout_below="@id/verb"/>
+        android:layout_marginBottom="16dp"
+        android:layout_below="@id/noun"/>
+
+    <TextView
+        android:id="@+id/nounTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/noun_task"
+        android:textSize="@dimen/text_size_small"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@id/nounTranslation"/>
 
     <RadioGroup
-        android:id="@+id/auxverbSelect"
+        android:id="@+id/articleSelect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
         android:orientation="vertical"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="15dp"
-        android:layout_below="@+id/verbTranslation">
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/nounTask">
 
         <RadioButton
-            android:id="@+id/auxverbHat"
+            android:id="@+id/articleDer"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/der"
+            android:textSize="@dimen/text_size_medium"
             android:checked="true"
-            android:text="@string/hat"
+            android:layout_weight="0.5" />
+
+        <RadioButton
+            android:id="@+id/articleDie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/die"
             android:textSize="@dimen/text_size_medium"
             android:layout_weight="0.5" />
 
         <RadioButton
-            android:id="@+id/auxverbIst"
+            android:id="@+id/articleDas"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:text="@string/ist"
+            android:layout_height="wrap_content"
+            android:text="@string/das"
             android:textSize="@dimen/text_size_medium"
             android:layout_weight="0.5" />
     </RadioGroup>
 
     <EditText
-        android:id="@+id/enteredVerbPartizip"
+        android:id="@+id/nounPlural"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/verb_partizip_hint"
+        android:hint="@string/noun_plural_hint"
         android:singleLine="true"
         android:textSize="@dimen/text_size_large"
-        android:gravity="center"
+        android:gravity="center_horizontal|center_vertical"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="25dp"
@@ -81,11 +89,11 @@
         android:layout_above="@+id/submitAnswerBtn" />
 
     <TextView
-        android:id="@+id/correctPartizip"
+        android:id="@+id/correctPlural"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_large"
-        android:gravity="center"
+        android:gravity="center_horizontal|center_vertical"
         android:background="@drawable/edit_text_correct"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -96,7 +104,7 @@
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/inCorrectPartizip"
+        android:id="@+id/inCorrectPlural"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_large"
@@ -119,6 +127,7 @@
         android:textSize="@dimen/text_size_large"
         android:text="@string/submit"
         android:layout_gravity="center_horizontal"
+        android:layout_centerVertical="true"
         android:layout_marginBottom="30dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />

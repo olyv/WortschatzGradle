@@ -4,27 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/nounTask"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/noun_task"
-        android:textSize="@dimen/text_size_small"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" />
-
     <LinearLayout
         android:id="@+id/dataFromTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_below="@id/nounTask" >
+        android:layout_margin="16dp" >
 
         <TextView
             android:id="@+id/noun"
@@ -42,12 +28,23 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="@dimen/text_size_medium"
+            android:textSize="@dimen/text_size_large"
             android:layout_margin="5dp"
             android:gravity="center"
             android:layout_weight="1"/>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/nounTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/noun_task"
+        android:textSize="@dimen/text_size_small"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@id/dataFromTask"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,15 +52,15 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="21dp"
         android:layout_marginRight="16dp"
-        android:layout_below="@id/dataFromTask">
+        android:layout_below="@id/nounTask">
 
         <RadioGroup
             android:id="@+id/articleSelect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="left|center"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal"
             android:layout_weight="1">
@@ -74,6 +71,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="10dp"
+                android:layout_marginRight="5dp"
                 android:text="@string/der"
                 android:textSize="@dimen/text_size_large"
                 android:checked="true"/>
@@ -83,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="10dp"
+                android:layout_marginRight="5dp"
                 android:text="@string/die"
                 android:textSize="@dimen/text_size_large"/>
             <RadioButton
@@ -91,6 +90,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="10dp"
+                android:layout_marginRight="5dp"
                 android:text="@string/das"
                 android:textSize="@dimen/text_size_large"/>
         </RadioGroup>
@@ -104,7 +104,7 @@
             android:singleLine="true"
             android:textSize="@dimen/text_size_large"
             android:gravity="center"
-            android:layout_weight="1.5"/>
+            android:layout_weight="1.75"/>
 
     </LinearLayout>
 

@@ -5,27 +5,13 @@
     android:layout_width="match_parent">
 
     <TextView
-        android:id="@+id/adjektiveTask"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/adjektive_task"
-        android:textSize="@dimen/text_size_small"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" />
-
-    <TextView
         android:id="@+id/adjektive"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_large"
         android:textStyle="bold"
         android:layout_gravity="top"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@id/adjektiveTask" />
+        android:layout_margin="16dp" />
 
     <EditText
         android:id="@+id/enteredAdjeltiveTranslation"

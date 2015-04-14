@@ -19,7 +19,7 @@
             android:singleLine="true"
             android:textSize="@dimen/text_size_large"
             android:gravity="center"
-            android:hint="@string/enter_translation_hint"
+            android:hint="@string/translator_hint"
             android:layout_centerHorizontal="true"
             android:layout_weight="6" />
 
