@@ -1,6 +1,7 @@
 package com.olyv.wortschatz.ui.editor.fragment;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,18 +101,18 @@ public class AdjektiveEditorFragment extends BaseFragment
 
     private Adjektive getEnteredAdjektive(Adjektive adjektiveItem)
     {
-        if (isEmptyField(adjektive))
+        if (TextUtils.isEmpty(adjektive.getText()))
         {
-            adjektive.setError(getString(R.string.enter_adjektive_hint));
+            adjektive.setError(getString(R.string.enter_word_error_hint));
             return null;
         }
         else
         {
             adjektiveItem.setWord(adjektive.getText().toString().trim());
         }
-        if (isEmptyField(translation))
+        if (TextUtils.isEmpty(translation.getText()))
         {
-            translation.setError(getString(R.string.enter_translation_hint));
+            translation.setError(getString(R.string.enter_translation_error_hint));
             return null;
         }
         else

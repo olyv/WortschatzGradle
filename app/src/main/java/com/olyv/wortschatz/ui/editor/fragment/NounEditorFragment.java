@@ -1,6 +1,7 @@
 package com.olyv.wortschatz.ui.editor.fragment;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -123,27 +124,28 @@ public class NounEditorFragment extends BaseFragment
 
     private Noun getEnteredNoun(Noun nounItem)
     {
-        if (isEmptyField(noun))
+        if (TextUtils.isEmpty(noun.getText()))
         {
-            noun.setError(getString(R.string.enter_noun_hint));
+            noun.setError(getString(R.string.enter_noun_error_hint));
             return null;
         }
         else
         {
             nounItem.setWord(noun.getText().toString().trim());
         }
-        if (isEmptyField(translation))
+        if (TextUtils.isEmpty(translation.getText()))
         {
-            translation.setError(getString(R.string.enter_translation_hint));
+            translation.setError(getString(R.string.enter_translation_error_hint));
             return null;
         }
         else
         {
             nounItem.setTranslation(translation.getText().toString().trim());
         }
-        if (isEmptyField(plural))
+        if (TextUtils.isEmpty(plural.getText()))
         {
-            plural.setError(getString(R.string.noun_plural_hint));
+            plural.setError(getString(R.string.enter_plural_error_hint));
+            return null;
         }
         else
         {

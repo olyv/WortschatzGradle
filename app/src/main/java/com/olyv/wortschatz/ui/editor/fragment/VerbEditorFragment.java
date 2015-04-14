@@ -1,6 +1,7 @@
 package com.olyv.wortschatz.ui.editor.fragment;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -119,27 +120,27 @@ public class VerbEditorFragment extends BaseFragment
 
     private Verb getEnteredVerb(Verb verbItem)
     {
-        if (isEmptyField(verb))
+        if (TextUtils.isEmpty(verb.getText()))
         {
-            verb.setError(getString(R.string.enter_verb_hint));
+            verb.setError(getString(R.string.enter_verb_error_hint));
             return null;
         }
         else
         {
             verbItem.setWord(verb.getText().toString().trim());
         }
-        if (isEmptyField(translation))
+        if (TextUtils.isEmpty(translation.getText()))
         {
-            translation.setError(getString(R.string.enter_translation_hint));
+            translation.setError(getString(R.string.enter_translation_error_hint));
             return null;
         }
         else
         {
             verbItem.setTranslation(translation.getText().toString().trim());
         }
-        if (isEmptyField(partizip))
+        if (TextUtils.isEmpty(partizip.getText()))
         {
-            partizip.setError(getString(R.string.verb_partizip_hint));
+            partizip.setError(getString(R.string.enter_partizip_error_hint));
             return null;
         }
         else

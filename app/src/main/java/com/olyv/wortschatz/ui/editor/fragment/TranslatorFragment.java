@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,7 +73,7 @@ public class TranslatorFragment extends BaseFragment
                         targetLanguage = "en";
                     }
 
-                    if ( !isEmptyField(wordForTranslation) )
+                    if ( !TextUtils.isEmpty(wordForTranslation.getText()) )
                     {
                         String wordToTranslate = wordForTranslation.getText().toString().trim();
                         result = new TranslatorTask().execute("de", targetLanguage, wordToTranslate).get();

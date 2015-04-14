@@ -22,11 +22,6 @@ public class BaseFragment extends Fragment
         super.onActivityCreated(savedInstanceState);
     }
 
-    protected boolean isEmptyField(EditText field)
-    {
-        return field.getText().toString().trim().matches("");
-    }
-
     protected class InsertItemTask extends AsyncTask<LessonItemI, Integer, Void>
     {
         private LessonItemsHelper lessonHelper;
