@@ -87,7 +87,7 @@ public class LessonActivity extends FragmentActivity
             {
                 case DisplayMetrics.DENSITY_LOW:
                     imgDot.setPadding(3, 3, 3, 3);
-                    params = new LayoutParams(14, 14);
+                    params = new LayoutParams(12, 12);
                     break;
                 case DisplayMetrics.DENSITY_MEDIUM:  // mdpi or hdpi
                 case DisplayMetrics.DENSITY_HIGH:
