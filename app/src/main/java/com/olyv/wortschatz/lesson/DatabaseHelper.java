@@ -1,11 +1,10 @@
 package com.olyv.wortschatz.lesson;
 
-import java.io.*;
-import java.sql.SQLException;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
 import com.j256.ormlite.android.AndroidConnectionSource;
 import com.j256.ormlite.android.AndroidDatabaseConnection;
 import com.j256.ormlite.android.DatabaseTableConfigUtil;
@@ -19,6 +18,12 @@ import com.olyv.wortschatz.lesson.items.Adjektive;
 import com.olyv.wortschatz.lesson.items.Noun;
 import com.olyv.wortschatz.lesson.items.Verb;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.sql.SQLException;
+
 /**
  * Database helper class used to manage the creation and upgrading of the database. This class also provides
  * the DAOs used by the other classes.
@@ -29,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     protected AndroidConnectionSource connectionSource = new AndroidConnectionSource(this);
 
     private static final String DATABASE_NAME = "wortschatz.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // the DAO object to access the tables
     private Dao<Verb, Integer> verbDao = null;
@@ -162,12 +167,16 @@ public class DatabaseHelper extends SQLiteOpenHelper
             String verbs = "res/raw/insert_verbs.sql";
             String adjektives = "res/raw/insert_adjektives.sql";
 
+            String update_nouns = "res/raw/insert_nouns_update.sql";
+            String update_verbs = "res/raw/insert_verbs_update.sql";
+            String update_adjektives = "res/raw/insert_adjektives_update.sql";
+
             Dao<Verb, Integer> verbDao = getVerbDao();
             Dao<Noun, Integer> nounDao = getNounDao();
             Dao<Adjektive, Integer> adjektiveDao = getAdjektiveDao();
 
             InputStream in;
-
+            //insert first part
             in = this.getClass().getClassLoader().getResourceAsStream(verbs);
             verbDao.queryRaw(getStringFromInputStream(in));
 
@@ -175,6 +184,16 @@ public class DatabaseHelper extends SQLiteOpenHelper
             nounDao.queryRaw(getStringFromInputStream(in));
 
             in = this.getClass().getClassLoader().getResourceAsStream(adjektives);
+            adjektiveDao.queryRaw(getStringFromInputStream(in));
+
+            //insert from "update" sql files
+            in = this.getClass().getClassLoader().getResourceAsStream(update_verbs);
+            verbDao.queryRaw(getStringFromInputStream(in));
+
+            in = this.getClass().getClassLoader().getResourceAsStream(update_nouns);
+            nounDao.queryRaw(getStringFromInputStream(in));
+
+            in = this.getClass().getClassLoader().getResourceAsStream(update_adjektives);
             adjektiveDao.queryRaw(getStringFromInputStream(in));
 
             Log.i(LOG_TAG, "created new entries in onCreate");
@@ -230,12 +249,34 @@ public class DatabaseHelper extends SQLiteOpenHelper
     {
         try
         {
-            Log.i(DatabaseHelper.class.getName(), "onUpgrade");
-            TableUtils.dropTable(connectionSource, Noun.class, true);
-            TableUtils.dropTable(connectionSource, Verb.class, true);
-            TableUtils.dropTable(connectionSource, Adjektive.class, true);
-            // after we drop the old databases, we create the new ones
-            onCreate();
+            switch(newVersion)
+            {
+                case 2:
+                    String update_nouns = "res/raw/insert_nouns_update.sql";
+                    String update_verbs = "res/raw/insert_verbs_update.sql";
+                    String update_adjektives = "res/raw/insert_adjektives_update.sql";
+
+                    Dao<Verb, Integer> verbDao = getVerbDao();
+                    Dao<Noun, Integer> nounDao = getNounDao();
+                    Dao<Adjektive, Integer> adjektiveDao = getAdjektiveDao();
+
+                    InputStream in;
+
+                    in = this.getClass().getClassLoader().getResourceAsStream(update_verbs);
+                    verbDao.queryRaw(getStringFromInputStream(in));
+
+                    in = this.getClass().getClassLoader().getResourceAsStream(update_nouns);
+                    nounDao.queryRaw(getStringFromInputStream(in));
+
+                    in = this.getClass().getClassLoader().getResourceAsStream(update_adjektives);
+                    adjektiveDao.queryRaw(getStringFromInputStream(in));
+            }
+//            Log.i(DatabaseHelper.class.getName(), "onUpgrade");
+//            TableUtils.dropTable(connectionSource, Noun.class, true);
+//            TableUtils.dropTable(connectionSource, Verb.class, true);
+//            TableUtils.dropTable(connectionSource, Adjektive.class, true);
+//            // after we drop the old databases, we create the new ones
+//            onCreate();
         }
         catch (SQLException e)
         {
