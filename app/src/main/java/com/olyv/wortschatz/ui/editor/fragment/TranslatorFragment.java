@@ -68,7 +68,7 @@ public class TranslatorFragment extends BaseFragment
 
                     Log.e(LOG_TAG, "language is " + targetLanguage);
 
-                    if (!targetLanguage.equals("ru") && !targetLanguage.equals("ua"))
+                    if (!targetLanguage.equals("ru") && !targetLanguage.equals("uk"))
                     {
                         targetLanguage = "en";
                     }
