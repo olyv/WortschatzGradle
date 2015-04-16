@@ -8,7 +8,7 @@
     <string name="manage_lesson_items">Редагувати</string>
     <string name="verb_partizip_hint">Введіть Partizip II</string>
     <string name="submit">Перевірити</string>
-    <string name="noun_plural_hint">Введіть Plural</string>
+    <string name="enter_plural_hint">Введіть Plural</string>
     <string name="search_hint">Пошук</string>
     <string name="save_button_text">Зберегти</string>
     <string name="enter_verb_hint">Введіть дієслово</string>

@@ -50,8 +50,6 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
     private ArrayList<LessonItemI> foundLessonItems = new ArrayList<LessonItemI>();     //result od search
     private static String keyword;
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -67,7 +65,6 @@ public class LessonItemsManagerActivity extends ListActivity implements View.OnC
             return;
         }
         listView = getListView();
-//        listView.setTextFilterEnabled(false);
 
         //add commercial to the footer
         AdView mAdView = new AdView(this);

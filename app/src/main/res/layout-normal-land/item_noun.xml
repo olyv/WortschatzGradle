@@ -97,7 +97,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="@string/noun_plural_hint"
+            android:hint="@string/enter_plural_hint"
             android:singleLine="true"
             android:textSize="@dimen/text_size_large"
             android:gravity="center"
