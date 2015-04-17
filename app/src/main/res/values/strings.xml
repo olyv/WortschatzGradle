@@ -9,7 +9,7 @@
     <string name="manage_lesson_items">Manage Words</string>
     <string name="hat" translatable="false">hat</string>
     <string name="ist" translatable="false">ist</string>
-    <string name="verb_partizip_hint">Enter Partizip II</string>
+    <string name="enter_partizip_hint">Enter Partizip II</string>
     <string name="submit">Check</string>
     <string name="enter_plural_hint">Enter plural form</string>
     <string name="der" translatable="false">der</string>

@@ -6,7 +6,7 @@
     <string name="start_lesson">Почати урок</string>
     <string name="add_lesson_item">Додати слово</string>
     <string name="manage_lesson_items">Редагувати</string>
-    <string name="verb_partizip_hint">Введіть Partizip II</string>
+    <string name="enter_partizip_hint">Введіть Partizip II</string>
     <string name="submit">Перевірити</string>
     <string name="enter_plural_hint">Введіть Plural</string>
     <string name="search_hint">Пошук</string>

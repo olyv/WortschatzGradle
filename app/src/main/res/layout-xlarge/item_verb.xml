@@ -70,7 +70,7 @@
         android:id="@+id/enteredVerbPartizip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/verb_partizip_hint"
+        android:hint="@string/enter_partizip_hint"
         android:singleLine="true"
         android:textSize="@dimen/text_size_large"
         android:gravity="center"
