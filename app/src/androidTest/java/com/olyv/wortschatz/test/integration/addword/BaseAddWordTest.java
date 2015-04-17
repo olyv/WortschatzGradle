@@ -41,13 +41,5 @@ public class BaseAddWordTest extends ActivityInstrumentationTestCase2<StartActiv
         itemTypes.put(VERB, 0);
         itemTypes.put(NOUN, 1);
         itemTypes.put(ADJEKTIVE, 2);
-
-        newNoun = new Noun()
-                .setWord("TestWord")
-                .setArticle("der")
-                .setTranslation("TEstTranslation")
-                .setPlural("TestPlural");
     }
-
-
 }

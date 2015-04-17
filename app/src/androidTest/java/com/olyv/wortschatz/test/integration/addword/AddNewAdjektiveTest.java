@@ -5,8 +5,9 @@ import android.widget.ListView;
 
 import com.olyv.wortschatz.lesson.DatabaseHelper;
 import com.olyv.wortschatz.lesson.LessonItemsHelper;
+import com.olyv.wortschatz.lesson.items.Adjektive;
 import com.olyv.wortschatz.lesson.items.LessonItemI;
-import com.olyv.wortschatz.lesson.items.Noun;
+import com.olyv.wortschatz.lesson.items.Verb;
 import com.olyv.wortschatz.ui.R;
 import com.olyv.wortschatz.ui.StartActivity;
 import com.olyv.wortschatz.ui.editor.AddNewItem;
@@ -16,31 +17,25 @@ import junit.framework.Assert;
 
 import java.util.ArrayList;
 
-public class AddNewNounTest extends BaseAddWordTest
+public class AddNewAdjektiveTest extends BaseAddWordTest
 {
-    public void testAddNewNoun() throws Exception
+    public void testAddNewAdjektive() throws Exception
     {
-        newNoun = new Noun()
-                .setWord("TestWord")
-                .setTranslation("TEstTranslation")
-                .setPlural("TestPlural");
+        newAdjektive = new Adjektive()
+                .setWord("testAdj")
+                .setTranslation("testTransl");
 
         solo.clickOnButton(solo.getString(R.string.add_lesson_item));
 
         solo.assertCurrentActivity("Add new item activity is failed to open", AddNewItem.class);
 
-        solo.pressSpinnerItem(0, itemTypes.get(NOUN));
+        solo.pressSpinnerItem(0, itemTypes.get(ADJEKTIVE));
 
-        EditText enterNoun = solo.getEditText(solo.getString(R.string.enter_noun_hint));
-        solo.typeText(enterNoun, newNoun.getWord());
+        EditText enterVerb = solo.getEditText(solo.getString(R.string.enter_adjektive_hint));
+        solo.typeText(enterVerb, newAdjektive.getWord());
 
         EditText enterTranslation = solo.getEditText(solo.getString(R.string.enter_translation_hint));
-        solo.typeText(enterTranslation, newNoun.getTranslation());
-
-        solo.clickOnRadioButton(0);
-
-        EditText enterPlural = solo.getEditText(solo.getString(R.string.enter_plural_hint));
-        solo.typeText(enterPlural, newNoun.getPlural());
+        solo.typeText(enterTranslation, newAdjektive.getTranslation());
 
         solo.clickOnButton(solo.getString(R.string.save_button_text));
 
@@ -53,7 +48,7 @@ public class AddNewNounTest extends BaseAddWordTest
         solo.assertCurrentActivity("List of items is not displayed", LessonItemsManagerActivity.class);
 
         solo.clickOnActionBarItem(R.id.action_search);
-        solo.typeText(0, newNoun.getWord());
+        solo.typeText(0, newAdjektive.getWord());
 
         ListView filteredList = solo.getView(ListView.class, 0);
 
@@ -68,9 +63,9 @@ public class AddNewNounTest extends BaseAddWordTest
 
         databaseHelper = new DatabaseHelper(this.getInstrumentation().getTargetContext());
         lessonHelper = new LessonItemsHelper();
-        ArrayList<LessonItemI> foundItems = lessonHelper.searchItems(databaseHelper, newNoun.getWord());
+        ArrayList<LessonItemI> foundItems = lessonHelper.searchItems(databaseHelper, newAdjektive.getWord());
 
-        lessonHelper.deleteNoun(databaseHelper, (Noun) foundItems.get(0));
+        lessonHelper.deleteAdjektive(databaseHelper, (Adjektive) foundItems.get(0));
 
         DatabaseHelper.releaseDatabaseHelper(databaseHelper);
         super.tearDown();
