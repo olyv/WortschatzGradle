@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.olyv.wortschatz.ui"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="4"
+    android:versionName="1.4" >
 
     <uses-sdk android:minSdkVersion="15" />
 
@@ -77,6 +77,17 @@
             android:theme="@android:style/Theme.Translucent" />
 
         <receiver android:name=".StartActivity$AlarmReceiver" />
+
+        <!-- Widget stuff -->
+        <receiver android:name=".widget.WortschatzWidgetProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_info" />
+        </receiver>
 
     </application>
 

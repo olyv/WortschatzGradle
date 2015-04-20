@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/widget_margin"
+        android:paddingLeft="@dimen/widget_margin"
+        android:paddingTop="@dimen/widget_vertical_margin"
+        android:baselineAligned="true">
+
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:padding="@dimen/widget_vertical_margin"
+            android:src="@drawable/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/widgetCaption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5"
+            android:padding="@dimen/widget_margin"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_large"
+            android:text="@string/widget_caption"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/blue_button" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/widget_margin"
+        android:paddingLeft="@dimen/widget_margin"
+        android:baselineAligned="true">
+
+        <TextView
+            android:id="@+id/random_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:layout_gravity="center"
+            android:gravity="left|center_vertical"
+            android:padding="@dimen/widget_margin"
+            android:text="verschiedene"
+            android:textAlignment="center"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_large"/>
+
+        <ImageButton
+            android:id="@+id/widgetCheckButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:src="@drawable/translator_button"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
