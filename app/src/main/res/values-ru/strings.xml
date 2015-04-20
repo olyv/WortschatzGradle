@@ -53,4 +53,5 @@
     <string name="enter_translation_error_hint">Введите перевод, чтобы сохранить в словаре</string>
     <string name="enter_verb_error_hint">Введите глагол, чтобы сохранить в словаре</string>
     <string name="enter_word_error_hint">Введите слово, чтобы сохранить в словаре</string>
+    <string name="widget_caption">Проверить слово?</string>
 </resources>

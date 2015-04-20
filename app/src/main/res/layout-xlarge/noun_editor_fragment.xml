@@ -91,7 +91,7 @@
             android:layout_width="@dimen/start_activity_button_width"
             android:padding="@dimen/button_padding"
             android:background="@drawable/button"
-            android:textColor="#ffffff"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_large"
             android:layout_gravity="center_horizontal"
             android:text="@string/save_button_text"

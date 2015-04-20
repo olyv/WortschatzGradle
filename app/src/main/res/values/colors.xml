@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="blue_button" type="color">#0066CC</item>
+    <item name="blue_button_pressed" type="color">#0099FF</item>
+    <item name="blue_button_focused" type="color">#33B5E5</item>
+</resources>

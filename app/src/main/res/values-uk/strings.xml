@@ -53,4 +53,5 @@
     <string name="enter_partizip_error_hint">Введіть Partizip II, щоб додати до словника</string>
     <string name="enter_plural_error_hint">Введіть множину іменника, щоб додати до словника</string>
     <string name="enter_translation_error_hint">Введіть переклад, щоб додати до словника</string>
+    <string name="widget_caption">Перевірити слово?</string>
 </resources>

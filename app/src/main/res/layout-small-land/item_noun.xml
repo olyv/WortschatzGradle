@@ -125,7 +125,7 @@
         android:layout_width="@dimen/start_activity_button_width"
         android:layout_height="@dimen/start_activity_button_height"
         android:background="@drawable/button"
-        android:textColor="#ffffff"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/text_size_large"
         android:text="@string/submit"
         android:layout_gravity="center_horizontal"

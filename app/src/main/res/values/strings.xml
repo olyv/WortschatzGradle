@@ -72,5 +72,6 @@
     <string name="enter_word_error_hint">Enter word to add to dictionary</string>
     <string name="enter_verb_error_hint">Enter Verb to add to dictionary</string>
     <string name="enter_partizip_error_hint">Enter Perfect tense to add to dictionary</string>
+    <string name="widget_caption">Check word?</string>
 
 </resources>
