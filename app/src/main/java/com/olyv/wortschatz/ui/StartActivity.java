@@ -182,6 +182,10 @@ public class StartActivity extends Activity
             case R.id.settings:
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
+            case R.id.remove_ads:
+                String url = "https://play.google.com/store/apps/details?id=com.olyv.wortschatzplus.ui";
+                startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,7 +14,6 @@ import com.olyv.wortschatz.ui.editor.fragment.AdjektiveEditorFragment;
 import com.olyv.wortschatz.ui.editor.fragment.NounEditorFragment;
 import com.olyv.wortschatz.ui.editor.fragment.TranslatorFragment;
 import com.olyv.wortschatz.ui.editor.fragment.VerbEditorFragment;
-import com.olyv.wortschatz.ui.lesson.fragment.VerbFragment;
 
 import java.util.ArrayList;
 

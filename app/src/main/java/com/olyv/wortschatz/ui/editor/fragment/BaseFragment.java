@@ -3,7 +3,6 @@ package com.olyv.wortschatz.ui.editor.fragment;
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.EditText;
 
 import com.olyv.wortschatz.lesson.DatabaseHelper;
 import com.olyv.wortschatz.lesson.LessonItemsHelper;

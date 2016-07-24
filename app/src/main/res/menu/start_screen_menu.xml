@@ -8,6 +8,11 @@
           android:showAsAction="ifRoom|collapseActionView"/>
 
     <item android:id="@+id/settings"
-        android:title="Settings"
+        android:title="@string/settings"
         android:showAsAction="ifRoom|collapseActionView" />
+
+    <item android:id="@+id/remove_ads"
+        android:title="@string/remove_ads"
+        android:showAsAction="ifRoom|collapseActionView" />
+
 </menu>

@@ -31,12 +31,7 @@
     <string name="remove_confirmation">Are you sure you want to delete \'%s\'?</string>
     <string name="item_is_edited">Item is edited</string>
     <string name="no_results_found">No results found for \'%s\'</string>
-    <string name="about">Created by Alexander Lyvin\n
-        Wortschatz is designed to make memorizing German words easier.\n
-        Start by adding words you want to memorize to the list.\n
-        The lesson will be formed from the randomly selected words in the list.\n
-        Edit or delete a word in the Edit menu.</string>
-
+    <string name="about">Created by Alexander Lyvin. Wortschatz is designed to make memorizing German words easier. Start by adding words you want to memorize to the list. The lesson will be formed from the randomly selected words in the list. Edit or delete a word in the Edit menu. Try web version on http://wortschatz-olyv.rhcloud.com</string>
     <string name="correct_answer_assertion">%s\n\nCorrect answer!</string>
     <string name="your_answer">Your answer \'%s\'\n\n</string>
     <string name="correct_answer">Correct answer\n\n%s</string>
@@ -73,5 +68,8 @@
     <string name="enter_verb_error_hint">Enter Verb to add to dictionary</string>
     <string name="enter_partizip_error_hint">Enter Perfect tense to add to dictionary</string>
     <string name="widget_caption">Check word?</string>
+    <string name="remove_adds">Remove Adds</string>
+    <string name="settings">Settings</string>
+    <string name="remove_ads">Remove ads</string>
 
 </resources>

@@ -16,7 +16,7 @@
     <string name="enter_noun_hint">Введите существительное</string>
     <string name="enter_adjektive_hint">Введите слово</string>
     <string name="item_type_spinner_label">Тип:</string>
-    <string name="verb_task">Выберите вспомогатедьный шлагол:</string>
+    <string name="verb_task">Выберите вспомогательный глагол:</string>
     <string name="noun_task">Выберите артикль существительного</string>
     <string name="adjektive_task">Введите перевод</string>
     <string name="action_search">Поиск</string>
@@ -25,11 +25,7 @@
     <string name="remove_confirmation">Вы хотите удалить \'%s\'?</string>
     <string name="item_is_edited">Запись изменена</string>
     <string name="no_results_found">Нет результатов для \'%s\'</string>
-    <string name="about">Разарботчик Alexander Lyvin\n
-        Wortschatz создан, чтобы помочь Вам запоминать немецкие слова.\n
-        Добавляйте слова, которые вы хотите запомнить, в список.\n
-        Урок будет сформирован из слов выбранных случайным образом из списка доступных.\n
-        Редактируйте или удаляйте слова в меню \'Редактировать\'. </string>
+    <string name="about">Разработчик Alexander Lyvin. Wortschatz создан, чтобы помочь Вам запоминать немецкие слова. Добавляйте слова, которые вы хотите запомнить, в список. Урок будет сформирован из слов выбранных случайным образом из списка доступных. Редактируйте или удаляйте слова в меню \'Редактировать\'. Воспользуйтесь он-лайн версией на http://wortschatz-olyv.rhcloud.com</string>
     <string name="preference_nouns_per_lesson_title">Количество существительных в уроке</string>
     <string name="preference_number_of_items">Количество различных заданий в уроке</string>
     <string name="preference_number_of_items_summary">Установить количество заданий каждого типа в уроке</string>
@@ -44,7 +40,7 @@
     <string name="title_activity_editor">Редактор</string>
     <string name="result_message">Ваш результат: %d %% \nзакончить урок?</string>
     <string name="translator_hint">Перевести слово</string>
-    <string name="activate_notifications">Включать напоминания</string>
+    <string name="activate_notifications">Включить напоминания</string>
     <string name="notify_me_setting_title">Напомнить мне выполнить урок</string>
     <string name="send_notification_at_time">Напомнить в заданное время</string>
     <string name="enter_noun_error_hint">Введите существительное, чтобы сохранить в словаре</string>
@@ -54,4 +50,7 @@
     <string name="enter_verb_error_hint">Введите глагол, чтобы сохранить в словаре</string>
     <string name="enter_word_error_hint">Введите слово, чтобы сохранить в словаре</string>
     <string name="widget_caption">Проверить слово?</string>
+    <string name="remove_adds">Удалить рекламу</string>
+    <string name="settings">Настройки</string>
+    <string name="remove_ads">Удалить рекламу</string>
 </resources>

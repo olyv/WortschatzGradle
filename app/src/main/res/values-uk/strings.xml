@@ -25,11 +25,7 @@
     <string name="remove_confirmation">Видалити \'%s\'?</string>
     <string name="item_is_edited">Запис відредаговано</string>
     <string name="no_results_found">Не знайдено записа за запитом \'%s\'</string>
-    <string name="about">Розробник Alexander Lyvin\n
-        Wortschatz створено, щоб допомгти Вам легше запам\'ятовувати нiмецьки слова.\n
-        Почнить додавати слова, якi Ви хочете запам\'ятовувати, до списку слiв.\n
-        Урок буде сформовано зi слiв що випадково выбранi iз списка.\n
-        Редагуйте або видаляйте слова слова в меню \'Редагувати\'. </string>
+    <string name="about">Розробник Alexander Lyvin. Wortschatz створено, щоб допомгти Вам легше запам\'ятовувати нiмецьки слова. Почнить додавати слова, якi Ви хочете запам\'ятовувати, до списку слiв. Урок буде сформовано зi слiв що випадково выбранi iз списка. Редагуйте або видаляйте слова в меню \'Редагувати\'. Спробуйте додаток он-лайн за адресою http://wortschatz-olyv.rhcloud.com</string>
     <string name="preference_nouns_per_lesson_title">Кількість іменників в уроці</string>
     <string name="preference_number_of_items">Кількість різних завдань в уроці</string>
     <string name="preference_number_of_items_summary"> Встановити кількість завдань кожного типу в уроці</string>
@@ -47,11 +43,14 @@
     <string name="activate_notifications">Увімкнути сповіщення</string>
     <string name="notify_me_setting_title">Нагадати мені виконати урок</string>
     <string name="send_notification_at_time">Нагадати в заданий час</string>
-    <string name="enter_noun_error_hint">Введ</string>
+    <string name="enter_noun_error_hint">Введіть іменник, щоб додати до словника</string>
     <string name="enter_word_error_hint">Введіть слово, щоб додати до словника</string>
     <string name="enter_verb_error_hint">Введіть дієслово, щоб додати до словника</string>
     <string name="enter_partizip_error_hint">Введіть Partizip II, щоб додати до словника</string>
     <string name="enter_plural_error_hint">Введіть множину іменника, щоб додати до словника</string>
     <string name="enter_translation_error_hint">Введіть переклад, щоб додати до словника</string>
     <string name="widget_caption">Перевірити слово?</string>
+    <string name="remove_adds">Видалити рекламу</string>
+    <string name="settings">Налаштування</string>
+    <string name="remove_ads">Видалити рекламу</string>
 </resources>

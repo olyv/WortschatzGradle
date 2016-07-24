@@ -31,5 +31,5 @@ INSERT INTO Noun (singular, plural, article, translation) VALUES
 ('Krieg', 'Kriege', 'der', 'война'),
 ('Blume', 'Blumen', 'die', 'цветок'),
 ('Feuer', 'Feuer', 'das', 'огонь'),
-('Tasse', 'Tassen', 'die', 'мать'),
-('Mutter', 'Mütter', 'die', 'чашка');
+('Tasse', 'Tassen', 'die', 'чашка'),
+('Mutter', 'Mütter', 'die', 'мать');
