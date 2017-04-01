@@ -20,6 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ShareActionProvider;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -50,6 +52,7 @@ public class StartActivity extends Activity
     private Button addNewItemButton;
 
     private LinearLayout loadingIndicator;
+    private ShareActionProvider shareActionProvider;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -156,6 +159,10 @@ public class StartActivity extends Activity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.start_screen_menu, menu);
+
+        MenuItem item = menu.findItem(R.id.menu_item_share);
+        shareActionProvider = (ShareActionProvider) item.getActionProvider();
+
         return true;
     }
 
@@ -186,6 +193,17 @@ public class StartActivity extends Activity
                 String url = "https://play.google.com/store/apps/details?id=com.olyv.wortschatzplus.ui";
                 startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
                 return true;
+            case R.id.menu_item_share:
+                String shareUrl = "https://play.google.com/store/apps/details?id=com.olyv.wortschatz.ui";
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, shareUrl);
+                sendIntent.setType("text/plain");
+                try {
+                    startActivity(Intent.createChooser(sendIntent, "Wortschatz Plus"));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(StartActivity.this, "Some of applications for sharing are not installed.", Toast.LENGTH_SHORT).show();
+                }
             default:
                 return super.onOptionsItemSelected(item);
         }
