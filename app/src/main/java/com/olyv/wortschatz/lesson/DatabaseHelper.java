@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
+import java.util.Locale;
 
 /**
  * Database helper class used to manage the creation and upgrading of the database. This class also provides
@@ -163,13 +164,45 @@ public class DatabaseHelper extends SQLiteOpenHelper
             TableUtils.createTable(connectionSource, Adjektive.class);
             TableUtils.createTable(connectionSource, Noun.class);
 
-            String nouns = "res/raw/insert_nouns.sql";
-            String verbs = "res/raw/insert_verbs.sql";
-            String adjektives = "res/raw/insert_adjektives.sql";
+            String nouns;
+            String verbs;
+            String adjektives;
 
-            String update_nouns = "res/raw/insert_nouns_update.sql";
-            String update_verbs = "res/raw/insert_verbs_update.sql";
-            String update_adjektives = "res/raw/insert_adjektives_update.sql";
+            String update_nouns;
+            String update_verbs;
+            String update_adjektives;
+
+            String phoneLanguage = Locale.getDefault().getLanguage();
+            if (phoneLanguage.contentEquals("pl"))
+            {
+                nouns = "res/raw/insert_nouns_pl.sql";
+                verbs = "res/raw/insert_verbs_pl.sql";
+                adjektives = "res/raw/insert_adjektives_pl.sql";
+
+                update_nouns = "res/raw/insert_nouns_update_pl.sql";
+                update_verbs = "res/raw/insert_verbs_update_pl.sql";
+                update_adjektives = "res/raw/insert_adjektives_update_pl.sql";
+            }
+            else if (phoneLanguage.contentEquals("ru") || phoneLanguage.contentEquals("uk"))
+            {
+                nouns = "res/raw/insert_nouns_ru.sql";
+                verbs = "res/raw/insert_verbs_ru.sql";
+                adjektives = "res/raw/insert_adjektives_ru.sql";
+
+                update_nouns = "res/raw/insert_nouns_update_ru.sql";
+                update_verbs = "res/raw/insert_verbs_update_ru.sql";
+                update_adjektives = "res/raw/insert_adjektives_update_ru.sql";
+            }
+            else
+            {
+                nouns = "res/raw/insert_nouns.sql";
+                verbs = "res/raw/insert_verbs.sql";
+                adjektives = "res/raw/insert_adjektives.sql";
+
+                update_nouns = "res/raw/insert_nouns_update.sql";
+                update_verbs = "res/raw/insert_verbs_update.sql";
+                update_adjektives = "res/raw/insert_adjektives_update.sql";
+            }
 
             Dao<Verb, Integer> verbDao = getVerbDao();
             Dao<Noun, Integer> nounDao = getNounDao();
@@ -252,9 +285,29 @@ public class DatabaseHelper extends SQLiteOpenHelper
             switch(newVersion)
             {
                 case 2:
-                    String update_nouns = "res/raw/insert_nouns_update.sql";
-                    String update_verbs = "res/raw/insert_verbs_update.sql";
-                    String update_adjektives = "res/raw/insert_adjektives_update.sql";
+                    String update_nouns;
+                    String update_verbs;
+                    String update_adjektives;
+
+                    String phoneLanguage = Locale.getDefault().getLanguage();
+                    if (phoneLanguage.contentEquals("pl"))
+                    {
+                        update_nouns = "res/raw/insert_nouns_update_pl.sql";
+                        update_verbs = "res/raw/insert_verbs_update_pl.sql";
+                        update_adjektives = "res/raw/insert_adjektives_update_pl.sql";
+                    }
+                    else if (phoneLanguage.contentEquals("ru") || phoneLanguage.contentEquals("uk"))
+                    {
+                        update_nouns = "res/raw/insert_nouns_update_ru.sql";
+                        update_verbs = "res/raw/insert_verbs_update_ru.sql";
+                        update_adjektives = "res/raw/insert_adjektives_update_ru.sql";
+                    }
+                    else
+                    {
+                        update_nouns = "res/raw/insert_nouns_update.sql";
+                        update_verbs = "res/raw/insert_verbs_update.sql";
+                        update_adjektives = "res/raw/insert_adjektives_update.sql";
+                    }
 
                     Dao<Verb, Integer> verbDao = getVerbDao();
                     Dao<Noun, Integer> nounDao = getNounDao();

@@ -15,4 +15,10 @@
         android:title="@string/remove_ads"
         android:showAsAction="ifRoom|collapseActionView" />
 
+    <item
+        android:id="@+id/menu_item_share"
+        android:showAsAction="ifRoom"
+        android:title="@string/share"
+        android:actionProviderClass="android.widget.ShareActionProvider" />
+
 </menu>
