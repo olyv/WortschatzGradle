@@ -6,6 +6,6 @@ Options:
 - user can add, edit and delete words in the database;
 - user can set the number of tasks in the lesson;
 - the application already contains about 200 words
-- user interface is translated into Russian and Ukrainian languages
+- user interface is available on English, Russian, Polish and Ukrainian languages
 
 Download/install on Google Play https://play.google.com/store/apps/details?id=com.olyv.wortschatz.ui
